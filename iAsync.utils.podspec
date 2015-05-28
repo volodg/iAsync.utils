@@ -1,5 +1,5 @@
 #
-#  Be sure to run `pod spec lint AppDaddyAPI.podspec' to ensure this is a
+#  Be sure to run `pod spec lint iAsync.utils.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
 #
 #  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
@@ -15,21 +15,16 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "AppDaddyAPI"
+  s.name         = "iAsync.utils"
   s.version      = "0.0.1"
-  s.summary      = "AppDaddyAPI lib provides API to access server side of AppDaddy application"
+  s.summary      = "iAsync.utils lib provides tools used in other iAsync libraries"
 
   s.description  = <<-DESC
-                   A longer description of AppDaddyAPI in Markdown format.
-
-                   * Think: Why did you write this? What is the focus? What does it do?
-                   * CocoaPods will be using this to generate tags, and improve search results.
-                   * Try to keep it short, snappy and to the point.
-                   * Finally, don't worry about the indent, CocoaPods strips it!
+                   iAsync.utils lib provides tools used in other iAsync libraries
                    DESC
 
-  s.homepage     = "http://appdaddy.com/"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
+  s.homepage      = "https://www.facebook.com/vladimir.gorbenko.9"
+  # s.screenshots = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -39,18 +34,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = {
-    :type => 'Commercial',
-    :text => <<-LICENSE
-              All text and design is copyright © 2014 stoeger it
-
-              All rights reserved.
-
-    LICENSE
-  }
-
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -62,10 +46,8 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "volodg" => "gorbenko.vova@gmail.com" }
-  # Or just: s.author    = "volodg"
-  # s.authors            = { "volodg" => "gorbenko.vova@gmail.com" }
-  # s.social_media_url   = "http://twitter.com/volodg"
+  s.author             = { "Vladimir Gorbenko" => "gorbenko.vova@gmail.com" }
+  s.social_media_url   = "https://www.facebook.com/vladimir.gorbenko.9"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -74,7 +56,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  # s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   s.ios.deployment_target = "8.0"
@@ -87,7 +69,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "git@gitlab.shoutouts.pro:outsource.gorbenko/appdaddy-ios-api.git", :tag => "0.0.1" }
+  s.source       = { :git => "git@github.com:volodg/iAsync.utils.git", :tag => "0.0.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -98,7 +80,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "API/**/*.{swift}"
+  s.source_files  = "Lib/**/*.{swift}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -140,9 +122,6 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "Argo", "~> 1.0.1"
-  s.dependency "FBSDKCoreKit", "~> 4.1.0"
-  s.dependency "FBSDKLoginKit", "~> 4.1.0"
-  s.dependency "FBSDKShareKit", "~> 4.1.0"
+  # s.dependency "Argo", "~> 1.0.1"
 
 end
