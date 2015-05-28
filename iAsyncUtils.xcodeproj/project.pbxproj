@@ -13,56 +13,7 @@
 		2DA778731B179BCF00731AFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA778721B179BCF00731AFD /* Images.xcassets */; };
 		2DA778761B179BCF00731AFD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA778741B179BCF00731AFD /* LaunchScreen.xib */; };
 		2DA778821B179BCF00731AFD /* iAsyncUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778811B179BCF00731AFD /* iAsyncUtilsTests.swift */; };
-		2DA778CE1B179F3700731AFD /* HashableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778901B179F3700731AFD /* HashableArray.swift */; };
-		2DA778CF1B179F3700731AFD /* NSArray+BlocksAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778911B179F3700731AFD /* NSArray+BlocksAdditions.swift */; };
-		2DA778D01B179F3700731AFD /* NSArray+NoThrowObjectAtIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778921B179F3700731AFD /* NSArray+NoThrowObjectAtIndex.swift */; };
-		2DA778D11B179F3700731AFD /* JContainersHelperBlocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778941B179F3700731AFD /* JContainersHelperBlocks.swift */; };
-		2DA778D21B179F3700731AFD /* JOnDeallocBlockOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778951B179F3700731AFD /* JOnDeallocBlockOwner.swift */; };
-		2DA778D31B179F3700731AFD /* JSimpleBlockHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778961B179F3700731AFD /* JSimpleBlockHolder.swift */; };
-		2DA778D41B179F3700731AFD /* JUtilsBlockDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778971B179F3700731AFD /* JUtilsBlockDefinitions.swift */; };
-		2DA778D51B179F3700731AFD /* JAssignObjectHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778991B179F3700731AFD /* JAssignObjectHolder.swift */; };
-		2DA778D61B179F3700731AFD /* Dictionary+BlocksAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7789B1B179F3700731AFD /* Dictionary+BlocksAdditions.swift */; };
-		2DA778D71B179F3700731AFD /* HashableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7789C1B179F3700731AFD /* HashableDictionary.swift */; };
-		2DA778D81B179F3700731AFD /* JUDictionaryHelperBlocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7789D1B179F3700731AFD /* JUDictionaryHelperBlocks.swift */; };
-		2DA778D91B179F3700731AFD /* NSDictionary+BlocksAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7789E1B179F3700731AFD /* NSDictionary+BlocksAdditions.swift */; };
-		2DA778DA1B179F3700731AFD /* NSDictionary+JExtendedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7789F1B179F3700731AFD /* NSDictionary+JExtendedDictionary.swift */; };
-		2DA778DB1B179F3700731AFD /* JError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778A11B179F3700731AFD /* JError.swift */; };
-		2DA778DC1B179F3700731AFD /* JSilentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778A21B179F3700731AFD /* JSilentError.swift */; };
-		2DA778DD1B179F3700731AFD /* NSError+WriteErrorToNSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778A31B179F3700731AFD /* NSError+WriteErrorToNSLog.swift */; };
-		2DA778DE1B179F3700731AFD /* NSData+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778A51B179F3700731AFD /* NSData+ToString.swift */; };
-		2DA778DF1B179F3700731AFD /* NSLocale+CurrentInterfaceLanguageCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778A61B179F3700731AFD /* NSLocale+CurrentInterfaceLanguageCode.swift */; };
-		2DA778E01B179F3700731AFD /* NSNumber+FSStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778A71B179F3700731AFD /* NSNumber+FSStorable.swift */; };
-		2DA778E11B179F3700731AFD /* JGCDAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778A81B179F3700731AFD /* JGCDAdditions.swift */; };
-		2DA778E21B179F3700731AFD /* JHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778A91B179F3700731AFD /* JHelpers.swift */; };
-		2DA778E31B179F3700731AFD /* JMutableAssignArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778AA1B179F3700731AFD /* JMutableAssignArray.swift */; };
-		2DA778E41B179F3700731AFD /* JMutableAssignDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778AB1B179F3700731AFD /* JMutableAssignDictionary.swift */; };
-		2DA778E51B179F3700731AFD /* JResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778AC1B179F3700731AFD /* JResult.swift */; };
-		2DA778E61B179F3700731AFD /* JTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778AD1B179F3700731AFD /* JTimer.swift */; };
-		2DA778E71B179F3700731AFD /* JLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778AF1B179F3700731AFD /* JLogger.swift */; };
-		2DA778E81B179F3700731AFD /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778B11B179F3700731AFD /* NSDate+Utils.swift */; };
-		2DA778E91B179F3700731AFD /* NSObject+NsNullAsNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778B31B179F3700731AFD /* NSObject+NsNullAsNil.swift */; };
-		2DA778EA1B179F3700731AFD /* NSObject+OnDeallocBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778B41B179F3700731AFD /* NSObject+OnDeallocBlock.swift */; };
-		2DA778EB1B179F3700731AFD /* NSObject+Ownerships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778B51B179F3700731AFD /* NSObject+Ownerships.swift */; };
-		2DA778EC1B179F3700731AFD /* NSObject+ToURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778B61B179F3700731AFD /* NSObject+ToURL.swift */; };
-		2DA778ED1B179F3700731AFD /* JObjcMutableAssignArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778B81B179F3700731AFD /* JObjcMutableAssignArray.swift */; };
-		2DA778EE1B179F3700731AFD /* JObjcMutableAssignDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778B91B179F3700731AFD /* JObjcMutableAssignDictionary.swift */; };
-		2DA778EF1B179F3700731AFD /* JObjcUtilsBlockDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778BA1B179F3700731AFD /* JObjcUtilsBlockDefinitions.swift */; };
-		2DA778F01B179F3700731AFD /* NSOrderedSet+BlocksAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778BC1B179F3700731AFD /* NSOrderedSet+BlocksAdditions.swift */; };
-		2DA778F11B179F3700731AFD /* NSOrderedSet+NoThrowObjectAtIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778BD1B179F3700731AFD /* NSOrderedSet+NoThrowObjectAtIndex.swift */; };
-		2DA778F21B179F3700731AFD /* JRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778BF1B179F3700731AFD /* JRegex.swift */; };
-		2DA778F31B179F3700731AFD /* SequenceType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778C01B179F3700731AFD /* SequenceType+Extensions.swift */; };
-		2DA778F41B179F3700731AFD /* NSMutableSet+StorableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778C21B179F3700731AFD /* NSMutableSet+StorableSet.swift */; };
-		2DA778F51B179F3700731AFD /* NSSet+BlocksAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778C31B179F3700731AFD /* NSSet+BlocksAdditions.swift */; };
-		2DA778F61B179F3700731AFD /* NSString+FileAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778C51B179F3700731AFD /* NSString+FileAttributes.swift */; };
-		2DA778F71B179F3700731AFD /* NSString+IsEmailValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778C61B179F3700731AFD /* NSString+IsEmailValid.swift */; };
-		2DA778F81B179F3700731AFD /* NSString+LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778C71B179F3700731AFD /* NSString+LocalizedPrice.swift */; };
-		2DA778F91B179F3700731AFD /* NSString+PathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778C81B179F3700731AFD /* NSString+PathExtensions.swift */; };
-		2DA778FA1B179F3700731AFD /* NSString+PropertyName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778C91B179F3700731AFD /* NSString+PropertyName.swift */; };
-		2DA778FB1B179F3700731AFD /* NSString+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778CA1B179F3700731AFD /* NSString+Search.swift */; };
-		2DA778FC1B179F3700731AFD /* NSString+Trimm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778CB1B179F3700731AFD /* NSString+Trimm.swift */; };
-		2DA778FD1B179F3700731AFD /* String+toDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778CC1B179F3700731AFD /* String+toDouble.swift */; };
-		2DA778FE1B179F3700731AFD /* String+toURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA778CD1B179F3700731AFD /* String+toURL.swift */; };
-		2DA779041B179F9500731AFD /* iAsyncUtils-Bridging-Impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA779031B179F9500731AFD /* iAsyncUtils-Bridging-Impl.m */; };
+		580B0964A0ED1A8A29AD93C0 /* Pods_iAsyncUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC021F90181D2D951800BFB /* Pods_iAsyncUtils.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,57 +38,9 @@
 		2DA778801B179BCF00731AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DA778811B179BCF00731AFD /* iAsyncUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iAsyncUtilsTests.swift; sourceTree = "<group>"; };
 		2DA7788B1B179C4700731AFD /* iAsync.utils.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iAsync.utils.podspec; sourceTree = "<group>"; };
-		2DA778901B179F3700731AFD /* HashableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashableArray.swift; sourceTree = "<group>"; };
-		2DA778911B179F3700731AFD /* NSArray+BlocksAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArray+BlocksAdditions.swift"; sourceTree = "<group>"; };
-		2DA778921B179F3700731AFD /* NSArray+NoThrowObjectAtIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArray+NoThrowObjectAtIndex.swift"; sourceTree = "<group>"; };
-		2DA778941B179F3700731AFD /* JContainersHelperBlocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JContainersHelperBlocks.swift; sourceTree = "<group>"; };
-		2DA778951B179F3700731AFD /* JOnDeallocBlockOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOnDeallocBlockOwner.swift; sourceTree = "<group>"; };
-		2DA778961B179F3700731AFD /* JSimpleBlockHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSimpleBlockHolder.swift; sourceTree = "<group>"; };
-		2DA778971B179F3700731AFD /* JUtilsBlockDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JUtilsBlockDefinitions.swift; sourceTree = "<group>"; };
-		2DA778991B179F3700731AFD /* JAssignObjectHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JAssignObjectHolder.swift; sourceTree = "<group>"; };
-		2DA7789B1B179F3700731AFD /* Dictionary+BlocksAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+BlocksAdditions.swift"; sourceTree = "<group>"; };
-		2DA7789C1B179F3700731AFD /* HashableDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashableDictionary.swift; sourceTree = "<group>"; };
-		2DA7789D1B179F3700731AFD /* JUDictionaryHelperBlocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JUDictionaryHelperBlocks.swift; sourceTree = "<group>"; };
-		2DA7789E1B179F3700731AFD /* NSDictionary+BlocksAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDictionary+BlocksAdditions.swift"; sourceTree = "<group>"; };
-		2DA7789F1B179F3700731AFD /* NSDictionary+JExtendedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDictionary+JExtendedDictionary.swift"; sourceTree = "<group>"; };
-		2DA778A11B179F3700731AFD /* JError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JError.swift; sourceTree = "<group>"; };
-		2DA778A21B179F3700731AFD /* JSilentError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSilentError.swift; sourceTree = "<group>"; };
-		2DA778A31B179F3700731AFD /* NSError+WriteErrorToNSLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+WriteErrorToNSLog.swift"; sourceTree = "<group>"; };
-		2DA778A51B179F3700731AFD /* NSData+ToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+ToString.swift"; sourceTree = "<group>"; };
-		2DA778A61B179F3700731AFD /* NSLocale+CurrentInterfaceLanguageCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+CurrentInterfaceLanguageCode.swift"; sourceTree = "<group>"; };
-		2DA778A71B179F3700731AFD /* NSNumber+FSStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+FSStorable.swift"; sourceTree = "<group>"; };
-		2DA778A81B179F3700731AFD /* JGCDAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JGCDAdditions.swift; sourceTree = "<group>"; };
-		2DA778A91B179F3700731AFD /* JHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHelpers.swift; sourceTree = "<group>"; };
-		2DA778AA1B179F3700731AFD /* JMutableAssignArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMutableAssignArray.swift; sourceTree = "<group>"; };
-		2DA778AB1B179F3700731AFD /* JMutableAssignDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMutableAssignDictionary.swift; sourceTree = "<group>"; };
-		2DA778AC1B179F3700731AFD /* JResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JResult.swift; sourceTree = "<group>"; };
-		2DA778AD1B179F3700731AFD /* JTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTimer.swift; sourceTree = "<group>"; };
-		2DA778AF1B179F3700731AFD /* JLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLogger.swift; sourceTree = "<group>"; };
-		2DA778B11B179F3700731AFD /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
-		2DA778B31B179F3700731AFD /* NSObject+NsNullAsNil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+NsNullAsNil.swift"; sourceTree = "<group>"; };
-		2DA778B41B179F3700731AFD /* NSObject+OnDeallocBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+OnDeallocBlock.swift"; sourceTree = "<group>"; };
-		2DA778B51B179F3700731AFD /* NSObject+Ownerships.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Ownerships.swift"; sourceTree = "<group>"; };
-		2DA778B61B179F3700731AFD /* NSObject+ToURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ToURL.swift"; sourceTree = "<group>"; };
-		2DA778B81B179F3700731AFD /* JObjcMutableAssignArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JObjcMutableAssignArray.swift; sourceTree = "<group>"; };
-		2DA778B91B179F3700731AFD /* JObjcMutableAssignDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JObjcMutableAssignDictionary.swift; sourceTree = "<group>"; };
-		2DA778BA1B179F3700731AFD /* JObjcUtilsBlockDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JObjcUtilsBlockDefinitions.swift; sourceTree = "<group>"; };
-		2DA778BC1B179F3700731AFD /* NSOrderedSet+BlocksAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSOrderedSet+BlocksAdditions.swift"; sourceTree = "<group>"; };
-		2DA778BD1B179F3700731AFD /* NSOrderedSet+NoThrowObjectAtIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSOrderedSet+NoThrowObjectAtIndex.swift"; sourceTree = "<group>"; };
-		2DA778BF1B179F3700731AFD /* JRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JRegex.swift; sourceTree = "<group>"; };
-		2DA778C01B179F3700731AFD /* SequenceType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+Extensions.swift"; sourceTree = "<group>"; };
-		2DA778C21B179F3700731AFD /* NSMutableSet+StorableSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableSet+StorableSet.swift"; sourceTree = "<group>"; };
-		2DA778C31B179F3700731AFD /* NSSet+BlocksAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSSet+BlocksAdditions.swift"; sourceTree = "<group>"; };
-		2DA778C51B179F3700731AFD /* NSString+FileAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+FileAttributes.swift"; sourceTree = "<group>"; };
-		2DA778C61B179F3700731AFD /* NSString+IsEmailValid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+IsEmailValid.swift"; sourceTree = "<group>"; };
-		2DA778C71B179F3700731AFD /* NSString+LocalizedPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+LocalizedPrice.swift"; sourceTree = "<group>"; };
-		2DA778C81B179F3700731AFD /* NSString+PathExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+PathExtensions.swift"; sourceTree = "<group>"; };
-		2DA778C91B179F3700731AFD /* NSString+PropertyName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+PropertyName.swift"; sourceTree = "<group>"; };
-		2DA778CA1B179F3700731AFD /* NSString+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Search.swift"; sourceTree = "<group>"; };
-		2DA778CB1B179F3700731AFD /* NSString+Trimm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Trimm.swift"; sourceTree = "<group>"; };
-		2DA778CC1B179F3700731AFD /* String+toDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+toDouble.swift"; sourceTree = "<group>"; };
-		2DA778CD1B179F3700731AFD /* String+toURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+toURL.swift"; sourceTree = "<group>"; };
-		2DA778FF1B179F7200731AFD /* iAsyncUtils-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iAsyncUtils-Bridging-Header.h"; sourceTree = "<group>"; };
-		2DA779031B179F9500731AFD /* iAsyncUtils-Bridging-Impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "iAsyncUtils-Bridging-Impl.m"; sourceTree = "<group>"; };
+		77B46CD8271A4EF0C25AF03B /* Pods-iAsyncUtils.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAsyncUtils.release.xcconfig"; path = "Pods/Target Support Files/Pods-iAsyncUtils/Pods-iAsyncUtils.release.xcconfig"; sourceTree = "<group>"; };
+		9C96556F5C26CFF52426F7EB /* Pods-iAsyncUtils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAsyncUtils.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iAsyncUtils/Pods-iAsyncUtils.debug.xcconfig"; sourceTree = "<group>"; };
+		9FC021F90181D2D951800BFB /* Pods_iAsyncUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iAsyncUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580B0964A0ED1A8A29AD93C0 /* Pods_iAsyncUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,10 +66,11 @@
 			isa = PBXGroup;
 			children = (
 				2DA7788B1B179C4700731AFD /* iAsync.utils.podspec */,
-				2DA7788E1B179F3700731AFD /* Lib */,
 				2DA778681B179BCE00731AFD /* iAsyncUtils */,
 				2DA7787E1B179BCF00731AFD /* iAsyncUtilsTests */,
 				2DA778671B179BCE00731AFD /* Products */,
+				A2249AC3AAEAC979629E4096 /* Pods */,
+				D45E4B85E70988DCB5BE22B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,174 +121,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2DA7788E1B179F3700731AFD /* Lib */ = {
+		A2249AC3AAEAC979629E4096 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2DA7788F1B179F3700731AFD /* Array */,
-				2DA778931B179F3700731AFD /* Blocks */,
-				2DA778981B179F3700731AFD /* Details */,
-				2DA7789A1B179F3700731AFD /* Dictionary */,
-				2DA778A01B179F3700731AFD /* Errors */,
-				2DA778A41B179F3700731AFD /* Extensions */,
-				2DA778A81B179F3700731AFD /* JGCDAdditions.swift */,
-				2DA778A91B179F3700731AFD /* JHelpers.swift */,
-				2DA778AA1B179F3700731AFD /* JMutableAssignArray.swift */,
-				2DA778AB1B179F3700731AFD /* JMutableAssignDictionary.swift */,
-				2DA778AC1B179F3700731AFD /* JResult.swift */,
-				2DA778AD1B179F3700731AFD /* JTimer.swift */,
-				2DA778AE1B179F3700731AFD /* Logger */,
-				2DA778B01B179F3700731AFD /* NSDate */,
-				2DA778B21B179F3700731AFD /* NSObject */,
-				2DA778B71B179F3700731AFD /* ObjCBridg */,
-				2DA778BB1B179F3700731AFD /* OrderedSet */,
-				2DA778BE1B179F3700731AFD /* Regex */,
-				2DA778C01B179F3700731AFD /* SequenceType+Extensions.swift */,
-				2DA778C11B179F3700731AFD /* Set */,
-				2DA778C41B179F3700731AFD /* String */,
-				2DA778FF1B179F7200731AFD /* iAsyncUtils-Bridging-Header.h */,
-				2DA779031B179F9500731AFD /* iAsyncUtils-Bridging-Impl.m */,
+				9C96556F5C26CFF52426F7EB /* Pods-iAsyncUtils.debug.xcconfig */,
+				77B46CD8271A4EF0C25AF03B /* Pods-iAsyncUtils.release.xcconfig */,
 			);
-			path = Lib;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		2DA7788F1B179F3700731AFD /* Array */ = {
+		D45E4B85E70988DCB5BE22B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2DA778901B179F3700731AFD /* HashableArray.swift */,
-				2DA778911B179F3700731AFD /* NSArray+BlocksAdditions.swift */,
-				2DA778921B179F3700731AFD /* NSArray+NoThrowObjectAtIndex.swift */,
+				9FC021F90181D2D951800BFB /* Pods_iAsyncUtils.framework */,
 			);
-			path = Array;
-			sourceTree = "<group>";
-		};
-		2DA778931B179F3700731AFD /* Blocks */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778941B179F3700731AFD /* JContainersHelperBlocks.swift */,
-				2DA778951B179F3700731AFD /* JOnDeallocBlockOwner.swift */,
-				2DA778961B179F3700731AFD /* JSimpleBlockHolder.swift */,
-				2DA778971B179F3700731AFD /* JUtilsBlockDefinitions.swift */,
-			);
-			path = Blocks;
-			sourceTree = "<group>";
-		};
-		2DA778981B179F3700731AFD /* Details */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778991B179F3700731AFD /* JAssignObjectHolder.swift */,
-			);
-			path = Details;
-			sourceTree = "<group>";
-		};
-		2DA7789A1B179F3700731AFD /* Dictionary */ = {
-			isa = PBXGroup;
-			children = (
-				2DA7789B1B179F3700731AFD /* Dictionary+BlocksAdditions.swift */,
-				2DA7789C1B179F3700731AFD /* HashableDictionary.swift */,
-				2DA7789D1B179F3700731AFD /* JUDictionaryHelperBlocks.swift */,
-				2DA7789E1B179F3700731AFD /* NSDictionary+BlocksAdditions.swift */,
-				2DA7789F1B179F3700731AFD /* NSDictionary+JExtendedDictionary.swift */,
-			);
-			path = Dictionary;
-			sourceTree = "<group>";
-		};
-		2DA778A01B179F3700731AFD /* Errors */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778A11B179F3700731AFD /* JError.swift */,
-				2DA778A21B179F3700731AFD /* JSilentError.swift */,
-				2DA778A31B179F3700731AFD /* NSError+WriteErrorToNSLog.swift */,
-			);
-			path = Errors;
-			sourceTree = "<group>";
-		};
-		2DA778A41B179F3700731AFD /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778A51B179F3700731AFD /* NSData+ToString.swift */,
-				2DA778A61B179F3700731AFD /* NSLocale+CurrentInterfaceLanguageCode.swift */,
-				2DA778A71B179F3700731AFD /* NSNumber+FSStorable.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		2DA778AE1B179F3700731AFD /* Logger */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778AF1B179F3700731AFD /* JLogger.swift */,
-			);
-			path = Logger;
-			sourceTree = "<group>";
-		};
-		2DA778B01B179F3700731AFD /* NSDate */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778B11B179F3700731AFD /* NSDate+Utils.swift */,
-			);
-			path = NSDate;
-			sourceTree = "<group>";
-		};
-		2DA778B21B179F3700731AFD /* NSObject */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778B31B179F3700731AFD /* NSObject+NsNullAsNil.swift */,
-				2DA778B41B179F3700731AFD /* NSObject+OnDeallocBlock.swift */,
-				2DA778B51B179F3700731AFD /* NSObject+Ownerships.swift */,
-				2DA778B61B179F3700731AFD /* NSObject+ToURL.swift */,
-			);
-			path = NSObject;
-			sourceTree = "<group>";
-		};
-		2DA778B71B179F3700731AFD /* ObjCBridg */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778B81B179F3700731AFD /* JObjcMutableAssignArray.swift */,
-				2DA778B91B179F3700731AFD /* JObjcMutableAssignDictionary.swift */,
-				2DA778BA1B179F3700731AFD /* JObjcUtilsBlockDefinitions.swift */,
-			);
-			path = ObjCBridg;
-			sourceTree = "<group>";
-		};
-		2DA778BB1B179F3700731AFD /* OrderedSet */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778BC1B179F3700731AFD /* NSOrderedSet+BlocksAdditions.swift */,
-				2DA778BD1B179F3700731AFD /* NSOrderedSet+NoThrowObjectAtIndex.swift */,
-			);
-			path = OrderedSet;
-			sourceTree = "<group>";
-		};
-		2DA778BE1B179F3700731AFD /* Regex */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778BF1B179F3700731AFD /* JRegex.swift */,
-			);
-			path = Regex;
-			sourceTree = "<group>";
-		};
-		2DA778C11B179F3700731AFD /* Set */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778C21B179F3700731AFD /* NSMutableSet+StorableSet.swift */,
-				2DA778C31B179F3700731AFD /* NSSet+BlocksAdditions.swift */,
-			);
-			path = Set;
-			sourceTree = "<group>";
-		};
-		2DA778C41B179F3700731AFD /* String */ = {
-			isa = PBXGroup;
-			children = (
-				2DA778C51B179F3700731AFD /* NSString+FileAttributes.swift */,
-				2DA778C61B179F3700731AFD /* NSString+IsEmailValid.swift */,
-				2DA778C71B179F3700731AFD /* NSString+LocalizedPrice.swift */,
-				2DA778C81B179F3700731AFD /* NSString+PathExtensions.swift */,
-				2DA778C91B179F3700731AFD /* NSString+PropertyName.swift */,
-				2DA778CA1B179F3700731AFD /* NSString+Search.swift */,
-				2DA778CB1B179F3700731AFD /* NSString+Trimm.swift */,
-				2DA778CC1B179F3700731AFD /* String+toDouble.swift */,
-				2DA778CD1B179F3700731AFD /* String+toURL.swift */,
-			);
-			path = String;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,9 +145,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2DA778851B179BCF00731AFD /* Build configuration list for PBXNativeTarget "iAsyncUtils" */;
 			buildPhases = (
+				537E69853AA4A2116B38B2D1 /* Check Pods Manifest.lock */,
 				2DA778621B179BCE00731AFD /* Sources */,
 				2DA778631B179BCE00731AFD /* Frameworks */,
 				2DA778641B179BCE00731AFD /* Resources */,
+				747E343D584879CDD3D17B38 /* Embed Pods Frameworks */,
+				56E8FD6E5B8D4C4F9EFF5718 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -481,63 +236,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		537E69853AA4A2116B38B2D1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		56E8FD6E5B8D4C4F9EFF5718 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iAsyncUtils/Pods-iAsyncUtils-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		747E343D584879CDD3D17B38 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iAsyncUtils/Pods-iAsyncUtils-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2DA778621B179BCE00731AFD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DA778D81B179F3700731AFD /* JUDictionaryHelperBlocks.swift in Sources */,
-				2DA778D41B179F3700731AFD /* JUtilsBlockDefinitions.swift in Sources */,
-				2DA778D71B179F3700731AFD /* HashableDictionary.swift in Sources */,
-				2DA778E41B179F3700731AFD /* JMutableAssignDictionary.swift in Sources */,
-				2DA778DC1B179F3700731AFD /* JSilentError.swift in Sources */,
-				2DA778EE1B179F3700731AFD /* JObjcMutableAssignDictionary.swift in Sources */,
-				2DA778F61B179F3700731AFD /* NSString+FileAttributes.swift in Sources */,
-				2DA778D31B179F3700731AFD /* JSimpleBlockHolder.swift in Sources */,
-				2DA778CF1B179F3700731AFD /* NSArray+BlocksAdditions.swift in Sources */,
-				2DA778E91B179F3700731AFD /* NSObject+NsNullAsNil.swift in Sources */,
-				2DA778F51B179F3700731AFD /* NSSet+BlocksAdditions.swift in Sources */,
-				2DA778ED1B179F3700731AFD /* JObjcMutableAssignArray.swift in Sources */,
-				2DA778D61B179F3700731AFD /* Dictionary+BlocksAdditions.swift in Sources */,
-				2DA778EB1B179F3700731AFD /* NSObject+Ownerships.swift in Sources */,
-				2DA778EC1B179F3700731AFD /* NSObject+ToURL.swift in Sources */,
-				2DA778CE1B179F3700731AFD /* HashableArray.swift in Sources */,
-				2DA778F31B179F3700731AFD /* SequenceType+Extensions.swift in Sources */,
-				2DA778F71B179F3700731AFD /* NSString+IsEmailValid.swift in Sources */,
-				2DA778D51B179F3700731AFD /* JAssignObjectHolder.swift in Sources */,
-				2DA778DE1B179F3700731AFD /* NSData+ToString.swift in Sources */,
-				2DA778FE1B179F3700731AFD /* String+toURL.swift in Sources */,
-				2DA778FD1B179F3700731AFD /* String+toDouble.swift in Sources */,
-				2DA778E21B179F3700731AFD /* JHelpers.swift in Sources */,
-				2DA778E81B179F3700731AFD /* NSDate+Utils.swift in Sources */,
-				2DA778EF1B179F3700731AFD /* JObjcUtilsBlockDefinitions.swift in Sources */,
-				2DA778D91B179F3700731AFD /* NSDictionary+BlocksAdditions.swift in Sources */,
-				2DA778D21B179F3700731AFD /* JOnDeallocBlockOwner.swift in Sources */,
-				2DA778FB1B179F3700731AFD /* NSString+Search.swift in Sources */,
-				2DA778D01B179F3700731AFD /* NSArray+NoThrowObjectAtIndex.swift in Sources */,
-				2DA778DB1B179F3700731AFD /* JError.swift in Sources */,
 				2DA7786E1B179BCE00731AFD /* ViewController.swift in Sources */,
-				2DA778FC1B179F3700731AFD /* NSString+Trimm.swift in Sources */,
-				2DA778EA1B179F3700731AFD /* NSObject+OnDeallocBlock.swift in Sources */,
-				2DA778F41B179F3700731AFD /* NSMutableSet+StorableSet.swift in Sources */,
-				2DA779041B179F9500731AFD /* iAsyncUtils-Bridging-Impl.m in Sources */,
-				2DA778E01B179F3700731AFD /* NSNumber+FSStorable.swift in Sources */,
-				2DA778E71B179F3700731AFD /* JLogger.swift in Sources */,
-				2DA778F01B179F3700731AFD /* NSOrderedSet+BlocksAdditions.swift in Sources */,
-				2DA778D11B179F3700731AFD /* JContainersHelperBlocks.swift in Sources */,
-				2DA778E11B179F3700731AFD /* JGCDAdditions.swift in Sources */,
-				2DA778DD1B179F3700731AFD /* NSError+WriteErrorToNSLog.swift in Sources */,
-				2DA778E31B179F3700731AFD /* JMutableAssignArray.swift in Sources */,
-				2DA778F11B179F3700731AFD /* NSOrderedSet+NoThrowObjectAtIndex.swift in Sources */,
-				2DA778FA1B179F3700731AFD /* NSString+PropertyName.swift in Sources */,
-				2DA778E61B179F3700731AFD /* JTimer.swift in Sources */,
-				2DA778DF1B179F3700731AFD /* NSLocale+CurrentInterfaceLanguageCode.swift in Sources */,
-				2DA778E51B179F3700731AFD /* JResult.swift in Sources */,
-				2DA778F81B179F3700731AFD /* NSString+LocalizedPrice.swift in Sources */,
-				2DA778DA1B179F3700731AFD /* NSDictionary+JExtendedDictionary.swift in Sources */,
 				2DA7786C1B179BCE00731AFD /* AppDelegate.swift in Sources */,
-				2DA778F91B179F3700731AFD /* NSString+PathExtensions.swift in Sources */,
-				2DA778F21B179F3700731AFD /* JRegex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +417,7 @@
 		};
 		2DA778861B179BCF00731AFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C96556F5C26CFF52426F7EB /* Pods-iAsyncUtils.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -677,6 +431,7 @@
 		};
 		2DA778871B179BCF00731AFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77B46CD8271A4EF0C25AF03B /* Pods-iAsyncUtils.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
