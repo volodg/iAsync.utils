@@ -8,8 +8,6 @@
 
 import Foundation
 
-//import "sys/xattr.h"
-
 public extension NSString {
     
     func addSkipBackupAttribute() {

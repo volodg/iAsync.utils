@@ -1,9 +1,16 @@
 //
-//  JUtils-Bridging-Impl.m
-//  iAsyncUtils
+//  TmpHeader.m
+//  JUtils
 //
-//  Created by Volodymyr on 28.05.15.
-//  Copyright (c) 2015 Volodymyr. All rights reserved.
+//  Created by Vlafimir Gorbenko on 16.09.14.
+//  Copyright (c) 2014 EmbeddedSources. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+
+#include <sys/xattr.h>
+
+int bridg_setxattr(const char *path, const char *name, const void *value, size_t size, u_int32_t position, int options) {
+    
+    return setxattr(path, name, value, size, position, options);
+}

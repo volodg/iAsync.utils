@@ -8,8 +8,6 @@
 
 import Foundation
 
-import JUtils
-
 public typealias JCancelScheduledBlock = () -> Void
 public typealias JScheduledBlock = (cancel: JCancelScheduledBlock) -> Void
 
