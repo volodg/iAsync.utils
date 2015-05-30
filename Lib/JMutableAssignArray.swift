@@ -18,7 +18,7 @@ public class JMutableAssignArray<T: NSObjectProtocol> : SequenceType, Printable 
         let array = self.map({$0})
         return array.generate()
     }
-
+    
     public init() {}
     
     private var mutableArray: [JAutoRemoveAssignProxy<T>] = []
@@ -26,7 +26,7 @@ public class JMutableAssignArray<T: NSObjectProtocol> : SequenceType, Printable 
     public var onRemoveObject: JSimpleBlock?
     
     public func append(object: T) {
-
+        
         let proxy = JAutoRemoveAssignProxy(target: object)
         mutableArray.append(proxy)
         proxy.onAddToMutableAssignArray(self)
@@ -117,10 +117,10 @@ public class JMutableAssignArray<T: NSObjectProtocol> : SequenceType, Printable 
     }
     
     public func map<U>(transform: (T) -> U) -> [U] {
-    
+        
         return mutableArray.map({transform($0.target.takeUnretainedValue())})
     }
-
+    
     public var last: T? {
         if let proxy = mutableArray.last {
             return proxy.target.takeUnretainedValue()

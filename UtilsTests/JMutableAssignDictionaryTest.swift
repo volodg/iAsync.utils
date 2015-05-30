@@ -8,7 +8,7 @@
 
 import XCTest
 
-import iAsync_utils
+//import iAsync_utils
 
 class JMutableAssignDictionaryTest: XCTestCase {
     
@@ -25,7 +25,7 @@ class JMutableAssignDictionaryTest: XCTestCase {
     func testMutableAssignDictionaryAssignIssue() {
         var dict1: JMutableAssignDictionary<String, NSObject>?
         var dict2: JMutableAssignDictionary<String, NSObject>?
-        var targetDeallocated = false
+        var targetDeallocated = false;
         
         { () -> () in
             let target = NSObject()

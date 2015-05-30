@@ -28,12 +28,15 @@ public extension NSObject {
     }
     
     private func ownerships() -> NSMutableArray? {
-        let result: NSMutableArray? = objc_getAssociatedObject(self, &sharedObserversKey) as? NSMutableArray
+        
+        let result = objc_getAssociatedObject(self, &sharedObserversKey) as? NSMutableArray
         return result
     }
     
-    func addOwnedObject(object: AnyObject) {
-        autoreleasepool { self.lazyOwnerships().addObject(object) }
+    public func addOwnedObject(object: AnyObject) {
+        autoreleasepool {
+            self.lazyOwnerships().addObject(object)
+        }
     }
     
     func removeOwnedObject(object: AnyObject) {
@@ -44,7 +47,13 @@ public extension NSObject {
         }
     }
     
-    func firstOwnedObjectMatch(predicate: JObjcPredicateBlock) -> AnyObject? {
-        return self.ownerships()?.firstMatch(predicate)
+    func firstOwnedObjectMatch(predicate: (AnyObject) -> Bool) -> AnyObject? {
+        
+        if let ownerships = self.ownerships()?.copy() as? [AnyObject] {
+            
+            return firstMatch(ownerships, predicate)
+        }
+        
+        return nil
     }
 }

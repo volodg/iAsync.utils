@@ -42,7 +42,7 @@ public struct HashableArray<T: Equatable> : Hashable, SequenceType, Printable {
     }
     
     public var description: String {
-        return "JUtils.HashableArray: \(array)"
+        return "iAsync.utils.HashableArray: \(array)"
     }
 }
 

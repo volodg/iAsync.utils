@@ -1,12 +1,14 @@
 //
 //  AppDelegate.swift
-//  iAsync.utils
+//  Utils
 //
-//  Created by Volodymyr on 30.05.15.
+//  Created by Volodymyr on 31.05.15.
 //  Copyright (c) 2015 Volodymyr. All rights reserved.
 //
 
 import UIKit
+
+import iAsync_utils
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        let error = JError(description: "x")
+        
         // Override point for customization after application launch.
         return true
     }

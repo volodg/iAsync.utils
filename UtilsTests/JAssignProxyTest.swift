@@ -8,7 +8,7 @@
 
 import XCTest
 
-import iAsync_utils
+//import iAsync_utils
 
 class ProxyTargetTest : NSObject, NSObjectProtocol {}
 
@@ -17,7 +17,7 @@ class JAssignProxyTest: XCTestCase {
     func testAssignProxyDealloc() {
         
         var proxy: JAssignObjectHolder<ProxyTargetTest>?
-        var targetDeallocated = false
+        var targetDeallocated = false;
         
         { () -> () in
             let target = ProxyTargetTest()

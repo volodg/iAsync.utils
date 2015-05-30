@@ -8,6 +8,8 @@
 
 import Foundation
 
+//TODO remove
+
 //source - swiftz_core
 // An immutable box, necessary for recursive datatypes (such as List) to avoid compiler crashes
 public final class JBox<T> {

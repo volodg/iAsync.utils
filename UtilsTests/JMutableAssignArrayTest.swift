@@ -8,7 +8,7 @@
 
 import XCTest
 
-import iAsync_utils
+//import iAsync_utils
 
 class JMutableAssignArrayTest: XCTestCase {
     
@@ -39,7 +39,7 @@ class JMutableAssignArrayTest: XCTestCase {
     
     func testMutableAssignArrayFirstRelease()
     {
-        weak var weakArray: JMutableAssignArray<NSObject>?
+        weak var weakArray: JMutableAssignArray<NSObject>?;
         
         { () -> () in
             
@@ -72,7 +72,7 @@ class JMutableAssignArrayTest: XCTestCase {
             
             weak var object1Ptr: NSObject?
             
-            var onDeallocBlockCalled = false
+            var onDeallocBlockCalled = false;
             
             { () -> () in
                 

@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01282B3F1EA09A3E18DFDCEC /* Pods_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A1D227C531F6FA8193B712 /* Pods_Utils.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2DD8E72C1B1A5EE100E3BC5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E72B1B1A5EE100E3BC5B /* AppDelegate.swift */; };
 		2DD8E72E1B1A5EE100E3BC5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E72D1B1A5EE100E3BC5B /* ViewController.swift */; };
 		2DD8E7311B1A5EE100E3BC5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD8E72F1B1A5EE100E3BC5B /* Main.storyboard */; };
 		2DD8E7331B1A5EE100E3BC5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DD8E7321B1A5EE100E3BC5B /* Images.xcassets */; };
 		2DD8E7361B1A5EE100E3BC5B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD8E7341B1A5EE100E3BC5B /* LaunchScreen.xib */; };
 		2DD8E7421B1A5EE100E3BC5B /* UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7411B1A5EE100E3BC5B /* UtilsTests.swift */; };
+		2DD8E7581B1A5FCD00E3BC5B /* iAsync_utilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E74B1B1A5FCD00E3BC5B /* iAsync_utilsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,24 @@
 		2DD8E73B1B1A5EE100E3BC5B /* UtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD8E7401B1A5EE100E3BC5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DD8E7411B1A5EE100E3BC5B /* UtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsTests.swift; sourceTree = "<group>"; };
+		2DD8E74B1B1A5FCD00E3BC5B /* iAsync_utilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iAsync_utilsTests.swift; sourceTree = "<group>"; };
+		2DD8E74C1B1A5FCD00E3BC5B /* JAssignProxyTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JAssignProxyTest.swift; sourceTree = "<group>"; };
+		2DD8E74D1B1A5FCD00E3BC5B /* JMutableAssignArrayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMutableAssignArrayTest.swift; sourceTree = "<group>"; };
+		2DD8E74E1B1A5FCD00E3BC5B /* JMutableAssignDictionaryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMutableAssignDictionaryTest.swift; sourceTree = "<group>"; };
+		2DD8E74F1B1A5FCD00E3BC5B /* JOnDeallocBlockOwnerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOnDeallocBlockOwnerTest.swift; sourceTree = "<group>"; };
+		2DD8E7501B1A5FCD00E3BC5B /* JSchedulerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSchedulerTest.swift; sourceTree = "<group>"; };
+		2DD8E7511B1A5FCD00E3BC5B /* JSimpleBlockHolderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSimpleBlockHolderTest.swift; sourceTree = "<group>"; };
+		2DD8E7521B1A5FCD00E3BC5B /* NSDictionary+BlocksAdditionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDictionary+BlocksAdditionsTest.swift"; sourceTree = "<group>"; };
+		2DD8E7531B1A5FCD00E3BC5B /* NSMutableSet+StorableSetTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableSet+StorableSetTest.swift"; sourceTree = "<group>"; };
+		2DD8E7541B1A5FCD00E3BC5B /* NSNumber+FSStorableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+FSStorableTest.swift"; sourceTree = "<group>"; };
+		2DD8E7551B1A5FCD00E3BC5B /* NSObject+OwnershipsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+OwnershipsTest.swift"; sourceTree = "<group>"; };
+		2DD8E7561B1A5FCD00E3BC5B /* NumberOfCharacterFromStringTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberOfCharacterFromStringTest.swift; sourceTree = "<group>"; };
+		2DD8E7571B1A5FCD00E3BC5B /* StringFromTemplateString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFromTemplateString.swift; sourceTree = "<group>"; };
+		2DD8E7651B1A609400E3BC5B /* iAsync_utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAsync_utils.framework; path = "Pods/../build/Debug-iphoneos/Pods-Utils/iAsync_utils.framework"; sourceTree = "<group>"; };
+		2DD8E7671B1A60B700E3BC5B /* Pods_Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Utils.framework; path = "Pods/../build/Debug-iphoneos/Pods_Utils.framework"; sourceTree = "<group>"; };
+		53120E70E16E982D0779F45A /* Pods-Utils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utils.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Utils/Pods-Utils.debug.xcconfig"; sourceTree = "<group>"; };
+		80A1D227C531F6FA8193B712 /* Pods_Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F736C1ED8DDB4FA5FB1A2F78 /* Pods-Utils.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utils.release.xcconfig"; path = "Pods/Target Support Files/Pods-Utils/Pods-Utils.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01282B3F1EA09A3E18DFDCEC /* Pods_Utils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +83,8 @@
 				2DD8E7281B1A5EE100E3BC5B /* Utils */,
 				2DD8E73E1B1A5EE100E3BC5B /* UtilsTests */,
 				2DD8E7271B1A5EE100E3BC5B /* Products */,
+				37B6B84E871AECC1EA032A39 /* Pods */,
+				C7F582C48BD9144B36892840 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +121,19 @@
 		2DD8E73E1B1A5EE100E3BC5B /* UtilsTests */ = {
 			isa = PBXGroup;
 			children = (
+				2DD8E74B1B1A5FCD00E3BC5B /* iAsync_utilsTests.swift */,
+				2DD8E74C1B1A5FCD00E3BC5B /* JAssignProxyTest.swift */,
+				2DD8E74D1B1A5FCD00E3BC5B /* JMutableAssignArrayTest.swift */,
+				2DD8E74E1B1A5FCD00E3BC5B /* JMutableAssignDictionaryTest.swift */,
+				2DD8E74F1B1A5FCD00E3BC5B /* JOnDeallocBlockOwnerTest.swift */,
+				2DD8E7501B1A5FCD00E3BC5B /* JSchedulerTest.swift */,
+				2DD8E7511B1A5FCD00E3BC5B /* JSimpleBlockHolderTest.swift */,
+				2DD8E7521B1A5FCD00E3BC5B /* NSDictionary+BlocksAdditionsTest.swift */,
+				2DD8E7531B1A5FCD00E3BC5B /* NSMutableSet+StorableSetTest.swift */,
+				2DD8E7541B1A5FCD00E3BC5B /* NSNumber+FSStorableTest.swift */,
+				2DD8E7551B1A5FCD00E3BC5B /* NSObject+OwnershipsTest.swift */,
+				2DD8E7561B1A5FCD00E3BC5B /* NumberOfCharacterFromStringTest.swift */,
+				2DD8E7571B1A5FCD00E3BC5B /* StringFromTemplateString.swift */,
 				2DD8E7411B1A5EE100E3BC5B /* UtilsTests.swift */,
 				2DD8E73F1B1A5EE100E3BC5B /* Supporting Files */,
 			);
@@ -112,6 +148,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		37B6B84E871AECC1EA032A39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				53120E70E16E982D0779F45A /* Pods-Utils.debug.xcconfig */,
+				F736C1ED8DDB4FA5FB1A2F78 /* Pods-Utils.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C7F582C48BD9144B36892840 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DD8E7671B1A60B700E3BC5B /* Pods_Utils.framework */,
+				2DD8E7651B1A609400E3BC5B /* iAsync_utils.framework */,
+				80A1D227C531F6FA8193B712 /* Pods_Utils.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +174,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2DD8E7451B1A5EE100E3BC5B /* Build configuration list for PBXNativeTarget "Utils" */;
 			buildPhases = (
+				0FB294E73BB862D2DB4C986C /* Check Pods Manifest.lock */,
 				2DD8E7221B1A5EE100E3BC5B /* Sources */,
 				2DD8E7231B1A5EE100E3BC5B /* Frameworks */,
 				2DD8E7241B1A5EE100E3BC5B /* Resources */,
+				46CD6A6B81838E8C92A6FAF3 /* Embed Pods Frameworks */,
+				38F708A94F41166CC938866B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,6 +265,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0FB294E73BB862D2DB4C986C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		38F708A94F41166CC938866B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Utils/Pods-Utils-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46CD6A6B81838E8C92A6FAF3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Utils/Pods-Utils-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2DD8E7221B1A5EE100E3BC5B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -221,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DD8E7581B1A5FCD00E3BC5B /* iAsync_utilsTests.swift in Sources */,
 				2DD8E7421B1A5EE100E3BC5B /* UtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +447,7 @@
 		};
 		2DD8E7461B1A5EE100E3BC5B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53120E70E16E982D0779F45A /* Pods-Utils.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Utils/Info.plist;
@@ -350,6 +458,7 @@
 		};
 		2DD8E7471B1A5EE100E3BC5B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F736C1ED8DDB4FA5FB1A2F78 /* Pods-Utils.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Utils/Info.plist;
@@ -365,6 +474,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods-Utils",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -384,6 +495,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods-Utils",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = UtilsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -411,6 +524,7 @@
 				2DD8E7471B1A5EE100E3BC5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2DD8E7481B1A5EE100E3BC5B /* Build configuration list for PBXNativeTarget "UtilsTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +533,7 @@
 				2DD8E74A1B1A5EE100E3BC5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

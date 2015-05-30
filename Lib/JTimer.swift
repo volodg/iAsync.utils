@@ -28,18 +28,23 @@ public class JTimer : NSObject {
         }
     }
     
+    public required override init() {}
+    
     public class func sharedByThreadTimer() -> JTimer {
         
         let thread = NSThread.currentThread()
         
         let key = "JTimer.threadLocalTimer"
-        var result: JTimer? = thread.threadDictionary[key] as? JTimer
-        if result == nil {
-            result = JTimer()
-            thread.threadDictionary[key] = result
+        
+        if let result = thread.threadDictionary[key] as? JTimer {
+            
+            return result
         }
         
-        return result!
+        let result = self()
+        thread.threadDictionary[key] = result
+        
+        return result
     }
     
     func addBlock(actionBlock: JScheduledBlock,
