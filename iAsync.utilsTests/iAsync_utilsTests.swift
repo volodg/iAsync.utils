@@ -1,15 +1,15 @@
 //
-//  iAsyncUtilsTests.swift
-//  iAsyncUtilsTests
+//  iAsync_utilsTests.swift
+//  iAsync.utilsTests
 //
-//  Created by Volodymyr on 28.05.15.
+//  Created by Volodymyr on 30.05.15.
 //  Copyright (c) 2015 Volodymyr. All rights reserved.
 //
 
 import UIKit
 import XCTest
 
-class iAsyncUtilsTests: XCTestCase {
+class iAsync_utilsTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
