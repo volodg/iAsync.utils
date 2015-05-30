@@ -1,5 +1,5 @@
 framework module iAsync_utils {
-  umbrella header "Pods-iAsyncUtils-iAsync.utils-umbrella.h"
+  umbrella header "Pods-iAsync.utils-iAsync.utils-umbrella.h"
 
   export *
   module * { export * }
