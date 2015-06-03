@@ -15,5 +15,5 @@ FOUNDATION_EXPORT double iAsync_utilsVersionNumber;
 FOUNDATION_EXPORT const unsigned char iAsync_utilsVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <iAsync_utils/PublicHeader.h>
-
+//#import "iAsync.utils-Bridging-Header.h"
 
