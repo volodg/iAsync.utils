@@ -11,6 +11,8 @@ import Foundation
 public typealias JCancelScheduledBlock = () -> Void
 public typealias JScheduledBlock = (cancel: JCancelScheduledBlock) -> Void
 
+private let emptyTimerBlock: () -> Void = {}
+
 //TODO remove NSObject inheritence
 public class JTimer : NSObject {
     
@@ -20,15 +22,14 @@ public class JTimer : NSObject {
         cancelAllScheduledOperations()
     }
     
-    public func cancelAllScheduledOperations() {
+    public func cancelAllScheduledOperations()
+    {
         let cancelBlocks = self.cancelBlocks
         self.cancelBlocks.removeAll(keepCapacity: true)
         for cancelHolder in cancelBlocks {
             cancelHolder.onceSimpleBlock()()
         }
     }
-    
-    public required override init() {}
     
     public class func sharedByThreadTimer() -> JTimer {
         
@@ -41,7 +42,7 @@ public class JTimer : NSObject {
             return result
         }
         
-        let result = self()
+        let result = JTimer()
         thread.threadDictionary[key] = result
         
         return result
@@ -57,7 +58,8 @@ public class JTimer : NSObject {
             dispatchQueue: dispatchQueue)
     }
     
-    public func addBlock(actionBlock: JScheduledBlock,
+    public func addBlock(
+        actionBlock  : JScheduledBlock,
         duration     : NSTimeInterval,
         leeway       : NSTimeInterval,
         dispatchQueue: dispatch_queue_t) -> JCancelScheduledBlock
@@ -79,6 +81,7 @@ public class JTimer : NSObject {
                 return
             }
             
+            dispatch_source_set_event_handler(timer, emptyTimerBlock)
             dispatch_source_cancel(timer)
             timer = nil
             
@@ -87,6 +90,7 @@ public class JTimer : NSObject {
                     
                     if cancelHolder === weakCancelTimerBlockHolder! {
                         self_.cancelBlocks.removeAtIndex(index)
+                        weakCancelTimerBlockHolder = nil
                         break
                     }
                 }

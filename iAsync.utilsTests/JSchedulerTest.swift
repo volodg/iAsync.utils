@@ -8,7 +8,7 @@
 
 import XCTest
 
-//import iAsync_utils
+import iAsync_utils
 
 class JSchedulerTest: XCTestCase {
     
@@ -17,7 +17,12 @@ class JSchedulerTest: XCTestCase {
         let sharedTimer = JTimer.sharedByThreadTimer()
         
         var fired = false
-        var timeDifference = 0.0
+        var timeDifference: Double = 0.0
+        
+        let setTimeDifference = { (difference: Double) -> () in
+            
+            timeDifference = difference;
+        }
         
         weak var weakTimer: JTimer?
         
@@ -30,7 +35,7 @@ class JSchedulerTest: XCTestCase {
                 
                 cancel()
                 fired = true
-            }, duration:0.01)
+            }, duration:0.01, leeway:0)
             
             let startDate = NSDate()
             
@@ -39,18 +44,18 @@ class JSchedulerTest: XCTestCase {
             let cancel2 = sharedTimer.addBlock({ (cancel: JCancelScheduledBlock) -> () in
                 
                 let finishDate = NSDate()
-                timeDifference = finishDate.timeIntervalSinceDate(startDate)
+                setTimeDifference(finishDate.timeIntervalSinceDate(startDate))
                 
                 cancel()
                 expectation.fulfill()
-            }, duration:0.02)
+            }, duration:0.02, leeway:0)
         }
         
         self.waitForExpectationsWithTimeout(1, handler: nil)
         
         XCTAssertNil(weakTimer)
         XCTAssertFalse(fired)
-        XCTAssertTrue(timeDifference >= 0.018)
+        XCTAssertTrue(timeDifference >= 0.02)
     }
     
     func testCancelBlockReturned() {
@@ -146,7 +151,7 @@ class JSchedulerTest: XCTestCase {
             
             self.waitForExpectationsWithTimeout(1, handler: nil)
             
-            XCTAssertFalse(fired)//TODO fix
+            XCTAssertFalse(fired)
             XCTAssertTrue(timeDifference >= 0.01)
         }
         

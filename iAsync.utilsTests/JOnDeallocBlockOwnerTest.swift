@@ -8,25 +8,35 @@
 
 import XCTest
 
-//import iAsync_utils
+import iAsync_utils
 
 class JOnDeallocBlockOwnerTest: XCTestCase {
     
     func testOnDeallocBlockOwnerBehavior() {
         
         var blockCalled = false
+        
+        let setBlockCalled = { (newVal: Bool) -> Void in
+            blockCalled = newVal
+        }
+        
         var blockContextDeallocated = false
+        
+        let setObjectDeallocated = { (newVal: Bool) -> Void in
+            blockContextDeallocated = newVal
+        }
         
         autoreleasepool {
             
             let blockContext: NSObject? = NSObject()
             blockContext!.addOnDeallocBlock({ () -> () in
-                blockContextDeallocated = true
+                setObjectDeallocated(true)
+                return ()
             })
             
             let owner = JOnDeallocBlockOwner(block: {
                 if blockContext != nil {
-                    blockCalled = true
+                    setBlockCalled(true)
                 }
             })
             

@@ -8,7 +8,7 @@
 
 import XCTest
 
-//import iAsync_utils
+import iAsync_utils
 
 class NSDictionary_BlocksAdditionsTest: XCTestCase {
     
@@ -32,8 +32,8 @@ class NSDictionary_BlocksAdditionsTest: XCTestCase {
         
         let result = (dict as NSDictionary).map({ (key: AnyObject, object: AnyObject) -> AnyObject in
             
-            let objectNum = object as NSNumber
-            let keyStr = key as String
+            let objectNum = object as! NSNumber
+            let keyStr = key as! String
             return objectNum.integerValue * key.integerValue
         })
         
@@ -41,9 +41,9 @@ class NSDictionary_BlocksAdditionsTest: XCTestCase {
         XCTAssertFalse(result is NSMutableDictionary)
         XCTAssertTrue (result is NSDictionary)
         
-        XCTAssertEqual(1, result.objectForKey("1") as NSObject)
-        XCTAssertEqual(4, result.objectForKey("2") as NSObject)
-        XCTAssertEqual(9, result.objectForKey("3") as NSObject)
+        XCTAssertEqual(1, result.objectForKey("1") as! NSObject)
+        XCTAssertEqual(4, result.objectForKey("2") as! NSObject)
+        XCTAssertEqual(9, result.objectForKey("3") as! NSObject)
     }
     
     func testEachMethod() {
@@ -85,8 +85,8 @@ class NSDictionary_BlocksAdditionsTest: XCTestCase {
         
         let count = (dict as NSDictionary).count({ (key : AnyObject, object : AnyObject) -> Bool in
             
-            let objectNum = object as Int
-            let keyStr = key as String
+            let objectNum = object as! Int
+            let keyStr = key as! String
             return 2 == objectNum && "2" == keyStr
         })
         
@@ -103,8 +103,8 @@ class NSDictionary_BlocksAdditionsTest: XCTestCase {
         
         let result = (dict as NSDictionary).mapKey({ (key : AnyObject, object : AnyObject) -> AnyObject in
             
-            let objectNum = object as NSNumber
-            let keyStr = key as NSString
+            let objectNum = object as! NSNumber
+            let keyStr = key as! NSString
             return keyStr.uppercaseString.stringByAppendingString(objectNum.stringValue)
         })
         
@@ -112,9 +112,9 @@ class NSDictionary_BlocksAdditionsTest: XCTestCase {
         XCTAssertFalse(result is NSMutableDictionary)
         XCTAssertTrue (result is NSDictionary)
         
-        XCTAssertEqual(1, result.objectForKey("ONE1") as NSObject)
-        XCTAssertEqual(2, result.objectForKey("TWO2") as NSObject)
-        XCTAssertEqual(3, result.objectForKey("THREE3") as NSObject)
+        XCTAssertEqual(1, result.objectForKey("ONE1") as! NSObject)
+        XCTAssertEqual(2, result.objectForKey("TWO2") as! NSObject)
+        XCTAssertEqual(3, result.objectForKey("THREE3") as! NSObject)
     }
     
     func testMapAndErrorMethodWithoutError() {
@@ -143,9 +143,9 @@ class NSDictionary_BlocksAdditionsTest: XCTestCase {
         XCTAssertFalse(result! is NSMutableDictionary)
         XCTAssertTrue (result! is NSDictionary)
         
-        XCTAssertEqual(1, result!.objectForKey("1") as NSObject)
-        XCTAssertEqual(4, result!.objectForKey("2") as NSObject)
-        XCTAssertEqual(9, result!.objectForKey("3") as NSObject)
+        XCTAssertEqual(1, result!.objectForKey("1") as! NSObject)
+        XCTAssertEqual(4, result!.objectForKey("2") as! NSObject)
+        XCTAssertEqual(9, result!.objectForKey("3") as! NSObject)
     }
     
     func testMapAndErrorMethodWithError() {
@@ -208,7 +208,7 @@ class NSDictionary_BlocksAdditionsTest: XCTestCase {
         
         XCTAssertTrue(all(arr, { (str : String) -> Bool in
             
-            return str.utf16Count == 1
+            return count(str) == 1
         }))
         
         XCTAssertFalse(all(arr, { (str : String) -> Bool in

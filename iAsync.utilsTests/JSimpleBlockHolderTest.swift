@@ -8,7 +8,7 @@
 
 import XCTest
 
-//import iAsync_utils
+import iAsync_utils
 
 class JSimpleBlockHolderTest: XCTestCase {
     
@@ -21,17 +21,26 @@ class JSimpleBlockHolderTest: XCTestCase {
             weakHolder = strongHolder
             
             var blockContextDeallocated = false
+            
+            let setObjectDeallocated = { (newVal: Bool) -> Void in
+                blockContextDeallocated = newVal
+            }
+            
             var performBlockCount = 0
+            
+            let increasePerformBlockCount = { () -> Void in
+                ++performBlockCount
+            }
             
             autoreleasepool {
                 let blockContext: NSObject? = NSObject()
                 blockContext!.addOnDeallocBlock({
-                    blockContextDeallocated = true
+                    setObjectDeallocated(true)
                 })
                 
                 strongHolder!.simpleBlock = {
                     if blockContext != nil && strongHolder != nil {
-                        ++performBlockCount
+                        increasePerformBlockCount()
                     }
                 }
                 

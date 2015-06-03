@@ -8,7 +8,7 @@
 
 import XCTest
 
-//import iAsync_utils
+import iAsync_utils
 
 class JMutableAssignDictionaryTest: XCTestCase {
     
@@ -75,47 +75,52 @@ class JMutableAssignDictionaryTest: XCTestCase {
     
     func testObjectForKey() {
         
-        autoreleasepool {
-            let dict = JMutableAssignDictionary<String, NSObject>()
+        let dict = JMutableAssignDictionary<String, NSObject>()
+        
+        var targetDeallocated_ = false
+        
+        let setTargetDeallocated = { (newVal: Bool) -> Void in
             
-            var targetDeallocated = false
-            autoreleasepool {
-                let object1 = NSObject()
-                let object2 = NSObject()
+            targetDeallocated_ = newVal
+        }
+        
+        autoreleasepool {
+            let object1 = NSObject()
+            let object2 = NSObject()
+            
+            object1.addOnDeallocBlock({
+                setTargetDeallocated(true)
+                return ()
+            })
+            
+            dict["1"] = object1
+            dict["2"] = object2
+            
+            XCTAssertEqual(dict["1"]!, object1, "Dict contains object_")
+            XCTAssertEqual(dict["2"]!, object2, "Dict contains object_")
+            XCTAssertNil(dict["3"], "Dict no contains object for key \"2\"")
+            
+            var count = 0
+            
+            for (key, value) in dict.dict {
                 
-                object1.addOnDeallocBlock({
-                    targetDeallocated = true
-                })
-                
-                dict["1"] = object1
-                dict["2"] = object2
-                
-                XCTAssertEqual(dict["1"]!, object1, "Dict contains object_")
-                XCTAssertEqual(dict["2"]!, object2, "Dict contains object_")
-                XCTAssertNil(dict["3"], "Dict no contains object for key \"2\"")
-                
-                var count = 0
-                
-                for (key, value) in dict.dict {
-                    
-                    switch key {
-                    case "1":
-                        XCTAssertEqual(value, object1)
-                        ++count
-                    case "2":
-                        XCTAssertEqual(value, object2)
-                        ++count
-                    default:
-                        XCTFail("should not be reached")
-                    }
+                switch key {
+                case "1":
+                    XCTAssertEqual(value, object1)
+                    ++count
+                case "2":
+                    XCTAssertEqual(value, object2)
+                    ++count
+                default:
+                    XCTFail("should not be reached")
                 }
-                
-                XCTAssertEqual(count, 2, "Dict no contains object for key \"2\"")
             }
             
-            XCTAssertTrue(targetDeallocated, "Target should be dealloced")
-            XCTAssertEqual(0, dict.count, "Empty dict")
+            XCTAssertEqual(count, 2, "Dict no contains object for key \"2\"")
         }
+        
+        XCTAssertTrue(targetDeallocated_, "Target should be dealloced")
+        XCTAssertEqual(0, dict.count, "Empty dict")
     }
     
     func testReplaceObjectInDict()
@@ -123,13 +128,21 @@ class JMutableAssignDictionaryTest: XCTestCase {
         let dict = JMutableAssignDictionary<String, NSObject>()
         
         autoreleasepool {
-            var replacedObjectDealloced = false
+            
+            var replacedObjectDeallocated = false
+            
+            let setReplacedObjectDeallocated = { (newVal: Bool) -> Void in
+                
+                replacedObjectDeallocated = newVal
+            }
+            
             var object: NSObject?
             
             autoreleasepool {
                 let replacedObject = NSObject()
                 replacedObject.addOnDeallocBlock({
-                    replacedObjectDealloced = true
+                    setReplacedObjectDeallocated(true)
+                    return ()
                 })
                 
                 object = NSObject()
@@ -143,7 +156,7 @@ class JMutableAssignDictionaryTest: XCTestCase {
                 XCTAssertEqual(dict["1"]!, object!, "Dict contains object_")
             }
             
-            XCTAssertTrue(replacedObjectDealloced)
+            XCTAssertTrue(replacedObjectDeallocated)
             
             let currentObject = dict["1"]!
             XCTAssertEqual(currentObject, object!)
@@ -169,7 +182,7 @@ class JMutableAssignDictionaryTest: XCTestCase {
         //TODO fix - XCTAssertFalse(result.bridgeToObjectiveC().isKindOfClass(NSMutableDictionary))
         //TODO XCTAssertTrue(result.isKindOfClass(NSDictionary))
         
-        let testResDict: Dictionary<String, Int> = result as Dictionary<String, Int>
+        let testResDict: Dictionary<String, Int> = result as! Dictionary<String, Int>
         
         XCTAssertEqual(1, testResDict["1"]!)
         XCTAssertEqual(4, testResDict["2"]!)
@@ -195,9 +208,9 @@ class JMutableAssignDictionaryTest: XCTestCase {
         
         (dict.dict as NSDictionary).enumerateKeysAndObjectsUsingBlock({ (key: AnyObject!, obj: AnyObject!, stop: UnsafeMutablePointer<ObjCBool>) -> () in
             ++count
-            resultDict.setObject(obj, forKey: key as NSCopying)
-            let value: NSNumber! = patternDict[key as String]
-            XCTAssertEqual(value, obj as NSNumber)
+            resultDict.setObject(obj, forKey: key as! NSCopying)
+            let value: NSNumber! = patternDict[key as! String]
+            XCTAssertEqual(value, obj as! NSNumber)
         })
         
         XCTAssertEqual(count, 3)
