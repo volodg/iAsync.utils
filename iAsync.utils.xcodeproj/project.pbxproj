@@ -74,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2DADA9DD1B1F1B46002E093F /* iAsync.utils.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iAsync.utils.podspec; sourceTree = "<group>"; };
 		2DD8E7731B1A625D00E3BC5B /* iAsync_utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iAsync_utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD8E7771B1A625D00E3BC5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DD8E7781B1A625D00E3BC5B /* iAsync.utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iAsync.utils.h; sourceTree = "<group>"; };
@@ -158,6 +159,7 @@
 		2DD8E7691B1A625D00E3BC5B = {
 			isa = PBXGroup;
 			children = (
+				2DADA9DD1B1F1B46002E093F /* iAsync.utils.podspec */,
 				2DD8E7751B1A625D00E3BC5B /* iAsync.utils */,
 				2DD8E7821B1A625D00E3BC5B /* iAsync.utilsTests */,
 				2DD8E7741B1A625D00E3BC5B /* Products */,

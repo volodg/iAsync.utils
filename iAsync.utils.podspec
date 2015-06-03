@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   s.source_files  = "iAsync.utils/**/*.{swift,m,h}"
   # s.exclude_files = "Classes/Exclude"
 
-  s.public_header_files = "Lib/iAsyncUtils-Bridging-Header.h"
+  s.public_header_files = "iAsync.utils/iAsync.utils-Bridging-Header.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
