@@ -32,6 +32,18 @@ public func indexOf<Sequence: SequenceType>(
     return Int.max
 }
 
+public func optionIndexOf<Sequence: SequenceType>(
+    sequence: Sequence,
+    @noescape predicate: (value: Sequence.Generator.Element) -> Bool) -> Int?
+{
+    for (index, element) in enumerate(sequence) {
+        if predicate(value: element) {
+            return index
+        }
+    }
+    return nil
+}
+
 public func any<Sequence: SequenceType>(sequence: Sequence, @noescape predicate : (Sequence.Generator.Element) -> Bool) -> Bool {
     let object = firstMatch(sequence, predicate)
     return object != nil
