@@ -1,6 +1,6 @@
 //
-//  JRegex.swift
-//  JUtils
+//  Regex.swift
+//  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 17.06.14.
 //  Copyright (c) 2014 EmbeddedSources. All rights reserved.
