@@ -1,5 +1,5 @@
 //
-//  NSDictionary+JExtendedDictionary.swift
+//  NSDictionary+ExtendedDictionary.swift
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 08.06.14.

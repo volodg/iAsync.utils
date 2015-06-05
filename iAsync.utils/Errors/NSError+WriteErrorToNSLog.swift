@@ -8,22 +8,22 @@
 
 import Foundation
 
-private struct JErrorWithAction {
+private struct ErrorWithAction {
     
     let error : NSError
-    let action: JSimpleBlock
+    let action: SimpleBlock
 }
 
-private var nsLogErrorsQueue  : [JErrorWithAction] = []
-private var jLoggerErrorsQueue: [JErrorWithAction] = []
+private var nsLogErrorsQueue  : [ErrorWithAction] = []
+private var jLoggerErrorsQueue: [ErrorWithAction] = []
 
-private func delayedPerformAction(error: NSError, action: JSimpleBlock, inout queue: [JErrorWithAction])
+private func delayedPerformAction(error: NSError, action: SimpleBlock, inout queue: [ErrorWithAction])
 {
     if firstMatch(queue, { $0.error === error }) != nil {
         return
     }
     
-    queue.append(JErrorWithAction(error: error, action: action))
+    queue.append(ErrorWithAction(error: error, action: action))
     
     if queue.count == 1 {
         
@@ -60,7 +60,7 @@ public extension NSError {
         
         let action = { () -> () in
             if let logStr = self.errorLogDescription {
-                jLogger.logError(logStr)
+                iAsync_utils_logger.logError(logStr)
             }
         }
         

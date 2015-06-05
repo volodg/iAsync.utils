@@ -10,7 +10,7 @@ import Foundation
 
 public extension NSObject {
     
-    func addOnDeallocBlock(block: JSimpleBlock) {
+    func addOnDeallocBlock(block: SimpleBlock) {
         
         addOwnedObject(OnDeallocBlockOwner(block: block))
     }

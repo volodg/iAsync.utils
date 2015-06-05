@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class JSilentError : JError {
+public class SilentError : Error {
     
     required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

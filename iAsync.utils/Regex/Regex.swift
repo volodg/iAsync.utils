@@ -9,7 +9,7 @@
 
 import Foundation
 
-class JRegex {
+class Regex {
     let internalExpression: NSRegularExpression!
     let pattern: String
     
@@ -28,5 +28,5 @@ class JRegex {
 infix operator =~ {}
 
 func =~ (input: String, pattern: String) -> Bool {
-    return JRegex(pattern).test(input)
+    return Regex(pattern).test(input)
 }

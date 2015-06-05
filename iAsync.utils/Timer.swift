@@ -16,7 +16,7 @@ private let emptyTimerBlock: () -> Void = {}
 //TODO remove NSObject inheritence
 public class Timer : NSObject {
     
-    private var cancelBlocks = [JSimpleBlockHolder]()
+    private var cancelBlocks = [SimpleBlockHolder]()
     
     deinit {
         cancelAllScheduledOperations()
@@ -72,7 +72,7 @@ public class Timer : NSObject {
             UInt64(delta),
             UInt64(leeway * Double(NSEC_PER_SEC)))
         
-        let cancelTimerBlockHolder = JSimpleBlockHolder()
+        let cancelTimerBlockHolder = SimpleBlockHolder()
         weak var weakCancelTimerBlockHolder = cancelTimerBlockHolder
         
         cancelTimerBlockHolder.simpleBlock = { [weak self] () -> () in

@@ -11,9 +11,9 @@ import Foundation
 //TODO remove inheritence from NSObject
 public class SimpleBlockHolder : NSObject {
     
-    public var simpleBlock: JSimpleBlock?
+    public var simpleBlock: SimpleBlock?
     
-    public func onceSimpleBlock() -> JSimpleBlock {
+    public func onceSimpleBlock() -> SimpleBlock {
         
         return {
             

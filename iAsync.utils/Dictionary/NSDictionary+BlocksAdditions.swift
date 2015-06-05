@@ -10,7 +10,7 @@ import Foundation
 
 public extension NSDictionary {
     
-    func map(block: JDictMappingBlock) -> NSDictionary {
+    func map(block: DictMappingBlock) -> NSDictionary {
         
         let result = NSMutableDictionary(capacity : count)
         
@@ -23,7 +23,7 @@ public extension NSDictionary {
         return result.copy() as! NSDictionary
     }
     
-    func forceMap(block: JDictOptionMappingBlock) -> NSDictionary {
+    func forceMap(block: DictOptionMappingBlock) -> NSDictionary {
         
         let result = NSMutableDictionary(capacity : count)
         
@@ -38,7 +38,7 @@ public extension NSDictionary {
         return result.copy() as! NSDictionary
     }
     
-    func map(block: JDictMappingWithErrorBlock, outError: NSErrorPointer) -> NSDictionary? {
+    func map(block: DictMappingWithErrorBlock, outError: NSErrorPointer) -> NSDictionary? {
         
         var result: NSMutableDictionary? = NSMutableDictionary(capacity: count)
         
@@ -61,7 +61,7 @@ public extension NSDictionary {
         return result?.copy() as? NSDictionary
     }
     
-    func mapKey(block: JDictMappingBlock) -> NSDictionary {
+    func mapKey(block: DictMappingBlock) -> NSDictionary {
         
         let result = NSMutableDictionary(capacity : count)
         
@@ -75,7 +75,7 @@ public extension NSDictionary {
         return result.copy() as! NSDictionary
     }
     
-    func count(predicate: JDictPredicateBlock) -> Int {
+    func count(predicate: DictPredicateBlock) -> Int {
         
         var count = 0
         
@@ -87,7 +87,7 @@ public extension NSDictionary {
         return count
     }
     
-    func filter(predicate: JDictPredicateBlock) -> NSDictionary {
+    func filter(predicate: DictPredicateBlock) -> NSDictionary {
         
         let result = NSMutableDictionary(capacity: count)
         

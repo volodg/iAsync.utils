@@ -94,7 +94,7 @@ public class MutableAssignDictionary<K: Hashable, V: AnyObject> : Printable {
     }
 }
 
-private class JAutoRemoveFromDictAssignProxy<K: Hashable, V: AnyObject> : JAssignObjectHolder<V> {
+private class JAutoRemoveFromDictAssignProxy<K: Hashable, V: AnyObject> : AssignObjectHolder<V> {
     
     weak var blockHolder: OnDeallocBlockOwner?
     

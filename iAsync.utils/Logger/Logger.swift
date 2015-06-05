@@ -1,5 +1,5 @@
 //
-//  JLogger.swift
+//  Logger.swift
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 05.06.14.
@@ -8,22 +8,22 @@
 
 import Foundation
 
-public typealias JLogHandler = (level: String, log: String, context: AnyObject?) -> Void
+public typealias LogHandler = (level: String, log: String, context: AnyObject?) -> Void
 
-private var staticLogHandler: JLogHandler? = nil
+private var staticLogHandler: LogHandler? = nil
 
-public let jLogger = JLogger()
+public let iAsync_utils_logger = Logger()
 
-public class JLogger : NSObject {
+public class Logger : NSObject {
     
     private override init() {}
     
     //for objc only, todo remove
-    @objc public class func sharedJLogger() -> JLogger {
-        return jLogger
+    @objc public class func sharedJLogger() -> Logger {
+        return iAsync_utils_logger
     }
     
-    public var logHandler: JLogHandler {
+    public var logHandler: LogHandler {
         get {
             if let result = staticLogHandler {
                 return result

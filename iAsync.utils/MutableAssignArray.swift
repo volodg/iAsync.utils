@@ -23,7 +23,7 @@ public class MutableAssignArray<T: NSObjectProtocol> : SequenceType, Printable {
     
     private var mutableArray: [JAutoRemoveAssignProxy<T>] = []
     
-    public var onRemoveObject: JSimpleBlock?
+    public var onRemoveObject: SimpleBlock?
     
     public func append(object: T) {
         
@@ -137,7 +137,7 @@ public class MutableAssignArray<T: NSObjectProtocol> : SequenceType, Printable {
     }
 }
 
-private class JAutoRemoveAssignProxy<T: NSObjectProtocol> : JAssignObjectHolder<T> {
+private class JAutoRemoveAssignProxy<T: NSObjectProtocol> : AssignObjectHolder<T> {
     
     weak var blockHolder: OnDeallocBlockOwner?
     

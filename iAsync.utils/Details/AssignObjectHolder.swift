@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class JAssignObjectHolder<T: AnyObject> {
+public class AssignObjectHolder<T: AnyObject> {
     
     private(set) var target: Unmanaged<T>
     
