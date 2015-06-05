@@ -55,7 +55,7 @@ public func all<Sequence: SequenceType>(sequence: Sequence, @noescape predicate 
     }
 }
 
-public func >>=<Sequence: SequenceType, R>(obj: Sequence, f: Sequence.Generator.Element -> JResult<R>) -> JResult<[R]> {
+public func >>=<Sequence: SequenceType, R>(obj: Sequence, f: Sequence.Generator.Element -> Result<R>) -> Result<[R]> {
     
     var result = [R]()
     
@@ -65,11 +65,11 @@ public func >>=<Sequence: SequenceType, R>(obj: Sequence, f: Sequence.Generator.
         
         switch newObject {
         case let .Error(e):
-            return JResult.error(e)
+            return Result.error(e)
         case let .Value(v):
             result.append(v.value)
         }
     }
     
-    return JResult.value(result)
+    return Result.value(result)
 }

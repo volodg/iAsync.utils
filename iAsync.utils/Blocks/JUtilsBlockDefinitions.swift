@@ -19,7 +19,7 @@ public enum JUtilsBlockDefinitions2<T1, T2> {
     
     public typealias JMappingBlock = (object: T1) -> T2
     
-    public typealias JAnalyzer = (object: T1) -> JResult<T2>
+    public typealias JAnalyzer = (object: T1) -> Result<T2>
 }
 
 //TODO make it template

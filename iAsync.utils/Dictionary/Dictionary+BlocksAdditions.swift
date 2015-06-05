@@ -38,7 +38,7 @@ extension Dictionary {
     }
 }
 
-public func >>=<K: Hashable, V, R>(obj: [K:V], f: (K, V) -> JResult<R>) -> JResult<[K:R]> {
+public func >>=<K: Hashable, V, R>(obj: [K:V], f: (K, V) -> Result<R>) -> Result<[K:R]> {
     
     var result: [K:R] = [K:R]()
     
@@ -48,13 +48,13 @@ public func >>=<K: Hashable, V, R>(obj: [K:V], f: (K, V) -> JResult<R>) -> JResu
         
         switch newObject {
         case let .Error(e):
-            return JResult.error(e)
+            return Result.error(e)
         case let .Value(v):
             result[key] = v.value
         }
     }
     
-    return JResult.value(result)
+    return Result.value(result)
 }
 
 public func +<K: Hashable, V>(a: [K:V], b: [K:V]?) -> [K:V]

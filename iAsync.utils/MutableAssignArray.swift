@@ -1,5 +1,5 @@
 //
-//  JMutableAssignArray.swift
+//  MutableAssignArray.swift
 //  JUtils
 //
 //  Created by Vladimir Gorbenko on 19.09.14.
@@ -9,7 +9,7 @@
 import Foundation
 
 //compares elements by pointers only
-public class JMutableAssignArray<T: NSObjectProtocol> : SequenceType, Printable {
+public class MutableAssignArray<T: NSObjectProtocol> : SequenceType, Printable {
     
     typealias Generator = Array<T>.Generator
     
@@ -147,9 +147,9 @@ private class JAutoRemoveAssignProxy<T: NSObjectProtocol> : JAssignObjectHolder<
         super.init(targetPtr: ptr)
     }
     
-    func onAddToMutableAssignArray(array: JMutableAssignArray<T>) {
+    func onAddToMutableAssignArray(array: MutableAssignArray<T>) {
         
-        let unretainedArray = Unmanaged<JMutableAssignArray<T>>.passUnretained(array)
+        let unretainedArray = Unmanaged<MutableAssignArray<T>>.passUnretained(array)
         let unretainedSelf  = Unmanaged<JAutoRemoveAssignProxy>.passUnretained(self)
         let onDeallocBlock = { () -> () in
             unretainedArray.takeUnretainedValue().removeAllObjects(unretainedSelf.takeUnretainedValue().target)
@@ -159,7 +159,7 @@ private class JAutoRemoveAssignProxy<T: NSObjectProtocol> : JAssignObjectHolder<
         (target.takeUnretainedValue() as! NSObject).addOnDeallocBlockHolder(blockHolder)
     }
     
-    func onRemoveFromMutableAssignArray(array: JMutableAssignArray<T>) {
+    func onRemoveFromMutableAssignArray(array: MutableAssignArray<T>) {
         
         if let blockHolder = self.blockHolder {
             blockHolder.block = nil

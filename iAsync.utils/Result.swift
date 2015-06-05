@@ -10,15 +10,15 @@ import Foundation
 
 import Box
 
-public enum JResult<V> {
+public enum Result<V> {
     case Error(NSError)
     case Value(Box<V>)
     
-    public static func error(e: NSError) -> JResult<V> {
+    public static func error(e: NSError) -> Result<V> {
         return .Error(e)
     }
     
-    public static func value(v: V) -> JResult<V> {
+    public static func value(v: V) -> Result<V> {
         return .Value(Box(v))
     }
     
@@ -41,7 +41,7 @@ public enum JResult<V> {
     }
 }
 
-public func >>=<VA, VB>(a: JResult<VA>, f: VA -> JResult<VB>) -> JResult<VB> {
+public func >>=<VA, VB>(a: Result<VA>, f: VA -> Result<VB>) -> Result<VB> {
     switch a {
     case let .Error(l): return .Error(l)
     case let .Value(r): return f(r.value)

@@ -1,5 +1,5 @@
 //
-//  JMutableAssignDictionary.swift
+//  MutableAssignDictionary.swift
 //  JUtils
 //
 //  Created by Vladimir Gorbenko on 20.09.14.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class JMutableAssignDictionary<K: Hashable, V: AnyObject> : Printable {
+public class MutableAssignDictionary<K: Hashable, V: AnyObject> : Printable {
     
     public init() {}
     
@@ -104,9 +104,9 @@ private class JAutoRemoveFromDictAssignProxy<K: Hashable, V: AnyObject> : JAssig
         super.init(targetPtr: ptr)
     }
     
-    func onAddToMutableAssignDictionary(dict: JMutableAssignDictionary<K, V>, key: K) {
+    func onAddToMutableAssignDictionary(dict: MutableAssignDictionary<K, V>, key: K) {
         
-        let unretainedDict = Unmanaged<JMutableAssignDictionary<K, V>>.passUnretained(dict)
+        let unretainedDict = Unmanaged<MutableAssignDictionary<K, V>>.passUnretained(dict)
         
         let onDeallocBlock = {
             unretainedDict.takeUnretainedValue().removeValueForKey(key)
@@ -116,7 +116,7 @@ private class JAutoRemoveFromDictAssignProxy<K: Hashable, V: AnyObject> : JAssig
         (target.takeUnretainedValue() as! NSObject).addOnDeallocBlockHolder(blockHolder)
     }
     
-    func onRemoveFromMutableAssignDictionary(dict: JMutableAssignDictionary<K, V>) {
+    func onRemoveFromMutableAssignDictionary(dict: MutableAssignDictionary<K, V>) {
         
         if let blockHolder = self.blockHolder {
             blockHolder.block = nil

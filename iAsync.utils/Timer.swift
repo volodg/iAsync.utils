@@ -1,6 +1,6 @@
 //
-//  JTimer.swift
-//  JTimer
+//  Timer.swift
+//  Timer
 //
 //  Created by Vladimir Gorbenko on 26.06.14.
 //  Copyright (c) 2014 EmbeddedSources. All rights reserved.
@@ -14,7 +14,7 @@ public typealias JScheduledBlock = (cancel: JCancelScheduledBlock) -> Void
 private let emptyTimerBlock: () -> Void = {}
 
 //TODO remove NSObject inheritence
-public class JTimer : NSObject {
+public class Timer : NSObject {
     
     private var cancelBlocks = [JSimpleBlockHolder]()
     
@@ -31,18 +31,18 @@ public class JTimer : NSObject {
         }
     }
     
-    public class func sharedByThreadTimer() -> JTimer {
+    public class func sharedByThreadTimer() -> Timer {
         
         let thread = NSThread.currentThread()
         
-        let key = "JTimer.threadLocalTimer"
+        let key = "iAsync.utils.Timer.threadLocalTimer"
         
-        if let result = thread.threadDictionary[key] as? JTimer {
+        if let result = thread.threadDictionary[key] as? Timer {
             
             return result
         }
         
-        let result = JTimer()
+        let result = Timer()
         thread.threadDictionary[key] = result
         
         return result
