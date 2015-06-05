@@ -39,7 +39,7 @@ public extension NSObject {
         }
     }
     
-    func removeOwnedObject(object: AnyObject) {
+    public func removeOwnedObject(object: AnyObject) {
         autoreleasepool {
             if let ownerships = self.ownerships() {
                 ownerships.removeObject(object)
@@ -47,7 +47,7 @@ public extension NSObject {
         }
     }
     
-    func firstOwnedObjectMatch(predicate: (AnyObject) -> Bool) -> AnyObject? {
+    public func firstOwnedObjectMatch(predicate: (AnyObject) -> Bool) -> AnyObject? {
         
         if let ownerships = self.ownerships()?.copy() as? [AnyObject] {
             

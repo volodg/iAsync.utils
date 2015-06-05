@@ -8,35 +8,18 @@
 
 import Foundation
 
-//TODO remove
-
-//source - swiftz_core
-// An immutable box, necessary for recursive datatypes (such as List) to avoid compiler crashes
-public final class JBox<T> {
-    let _value : () -> T
-    init(_ value : T) {
-        self._value = { value }
-    }
-    
-    public var value: T {
-        return _value()
-    }
-    
-    func map<U>(fn: T -> U) -> JBox<U> {
-        return JBox<U>(fn(value)) // TODO: file rdar, type inf fails without <U>
-    }
-}
+import Box
 
 public enum JResult<V> {
     case Error(NSError)
-    case Value(JBox<V>)
+    case Value(Box<V>)
     
     public static func error(e: NSError) -> JResult<V> {
         return .Error(e)
     }
     
     public static func value(v: V) -> JResult<V> {
-        return .Value(JBox(v))
+        return .Value(Box(v))
     }
     
     public func onError(handler: (NSError) -> Void) {
