@@ -12,20 +12,20 @@ public extension NSObject {
     
     func addOnDeallocBlock(block: JSimpleBlock) {
         
-        addOwnedObject(JOnDeallocBlockOwner(block: block))
+        addOwnedObject(OnDeallocBlockOwner(block: block))
     }
     
-    func addOnDeallocBlockHolder(blockHolder: JOnDeallocBlockOwner) {
+    func addOnDeallocBlockHolder(blockHolder: OnDeallocBlockOwner) {
         
         addOwnedObject(blockHolder)
     }
     
-    func removeOnDeallocBlockHolder(blockHolder: JOnDeallocBlockOwner) {
+    func removeOnDeallocBlockHolder(blockHolder: OnDeallocBlockOwner) {
         
         autoreleasepool {
             let objectToRemove = self.firstOwnedObjectMatch({ (object: AnyObject) -> Bool in
                 return object === blockHolder
-            }) as? JOnDeallocBlockOwner
+            }) as? OnDeallocBlockOwner
             
             if let value = objectToRemove {
                 value.block = nil

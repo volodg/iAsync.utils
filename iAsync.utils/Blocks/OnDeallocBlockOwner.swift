@@ -1,5 +1,5 @@
 //
-//  JOnDeallocBlockOwner.swift
+//  OnDeallocBlockOwner.swift
 //  JUtils
 //
 //  Created by Vladimir Gorbenko on 11.06.14.
@@ -10,7 +10,7 @@ import Foundation
 
 //TODO remove inheritence from -> NSObject
 //TODO should be internal
-public class JOnDeallocBlockOwner : NSObject {
+public class OnDeallocBlockOwner : NSObject {
     
     public var block: JSimpleBlock?
     

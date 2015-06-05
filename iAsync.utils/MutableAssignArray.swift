@@ -139,7 +139,7 @@ public class MutableAssignArray<T: NSObjectProtocol> : SequenceType, Printable {
 
 private class JAutoRemoveAssignProxy<T: NSObjectProtocol> : JAssignObjectHolder<T> {
     
-    weak var blockHolder: JOnDeallocBlockOwner?
+    weak var blockHolder: OnDeallocBlockOwner?
     
     init(target: T) {
         
@@ -154,7 +154,7 @@ private class JAutoRemoveAssignProxy<T: NSObjectProtocol> : JAssignObjectHolder<
         let onDeallocBlock = { () -> () in
             unretainedArray.takeUnretainedValue().removeAllObjects(unretainedSelf.takeUnretainedValue().target)
         }
-        let blockHolder = JOnDeallocBlockOwner(block:onDeallocBlock)
+        let blockHolder = OnDeallocBlockOwner(block:onDeallocBlock)
         self.blockHolder = blockHolder
         (target.takeUnretainedValue() as! NSObject).addOnDeallocBlockHolder(blockHolder)
     }

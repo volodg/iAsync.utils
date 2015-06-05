@@ -96,7 +96,7 @@ public class MutableAssignDictionary<K: Hashable, V: AnyObject> : Printable {
 
 private class JAutoRemoveFromDictAssignProxy<K: Hashable, V: AnyObject> : JAssignObjectHolder<V> {
     
-    weak var blockHolder: JOnDeallocBlockOwner?
+    weak var blockHolder: OnDeallocBlockOwner?
     
     init(target: V) {
         
@@ -111,7 +111,7 @@ private class JAutoRemoveFromDictAssignProxy<K: Hashable, V: AnyObject> : JAssig
         let onDeallocBlock = {
             unretainedDict.takeUnretainedValue().removeValueForKey(key)
         }
-        let blockHolder  = JOnDeallocBlockOwner(block:onDeallocBlock)
+        let blockHolder  = OnDeallocBlockOwner(block:onDeallocBlock)
         self.blockHolder = blockHolder
         (target.takeUnretainedValue() as! NSObject).addOnDeallocBlockHolder(blockHolder)
     }
