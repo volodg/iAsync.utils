@@ -10,7 +10,7 @@ import Foundation
 
 private func parseNumber<T>(documentFile: String, scanner: (String) -> T?) -> T? {
     
-    let path = NSString.documentsPathByAppendingPathComponent(documentFile)
+    let path = String.documentsPathByAppendingPathComponent(documentFile)
     
     let string = NSString(
         contentsOfFile :path,
@@ -29,7 +29,7 @@ public func writeToFile<T>(object: T, documentFile: String) -> Bool {
     let string = toString(object)
     
     //TODO should be String, not NSString type
-    let fileName :NSString = NSString.documentsPathByAppendingPathComponent(documentFile)
+    let fileName :NSString = String.documentsPathByAppendingPathComponent(documentFile)
     
     let result = string.writeToFile(
         fileName as String,
