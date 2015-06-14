@@ -86,7 +86,7 @@ public class Timer : NSObject {
             timer = nil
             
             if let self_ = self {
-                for (index, cancelHolder) in enumerate(self_.cancelBlocks) {
+                for (index, cancelHolder) in self_.cancelBlocks.enumerate() {
                     
                     if cancelHolder === weakCancelTimerBlockHolder! {
                         self_.cancelBlocks.removeAtIndex(index)

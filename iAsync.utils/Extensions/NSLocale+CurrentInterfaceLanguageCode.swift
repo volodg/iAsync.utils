@@ -12,7 +12,7 @@ public extension NSLocale {
     
     class var currentInterfaceLanguageCode: String {
         
-        let languageCodes = self.preferredLanguages() as! [String]
+        let languageCodes = self.preferredLanguages() as [String]
         let languageCode = languageCodes[0]
         return languageCode
     }

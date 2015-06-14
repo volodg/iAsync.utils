@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct HashableArray<T: Equatable> : Hashable, SequenceType, Printable {
+public struct HashableArray<T: Equatable> : Hashable, SequenceType, CustomStringConvertible {
     
     internal var array: Array<T>
     

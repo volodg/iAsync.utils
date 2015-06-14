@@ -14,7 +14,7 @@ public extension NSDate {
         
         let calendar = NSCalendar.currentCalendar()
         
-        let units: NSCalendarUnit = .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay
+        let units: NSCalendarUnit = [.Year, .Month, .Day]
         
         let components = calendar.components(units, fromDate:self)
         
@@ -28,7 +28,7 @@ public extension NSDate {
         let components = NSDateComponents()
         components.day = 1
         
-        let date = calendar.dateByAddingComponents(components, toDate: beginningOfDay, options: .allZeros)!
+        let date = calendar.dateByAddingComponents(components, toDate: beginningOfDay, options: [])!
         
         return date.dateByAddingTimeInterval(-1.0)
     }

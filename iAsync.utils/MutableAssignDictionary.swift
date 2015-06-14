@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MutableAssignDictionary<K: Hashable, V: AnyObject> : Printable {
+public class MutableAssignDictionary<K: Hashable, V: AnyObject> : CustomStringConvertible {
     
     public init() {}
     
@@ -16,7 +16,7 @@ public class MutableAssignDictionary<K: Hashable, V: AnyObject> : Printable {
     
     private func removeAll(keepCapacity: Bool) {
         
-        for (key, proxy) in mutDict {
+        for (_, proxy) in mutDict {
             proxy.onRemoveFromMutableAssignDictionary(self)
         }
         
@@ -42,7 +42,7 @@ public class MutableAssignDictionary<K: Hashable, V: AnyObject> : Printable {
             
             var removed = false
             
-            if let previousObject = self[key] {
+            if self[key] != nil {
                 
                 removed = true
                 removeValueForKey(key)

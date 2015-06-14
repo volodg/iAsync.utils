@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct HashableDictionary<Key : Hashable, Value: Equatable> : Hashable, Printable {
+public struct HashableDictionary<Key : Hashable, Value: Equatable> : Hashable, CustomStringConvertible {
     
     private var dict = [Key:Value]()
     

@@ -29,7 +29,7 @@ public class Logger : NSObject {
                 return result
             }
             let result = { (level: String, log: String, context: AnyObject?) in
-                println("\(log): \(level)")
+                print("\(log): \(level)")
             }
             staticLogHandler = result
             return result

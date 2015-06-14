@@ -8,53 +8,54 @@
 
 import Foundation
 
-public func firstMatch<Sequence: SequenceType>(
-    sequence : Sequence,
-    @noescape predicate: (value: Sequence.Generator.Element) -> Bool) -> Sequence.Generator.Element? {
+public extension SequenceType {
     
-    for object in sequence {
-        if predicate(value: object) {
-            return object
+    public func firstMatch(
+        @noescape predicate: (value: Generator.Element) -> Bool) -> Generator.Element?
+    {
+        for object in self {
+            if predicate(value: object) {
+                return object
+            }
+        }
+        return nil
+    }
+    
+    public func indexOf(
+        @noescape predicate: (value: Generator.Element) -> Bool) -> Int
+    {
+        for (index, element) in enumerate() {
+            if predicate(value: element) {
+                return index
+            }
+        }
+        return Int.max
+    }
+    
+    public func optionIndexOf(
+        @noescape predicate: (value: Generator.Element) -> Bool) -> Int?
+    {
+        for (index, element) in enumerate() {
+            if predicate(value: element) {
+                return index
+            }
+        }
+        return nil
+    }
+    
+    public func any(@noescape predicate : (Generator.Element) -> Bool) -> Bool {
+        let object = firstMatch(predicate)
+        return object != nil
+    }
+    
+    public func all(@noescape predicate : (Generator.Element) -> Bool) -> Bool {
+        return !any { (object: Generator.Element) -> Bool in
+            return !predicate(object)
         }
     }
-    return nil
 }
 
-public func indexOf<Sequence: SequenceType>(
-    sequence: Sequence,
-    @noescape predicate: (value: Sequence.Generator.Element) -> Bool) -> Int
-{
-    for (index, element) in enumerate(sequence) {
-        if predicate(value: element) {
-            return index
-        }
-    }
-    return Int.max
-}
-
-public func optionIndexOf<Sequence: SequenceType>(
-    sequence: Sequence,
-    @noescape predicate: (value: Sequence.Generator.Element) -> Bool) -> Int?
-{
-    for (index, element) in enumerate(sequence) {
-        if predicate(value: element) {
-            return index
-        }
-    }
-    return nil
-}
-
-public func any<Sequence: SequenceType>(sequence: Sequence, @noescape predicate : (Sequence.Generator.Element) -> Bool) -> Bool {
-    let object = firstMatch(sequence, predicate)
-    return object != nil
-}
-
-public func all<Sequence: SequenceType>(sequence: Sequence, @noescape predicate : (Sequence.Generator.Element) -> Bool) -> Bool {
-    return !any(sequence) { (object: Sequence.Generator.Element) -> Bool in
-        return !predicate(object)
-    }
-}
-
+//TODO refactor
 public func >>=<Sequence: SequenceType, R>(obj: Sequence, f: Sequence.Generator.Element -> Result<R>) -> Result<[R]> {
     
     var result = [R]()

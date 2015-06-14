@@ -23,7 +23,7 @@ public extension NSObject {
         objc_setAssociatedObject(self,
             &sharedObserversKey,
             result,
-            UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return result
     }
     
@@ -51,7 +51,7 @@ public extension NSObject {
         
         if let ownerships = self.ownerships()?.copy() as? [AnyObject] {
             
-            return firstMatch(ownerships, predicate)
+            return ownerships.firstMatch(predicate)
         }
         
         return nil

@@ -8,7 +8,6 @@
 
 import Foundation
 
-//TODO should be protocol
 public class Error : NSError {
     
     //TODO it make protected, TODO rename
@@ -22,7 +21,7 @@ public class Error : NSError {
         super.init(domain: domain, code: code, userInfo: userInfo)
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

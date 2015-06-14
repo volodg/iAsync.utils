@@ -12,7 +12,7 @@ public extension String {
     
     private static func pathWithSearchDirecory(directory: NSSearchPathDirectory) -> String {
         
-        let pathes = NSSearchPathForDirectoriesInDomains(directory, .UserDomainMask, true) as! [String]
+        let pathes = NSSearchPathForDirectoriesInDomains(directory, .UserDomainMask, true)
         return pathes[pathes.endIndex - 1]
     }
     

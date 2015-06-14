@@ -19,7 +19,7 @@ private var jLoggerErrorsQueue: [ErrorWithAction] = []
 
 private func delayedPerformAction(error: NSError, action: SimpleBlock, inout queue: [ErrorWithAction])
 {
-    if firstMatch(queue, { $0.error === error }) != nil {
+    if queue.firstMatch( { $0.error === error } ) != nil {
         return
     }
     
@@ -53,7 +53,7 @@ public extension NSError {
             }
         }
         
-        delayedPerformAction(self, action, &nsLogErrorsQueue)
+        delayedPerformAction(self, action: action, queue: &nsLogErrorsQueue)
     }
     
     func writeErrorWithJLogger() {
@@ -64,6 +64,6 @@ public extension NSError {
             }
         }
         
-        delayedPerformAction(self, action, &jLoggerErrorsQueue)
+        delayedPerformAction(self, action: action, queue: &jLoggerErrorsQueue)
     }
 }

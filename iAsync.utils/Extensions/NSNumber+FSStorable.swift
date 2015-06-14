@@ -8,34 +8,34 @@
 
 import Foundation
 
-private func parseNumber<T>(documentFile: String, scanner: (String) -> T?) -> T? {
+private func parseNumber<T>(documentFile documentFile: String, scanner: (String) -> T?) -> T? {
     
     let path = String.documentsPathByAppendingPathComponent(documentFile)
     
-    let string = NSString(
-        contentsOfFile :path,
-        encoding       :NSUTF8StringEncoding,
-        error          :nil) as? String
-    
-    if let value = string {
-        return scanner(value)
+    do {
+        let string = try NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+        return scanner(string as String)
+    } catch _ {
+        return nil
     }
-    
-    return nil
 }
 
-public func writeToFile<T>(object: T, documentFile: String) -> Bool {
+public func writeObject<T>(object: T, toDocumentFile documentFile: String) -> Bool {
     
-    let string = toString(object)
+    let string = String(object)
     
-    //TODO should be String, not NSString type
-    let fileName :NSString = String.documentsPathByAppendingPathComponent(documentFile)
+    let fileName = String.documentsPathByAppendingPathComponent(documentFile)
     
-    let result = string.writeToFile(
-        fileName as String,
-        atomically: true,
-        encoding  : NSUTF8StringEncoding,
-        error     : nil)
+    let result: Bool
+    do {
+        try string.writeToFile(
+                fileName,
+                atomically: true,
+                encoding  : NSUTF8StringEncoding)
+        result = true
+    } catch _ {
+        result = false
+    }
     
     if result {
         fileName.addSkipBackupAttribute()
@@ -57,7 +57,7 @@ public extension Int {
             return nil
         }
         
-        return parseNumber(documentFile, scanner)
+        return parseNumber(documentFile: documentFile, scanner: scanner)
     }
 }
 
@@ -74,7 +74,7 @@ public extension Double {
             return nil
         }
         
-        return parseNumber(documentFile, scanner)
+        return parseNumber(documentFile: documentFile, scanner: scanner)
     }
 }
 
