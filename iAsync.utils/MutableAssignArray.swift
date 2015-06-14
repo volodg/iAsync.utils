@@ -9,7 +9,7 @@
 import Foundation
 
 //compares elements by pointers only
-public class MutableAssignArray<T: NSObjectProtocol> : SequenceType, Printable {
+public class MutableAssignArray<T: NSObjectProtocol> : SequenceType, CustomStringConvertible {
     
     typealias Generator = Array<T>.Generator
     
@@ -41,24 +41,20 @@ public class MutableAssignArray<T: NSObjectProtocol> : SequenceType, Printable {
             return result
         }
         
-        return any(mutableArray, predicate)
+        return mutableArray.any(predicate)
     }
     
     private func indexOfObject(object: Unmanaged<T>) -> Int {
         
-        let result = { () -> Int in
-            
-            let ptr = object.takeUnretainedValue()
-            
-            for (index, proxy) in enumerate(self.mutableArray) {
-                if proxy.target.takeUnretainedValue() === ptr {
-                    return index
-                }
-            }
-            return Int.max
-        }()
+        let ptr = object.takeUnretainedValue()
         
-        return result
+        for (index, proxy) in self.mutableArray.enumerate() {
+            if proxy.target.takeUnretainedValue() === ptr {
+                return index
+            }
+        }
+        
+        return Int.max
     }
     
     private func removeAllObjects(object: Unmanaged<T>) {
