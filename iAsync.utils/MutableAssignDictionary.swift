@@ -27,40 +27,40 @@ public class MutableAssignDictionary<K: Hashable, V: AnyObject> : CustomStringCo
         return mutDict.count
     }
     
-    public func objectForKey(key: K) -> V? {
-    
-        return self[key]
-    }
-    
-    public subscript(key: K) -> V? {
-        
-        get {
-            let proxy = mutDict[key]
-            return proxy?.target.takeUnretainedValue()
-        }
-        set (newValue) {
-            
-            var removed = false
-            
-            if self[key] != nil {
-                
-                removed = true
-                removeValueForKey(key)
-            }
-            
-            if let newValue = newValue {
-                
-                let proxy = JAutoRemoveFromDictAssignProxy<K, V>(target: newValue)
-                self.mutDict[key] = proxy
-                proxy.onAddToMutableAssignDictionary(self, key:key)
-            } else {
-
-                if !removed {
-                    removeValueForKey(key)
-                }
-            }
-        }
-    }
+//    public func objectForKey(key: K) -> V? {
+//    
+//        return self[key]
+//    }
+//
+//    public subscript(key: K) -> V? {
+//        
+//        get {
+//            let proxy = mutDict[key]
+//            return proxy?.target.takeUnretainedValue()
+//        }
+//        set (newValue) {
+//            
+//            var removed = false
+//            
+//            if self[key] != nil {
+//                
+//                removed = true
+//                removeValueForKey(key)
+//            }
+//            
+//            if let newValue = newValue {
+//                
+//                let proxy = JAutoRemoveFromDictAssignProxy<K, V>(target: newValue)
+//                self.mutDict[key] = proxy
+//                proxy.onAddToMutableAssignDictionary(self, key:key)
+//            } else {
+//
+//                if !removed {
+//                    removeValueForKey(key)
+//                }
+//            }
+//        }
+//    }
     
     public func map<R>(block: (K, V) -> R) -> [K:R] {
     
