@@ -67,8 +67,8 @@ public func >>=<Sequence: SequenceType, R>(obj: Sequence, f: Sequence.Generator.
         switch newObject {
         case let .Error(e):
             return Result.error(e)
-        case let .Value(v):
-            result.append(v.value)
+        case let .Value(value):
+            result.append(value)
         }
     }
     

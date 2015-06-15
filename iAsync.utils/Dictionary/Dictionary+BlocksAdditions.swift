@@ -49,8 +49,8 @@ public func >>=<K: Hashable, V, R>(obj: [K:V], f: (K, V) -> Result<R>) -> Result
         switch newObject {
         case let .Error(e):
             return Result.error(e)
-        case let .Value(v):
-            result[key] = v.value
+        case let .Value(value):
+            result[key] = value
         }
     }
     

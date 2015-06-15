@@ -8,18 +8,16 @@
 
 import Foundation
 
-import Box
-
 public enum Result<V> {
     case Error(NSError)
-    case Value(Box<V>)
+    case Value(V)
     
     public static func error(e: NSError) -> Result<V> {
         return .Error(e)
     }
     
     public static func value(v: V) -> Result<V> {
-        return .Value(Box(v))
+        return .Value(v)
     }
     
     public func onError(handler: (NSError) -> Void) {
@@ -34,16 +32,20 @@ public enum Result<V> {
     public func onValue(handler: (V) -> Void) {
         switch self {
         case let .Value(v):
-            handler(v.value)
+            handler(v)
         default:
             break
+        }
+    }
+    
+    public func flatMap<R>(f: V -> Result<R>) -> Result<R> {
+        switch self {
+        case let .Error(l): return .Error(l)
+        case let .Value(r): return f(r)
         }
     }
 }
 
 public func >>=<VA, VB>(a: Result<VA>, f: VA -> Result<VB>) -> Result<VB> {
-    switch a {
-    case let .Error(l): return .Error(l)
-    case let .Value(r): return f(r.value)
-    }
+    return a.flatMap(f)
 }
