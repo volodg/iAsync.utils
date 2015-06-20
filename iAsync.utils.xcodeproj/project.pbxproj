@@ -7,43 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D6FAC251B35DC9B0022BE38 /* GCDAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC201B35DC9B0022BE38 /* GCDAdditions.swift */; };
+		2D6FAC261B35DC9B0022BE38 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC211B35DC9B0022BE38 /* Helpers.swift */; };
+		2D6FAC271B35DC9B0022BE38 /* MutableAssignArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC221B35DC9B0022BE38 /* MutableAssignArray.swift */; };
+		2D6FAC281B35DC9B0022BE38 /* MutableAssignDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC231B35DC9B0022BE38 /* MutableAssignDictionary.swift */; };
+		2D6FAC291B35DC9B0022BE38 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC241B35DC9B0022BE38 /* Timer.swift */; };
+		2D6FAC2C1B35DD850022BE38 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC2A1B35DD850022BE38 /* Error.swift */; };
+		2D6FAC2D1B35DD850022BE38 /* SilentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC2B1B35DD850022BE38 /* SilentError.swift */; };
+		2D6FAC311B35DD940022BE38 /* OnDeallocBlockOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC2E1B35DD940022BE38 /* OnDeallocBlockOwner.swift */; };
+		2D6FAC321B35DD940022BE38 /* SimpleBlockHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC2F1B35DD940022BE38 /* SimpleBlockHolder.swift */; };
+		2D6FAC331B35DD940022BE38 /* UtilsBlockDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC301B35DD940022BE38 /* UtilsBlockDefinitions.swift */; };
+		2D6FAC351B35DD9E0022BE38 /* AssignObjectHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC341B35DD9E0022BE38 /* AssignObjectHolder.swift */; };
+		2D6FAC381B35DDAD0022BE38 /* DictionaryHelperBlocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC361B35DDAD0022BE38 /* DictionaryHelperBlocks.swift */; };
+		2D6FAC391B35DDAD0022BE38 /* NSDictionary+ExtendedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC371B35DDAD0022BE38 /* NSDictionary+ExtendedDictionary.swift */; };
+		2D6FAC3B1B35DDBF0022BE38 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC3A1B35DDBF0022BE38 /* Logger.swift */; };
+		2D6FAC3D1B35DDCD0022BE38 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC3C1B35DDCD0022BE38 /* Regex.swift */; };
+		2D6FAC3F1B35DDDA0022BE38 /* String+PathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FAC3E1B35DDDA0022BE38 /* String+PathExtensions.swift */; };
 		2DD8E7791B1A625D00E3BC5B /* iAsync.utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD8E7781B1A625D00E3BC5B /* iAsync.utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DD8E7861B1A625D00E3BC5B /* iAsync_utilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7851B1A625D00E3BC5B /* iAsync_utilsTests.swift */; };
 		2DD8E7C31B1A62DA00E3BC5B /* HashableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7901B1A62D900E3BC5B /* HashableArray.swift */; };
-		2DD8E7C51B1A62DA00E3BC5B /* JOnDeallocBlockOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7931B1A62D900E3BC5B /* JOnDeallocBlockOwner.swift */; };
-		2DD8E7C61B1A62DA00E3BC5B /* JSimpleBlockHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7941B1A62D900E3BC5B /* JSimpleBlockHolder.swift */; };
-		2DD8E7C71B1A62DA00E3BC5B /* JUtilsBlockDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7951B1A62D900E3BC5B /* JUtilsBlockDefinitions.swift */; };
-		2DD8E7C81B1A62DA00E3BC5B /* JAssignObjectHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7971B1A62D900E3BC5B /* JAssignObjectHolder.swift */; };
 		2DD8E7C91B1A62DA00E3BC5B /* Dictionary+BlocksAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7991B1A62D900E3BC5B /* Dictionary+BlocksAdditions.swift */; };
 		2DD8E7CA1B1A62DA00E3BC5B /* HashableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E79A1B1A62D900E3BC5B /* HashableDictionary.swift */; };
-		2DD8E7CB1B1A62DA00E3BC5B /* JUDictionaryHelperBlocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E79B1B1A62D900E3BC5B /* JUDictionaryHelperBlocks.swift */; };
-		2DD8E7CC1B1A62DA00E3BC5B /* NSDictionary+BlocksAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E79C1B1A62D900E3BC5B /* NSDictionary+BlocksAdditions.swift */; };
-		2DD8E7CD1B1A62DA00E3BC5B /* NSDictionary+JExtendedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E79D1B1A62D900E3BC5B /* NSDictionary+JExtendedDictionary.swift */; };
-		2DD8E7CE1B1A62DA00E3BC5B /* JError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E79F1B1A62D900E3BC5B /* JError.swift */; };
-		2DD8E7CF1B1A62DA00E3BC5B /* JSilentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7A01B1A62D900E3BC5B /* JSilentError.swift */; };
 		2DD8E7D01B1A62DA00E3BC5B /* NSError+WriteErrorToNSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7A11B1A62D900E3BC5B /* NSError+WriteErrorToNSLog.swift */; };
 		2DD8E7D11B1A62DA00E3BC5B /* NSData+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7A31B1A62D900E3BC5B /* NSData+ToString.swift */; };
 		2DD8E7D21B1A62DA00E3BC5B /* NSLocale+CurrentInterfaceLanguageCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7A41B1A62D900E3BC5B /* NSLocale+CurrentInterfaceLanguageCode.swift */; };
 		2DD8E7D31B1A62DA00E3BC5B /* NSNumber+FSStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7A51B1A62D900E3BC5B /* NSNumber+FSStorable.swift */; };
 		2DD8E7D41B1A62DA00E3BC5B /* iAsync.utils-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD8E7A61B1A62D900E3BC5B /* iAsync.utils-Bridging-Header.h */; };
 		2DD8E7D51B1A62DA00E3BC5B /* iAsync.utils-Bridging-Impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7A71B1A62D900E3BC5B /* iAsync.utils-Bridging-Impl.m */; };
-		2DD8E7D61B1A62DA00E3BC5B /* JGCDAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7A81B1A62D900E3BC5B /* JGCDAdditions.swift */; };
-		2DD8E7D71B1A62DA00E3BC5B /* JHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7A91B1A62D900E3BC5B /* JHelpers.swift */; };
-		2DD8E7D81B1A62DA00E3BC5B /* JMutableAssignArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7AA1B1A62D900E3BC5B /* JMutableAssignArray.swift */; };
-		2DD8E7D91B1A62DA00E3BC5B /* JMutableAssignDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7AB1B1A62D900E3BC5B /* JMutableAssignDictionary.swift */; };
-		2DD8E7DA1B1A62DA00E3BC5B /* JResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7AC1B1A62D900E3BC5B /* JResult.swift */; };
-		2DD8E7DB1B1A62DA00E3BC5B /* JTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7AD1B1A62D900E3BC5B /* JTimer.swift */; };
-		2DD8E7DC1B1A62DA00E3BC5B /* JLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7AF1B1A62D900E3BC5B /* JLogger.swift */; };
 		2DD8E7DD1B1A62DA00E3BC5B /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7B11B1A62D900E3BC5B /* NSDate+Utils.swift */; };
 		2DD8E7DE1B1A62DA00E3BC5B /* NSObject+OnDeallocBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7B31B1A62D900E3BC5B /* NSObject+OnDeallocBlock.swift */; };
 		2DD8E7DF1B1A62DA00E3BC5B /* NSObject+Ownerships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7B41B1A62D900E3BC5B /* NSObject+Ownerships.swift */; };
 		2DD8E7E01B1A62DA00E3BC5B /* NSObject+ToURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7B51B1A62D900E3BC5B /* NSObject+ToURL.swift */; };
-		2DD8E7E11B1A62DA00E3BC5B /* JRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7B71B1A62D900E3BC5B /* JRegex.swift */; };
 		2DD8E7E21B1A62DA00E3BC5B /* SequenceType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7B81B1A62DA00E3BC5B /* SequenceType+Extensions.swift */; };
 		2DD8E7E31B1A62DA00E3BC5B /* NSString+FileAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7BA1B1A62DA00E3BC5B /* NSString+FileAttributes.swift */; };
 		2DD8E7E41B1A62DA00E3BC5B /* NSString+IsEmailValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7BB1B1A62DA00E3BC5B /* NSString+IsEmailValid.swift */; };
 		2DD8E7E51B1A62DA00E3BC5B /* NSString+LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7BC1B1A62DA00E3BC5B /* NSString+LocalizedPrice.swift */; };
-		2DD8E7E61B1A62DA00E3BC5B /* NSString+PathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7BD1B1A62DA00E3BC5B /* NSString+PathExtensions.swift */; };
 		2DD8E7E71B1A62DA00E3BC5B /* NSString+PropertyName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7BE1B1A62DA00E3BC5B /* NSString+PropertyName.swift */; };
 		2DD8E7E81B1A62DA00E3BC5B /* NSString+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7BF1B1A62DA00E3BC5B /* NSString+Search.swift */; };
 		2DD8E7E91B1A62DA00E3BC5B /* NSString+Trimm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E7C01B1A62DA00E3BC5B /* NSString+Trimm.swift */; };
@@ -76,6 +74,22 @@
 /* Begin PBXFileReference section */
 		12506A20AB80FF3C87751F00 /* Pods_iAsync_utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iAsync_utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14B03AD57AC5C8A293636876 /* Pods-iAsync.utilsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAsync.utilsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iAsync.utilsTests/Pods-iAsync.utilsTests.release.xcconfig"; sourceTree = "<group>"; };
+		2D6FAC201B35DC9B0022BE38 /* GCDAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDAdditions.swift; sourceTree = "<group>"; };
+		2D6FAC211B35DC9B0022BE38 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		2D6FAC221B35DC9B0022BE38 /* MutableAssignArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableAssignArray.swift; sourceTree = "<group>"; };
+		2D6FAC231B35DC9B0022BE38 /* MutableAssignDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableAssignDictionary.swift; sourceTree = "<group>"; };
+		2D6FAC241B35DC9B0022BE38 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		2D6FAC2A1B35DD850022BE38 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		2D6FAC2B1B35DD850022BE38 /* SilentError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SilentError.swift; sourceTree = "<group>"; };
+		2D6FAC2E1B35DD940022BE38 /* OnDeallocBlockOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnDeallocBlockOwner.swift; sourceTree = "<group>"; };
+		2D6FAC2F1B35DD940022BE38 /* SimpleBlockHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleBlockHolder.swift; sourceTree = "<group>"; };
+		2D6FAC301B35DD940022BE38 /* UtilsBlockDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsBlockDefinitions.swift; sourceTree = "<group>"; };
+		2D6FAC341B35DD9E0022BE38 /* AssignObjectHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignObjectHolder.swift; sourceTree = "<group>"; };
+		2D6FAC361B35DDAD0022BE38 /* DictionaryHelperBlocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryHelperBlocks.swift; sourceTree = "<group>"; };
+		2D6FAC371B35DDAD0022BE38 /* NSDictionary+ExtendedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDictionary+ExtendedDictionary.swift"; sourceTree = "<group>"; };
+		2D6FAC3A1B35DDBF0022BE38 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		2D6FAC3C1B35DDCD0022BE38 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		2D6FAC3E1B35DDDA0022BE38 /* String+PathExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+PathExtensions.swift"; sourceTree = "<group>"; };
 		2DADA9DD1B1F1B46002E093F /* iAsync.utils.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iAsync.utils.podspec; sourceTree = "<group>"; };
 		2DD8E7731B1A625D00E3BC5B /* iAsync_utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iAsync_utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD8E7771B1A625D00E3BC5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,40 +98,22 @@
 		2DD8E7841B1A625D00E3BC5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DD8E7851B1A625D00E3BC5B /* iAsync_utilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iAsync_utilsTests.swift; sourceTree = "<group>"; };
 		2DD8E7901B1A62D900E3BC5B /* HashableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashableArray.swift; sourceTree = "<group>"; };
-		2DD8E7931B1A62D900E3BC5B /* JOnDeallocBlockOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOnDeallocBlockOwner.swift; sourceTree = "<group>"; };
-		2DD8E7941B1A62D900E3BC5B /* JSimpleBlockHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSimpleBlockHolder.swift; sourceTree = "<group>"; };
-		2DD8E7951B1A62D900E3BC5B /* JUtilsBlockDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JUtilsBlockDefinitions.swift; sourceTree = "<group>"; };
-		2DD8E7971B1A62D900E3BC5B /* JAssignObjectHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JAssignObjectHolder.swift; sourceTree = "<group>"; };
 		2DD8E7991B1A62D900E3BC5B /* Dictionary+BlocksAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+BlocksAdditions.swift"; sourceTree = "<group>"; };
 		2DD8E79A1B1A62D900E3BC5B /* HashableDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashableDictionary.swift; sourceTree = "<group>"; };
-		2DD8E79B1B1A62D900E3BC5B /* JUDictionaryHelperBlocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JUDictionaryHelperBlocks.swift; sourceTree = "<group>"; };
-		2DD8E79C1B1A62D900E3BC5B /* NSDictionary+BlocksAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDictionary+BlocksAdditions.swift"; sourceTree = "<group>"; };
-		2DD8E79D1B1A62D900E3BC5B /* NSDictionary+JExtendedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDictionary+JExtendedDictionary.swift"; sourceTree = "<group>"; };
-		2DD8E79F1B1A62D900E3BC5B /* JError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JError.swift; sourceTree = "<group>"; };
-		2DD8E7A01B1A62D900E3BC5B /* JSilentError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSilentError.swift; sourceTree = "<group>"; };
 		2DD8E7A11B1A62D900E3BC5B /* NSError+WriteErrorToNSLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+WriteErrorToNSLog.swift"; sourceTree = "<group>"; };
 		2DD8E7A31B1A62D900E3BC5B /* NSData+ToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+ToString.swift"; sourceTree = "<group>"; };
 		2DD8E7A41B1A62D900E3BC5B /* NSLocale+CurrentInterfaceLanguageCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+CurrentInterfaceLanguageCode.swift"; sourceTree = "<group>"; };
 		2DD8E7A51B1A62D900E3BC5B /* NSNumber+FSStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+FSStorable.swift"; sourceTree = "<group>"; };
 		2DD8E7A61B1A62D900E3BC5B /* iAsync.utils-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iAsync.utils-Bridging-Header.h"; sourceTree = "<group>"; };
 		2DD8E7A71B1A62D900E3BC5B /* iAsync.utils-Bridging-Impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "iAsync.utils-Bridging-Impl.m"; sourceTree = "<group>"; };
-		2DD8E7A81B1A62D900E3BC5B /* JGCDAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JGCDAdditions.swift; sourceTree = "<group>"; };
-		2DD8E7A91B1A62D900E3BC5B /* JHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHelpers.swift; sourceTree = "<group>"; };
-		2DD8E7AA1B1A62D900E3BC5B /* JMutableAssignArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMutableAssignArray.swift; sourceTree = "<group>"; };
-		2DD8E7AB1B1A62D900E3BC5B /* JMutableAssignDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMutableAssignDictionary.swift; sourceTree = "<group>"; };
-		2DD8E7AC1B1A62D900E3BC5B /* JResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JResult.swift; sourceTree = "<group>"; };
-		2DD8E7AD1B1A62D900E3BC5B /* JTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTimer.swift; sourceTree = "<group>"; };
-		2DD8E7AF1B1A62D900E3BC5B /* JLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLogger.swift; sourceTree = "<group>"; };
 		2DD8E7B11B1A62D900E3BC5B /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
 		2DD8E7B31B1A62D900E3BC5B /* NSObject+OnDeallocBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+OnDeallocBlock.swift"; sourceTree = "<group>"; };
 		2DD8E7B41B1A62D900E3BC5B /* NSObject+Ownerships.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Ownerships.swift"; sourceTree = "<group>"; };
 		2DD8E7B51B1A62D900E3BC5B /* NSObject+ToURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ToURL.swift"; sourceTree = "<group>"; };
-		2DD8E7B71B1A62D900E3BC5B /* JRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JRegex.swift; sourceTree = "<group>"; };
 		2DD8E7B81B1A62DA00E3BC5B /* SequenceType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+Extensions.swift"; sourceTree = "<group>"; };
 		2DD8E7BA1B1A62DA00E3BC5B /* NSString+FileAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+FileAttributes.swift"; sourceTree = "<group>"; };
 		2DD8E7BB1B1A62DA00E3BC5B /* NSString+IsEmailValid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+IsEmailValid.swift"; sourceTree = "<group>"; };
 		2DD8E7BC1B1A62DA00E3BC5B /* NSString+LocalizedPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+LocalizedPrice.swift"; sourceTree = "<group>"; };
-		2DD8E7BD1B1A62DA00E3BC5B /* NSString+PathExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+PathExtensions.swift"; sourceTree = "<group>"; };
 		2DD8E7BE1B1A62DA00E3BC5B /* NSString+PropertyName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+PropertyName.swift"; sourceTree = "<group>"; };
 		2DD8E7BF1B1A62DA00E3BC5B /* NSString+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Search.swift"; sourceTree = "<group>"; };
 		2DD8E7C01B1A62DA00E3BC5B /* NSString+Trimm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Trimm.swift"; sourceTree = "<group>"; };
@@ -206,12 +202,11 @@
 				2DD8E7A21B1A62D900E3BC5B /* Extensions */,
 				2DD8E7A61B1A62D900E3BC5B /* iAsync.utils-Bridging-Header.h */,
 				2DD8E7A71B1A62D900E3BC5B /* iAsync.utils-Bridging-Impl.m */,
-				2DD8E7A81B1A62D900E3BC5B /* JGCDAdditions.swift */,
-				2DD8E7A91B1A62D900E3BC5B /* JHelpers.swift */,
-				2DD8E7AA1B1A62D900E3BC5B /* JMutableAssignArray.swift */,
-				2DD8E7AB1B1A62D900E3BC5B /* JMutableAssignDictionary.swift */,
-				2DD8E7AC1B1A62D900E3BC5B /* JResult.swift */,
-				2DD8E7AD1B1A62D900E3BC5B /* JTimer.swift */,
+				2D6FAC201B35DC9B0022BE38 /* GCDAdditions.swift */,
+				2D6FAC211B35DC9B0022BE38 /* Helpers.swift */,
+				2D6FAC221B35DC9B0022BE38 /* MutableAssignArray.swift */,
+				2D6FAC231B35DC9B0022BE38 /* MutableAssignDictionary.swift */,
+				2D6FAC241B35DC9B0022BE38 /* Timer.swift */,
 				2DD8E7AE1B1A62D900E3BC5B /* Logger */,
 				2DD8E7B01B1A62D900E3BC5B /* NSDate */,
 				2DD8E7B21B1A62D900E3BC5B /* NSObject */,
@@ -273,9 +268,9 @@
 		2DD8E7911B1A62D900E3BC5B /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
-				2DD8E7931B1A62D900E3BC5B /* JOnDeallocBlockOwner.swift */,
-				2DD8E7941B1A62D900E3BC5B /* JSimpleBlockHolder.swift */,
-				2DD8E7951B1A62D900E3BC5B /* JUtilsBlockDefinitions.swift */,
+				2D6FAC2E1B35DD940022BE38 /* OnDeallocBlockOwner.swift */,
+				2D6FAC2F1B35DD940022BE38 /* SimpleBlockHolder.swift */,
+				2D6FAC301B35DD940022BE38 /* UtilsBlockDefinitions.swift */,
 			);
 			path = Blocks;
 			sourceTree = "<group>";
@@ -283,7 +278,7 @@
 		2DD8E7961B1A62D900E3BC5B /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				2DD8E7971B1A62D900E3BC5B /* JAssignObjectHolder.swift */,
+				2D6FAC341B35DD9E0022BE38 /* AssignObjectHolder.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -291,11 +286,10 @@
 		2DD8E7981B1A62D900E3BC5B /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
+				2D6FAC361B35DDAD0022BE38 /* DictionaryHelperBlocks.swift */,
+				2D6FAC371B35DDAD0022BE38 /* NSDictionary+ExtendedDictionary.swift */,
 				2DD8E7991B1A62D900E3BC5B /* Dictionary+BlocksAdditions.swift */,
 				2DD8E79A1B1A62D900E3BC5B /* HashableDictionary.swift */,
-				2DD8E79B1B1A62D900E3BC5B /* JUDictionaryHelperBlocks.swift */,
-				2DD8E79C1B1A62D900E3BC5B /* NSDictionary+BlocksAdditions.swift */,
-				2DD8E79D1B1A62D900E3BC5B /* NSDictionary+JExtendedDictionary.swift */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -303,8 +297,8 @@
 		2DD8E79E1B1A62D900E3BC5B /* Errors */ = {
 			isa = PBXGroup;
 			children = (
-				2DD8E79F1B1A62D900E3BC5B /* JError.swift */,
-				2DD8E7A01B1A62D900E3BC5B /* JSilentError.swift */,
+				2D6FAC2A1B35DD850022BE38 /* Error.swift */,
+				2D6FAC2B1B35DD850022BE38 /* SilentError.swift */,
 				2DD8E7A11B1A62D900E3BC5B /* NSError+WriteErrorToNSLog.swift */,
 			);
 			path = Errors;
@@ -323,7 +317,7 @@
 		2DD8E7AE1B1A62D900E3BC5B /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				2DD8E7AF1B1A62D900E3BC5B /* JLogger.swift */,
+				2D6FAC3A1B35DDBF0022BE38 /* Logger.swift */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -349,7 +343,7 @@
 		2DD8E7B61B1A62D900E3BC5B /* Regex */ = {
 			isa = PBXGroup;
 			children = (
-				2DD8E7B71B1A62D900E3BC5B /* JRegex.swift */,
+				2D6FAC3C1B35DDCD0022BE38 /* Regex.swift */,
 			);
 			path = Regex;
 			sourceTree = "<group>";
@@ -357,10 +351,10 @@
 		2DD8E7B91B1A62DA00E3BC5B /* String */ = {
 			isa = PBXGroup;
 			children = (
+				2D6FAC3E1B35DDDA0022BE38 /* String+PathExtensions.swift */,
 				2DD8E7BA1B1A62DA00E3BC5B /* NSString+FileAttributes.swift */,
 				2DD8E7BB1B1A62DA00E3BC5B /* NSString+IsEmailValid.swift */,
 				2DD8E7BC1B1A62DA00E3BC5B /* NSString+LocalizedPrice.swift */,
-				2DD8E7BD1B1A62DA00E3BC5B /* NSString+PathExtensions.swift */,
 				2DD8E7BE1B1A62DA00E3BC5B /* NSString+PropertyName.swift */,
 				2DD8E7BF1B1A62DA00E3BC5B /* NSString+Search.swift */,
 				2DD8E7C01B1A62DA00E3BC5B /* NSString+Trimm.swift */,
@@ -440,6 +434,7 @@
 		2DD8E76A1B1A625D00E3BC5B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Volodymyr;
 				TargetAttributes = {
@@ -540,44 +535,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DD8E7D51B1A62DA00E3BC5B /* iAsync.utils-Bridging-Impl.m in Sources */,
-				2DD8E7CC1B1A62DA00E3BC5B /* NSDictionary+BlocksAdditions.swift in Sources */,
 				2DD8E7E31B1A62DA00E3BC5B /* NSString+FileAttributes.swift in Sources */,
-				2DD8E7CD1B1A62DA00E3BC5B /* NSDictionary+JExtendedDictionary.swift in Sources */,
-				2DD8E7C61B1A62DA00E3BC5B /* JSimpleBlockHolder.swift in Sources */,
+				2D6FAC331B35DD940022BE38 /* UtilsBlockDefinitions.swift in Sources */,
 				2DD8E7D01B1A62DA00E3BC5B /* NSError+WriteErrorToNSLog.swift in Sources */,
+				2D6FAC321B35DD940022BE38 /* SimpleBlockHolder.swift in Sources */,
+				2D6FAC251B35DC9B0022BE38 /* GCDAdditions.swift in Sources */,
 				2DD8E7E81B1A62DA00E3BC5B /* NSString+Search.swift in Sources */,
 				2DD8E7E01B1A62DA00E3BC5B /* NSObject+ToURL.swift in Sources */,
+				2D6FAC291B35DC9B0022BE38 /* Timer.swift in Sources */,
 				2DD8E7E71B1A62DA00E3BC5B /* NSString+PropertyName.swift in Sources */,
+				2D6FAC261B35DC9B0022BE38 /* Helpers.swift in Sources */,
 				2DD8E7CA1B1A62DA00E3BC5B /* HashableDictionary.swift in Sources */,
 				2DD8E7D21B1A62DA00E3BC5B /* NSLocale+CurrentInterfaceLanguageCode.swift in Sources */,
-				2DD8E7E11B1A62DA00E3BC5B /* JRegex.swift in Sources */,
-				2DD8E7C71B1A62DA00E3BC5B /* JUtilsBlockDefinitions.swift in Sources */,
 				2DD8E7EA1B1A62DA00E3BC5B /* String+toDouble.swift in Sources */,
 				2DD8E7DF1B1A62DA00E3BC5B /* NSObject+Ownerships.swift in Sources */,
+				2D6FAC271B35DC9B0022BE38 /* MutableAssignArray.swift in Sources */,
 				2DD8E7E51B1A62DA00E3BC5B /* NSString+LocalizedPrice.swift in Sources */,
-				2DD8E7CF1B1A62DA00E3BC5B /* JSilentError.swift in Sources */,
-				2DD8E7DB1B1A62DA00E3BC5B /* JTimer.swift in Sources */,
 				2DD8E7DE1B1A62DA00E3BC5B /* NSObject+OnDeallocBlock.swift in Sources */,
+				2D6FAC311B35DD940022BE38 /* OnDeallocBlockOwner.swift in Sources */,
 				2DD8E7E91B1A62DA00E3BC5B /* NSString+Trimm.swift in Sources */,
 				2DD8E7C91B1A62DA00E3BC5B /* Dictionary+BlocksAdditions.swift in Sources */,
+				2D6FAC2D1B35DD850022BE38 /* SilentError.swift in Sources */,
 				2DD8E7E41B1A62DA00E3BC5B /* NSString+IsEmailValid.swift in Sources */,
 				2DD8E7C31B1A62DA00E3BC5B /* HashableArray.swift in Sources */,
 				2DD8E7E21B1A62DA00E3BC5B /* SequenceType+Extensions.swift in Sources */,
-				2DD8E7C81B1A62DA00E3BC5B /* JAssignObjectHolder.swift in Sources */,
-				2DD8E7C51B1A62DA00E3BC5B /* JOnDeallocBlockOwner.swift in Sources */,
-				2DD8E7D71B1A62DA00E3BC5B /* JHelpers.swift in Sources */,
-				2DD8E7CB1B1A62DA00E3BC5B /* JUDictionaryHelperBlocks.swift in Sources */,
+				2D6FAC3B1B35DDBF0022BE38 /* Logger.swift in Sources */,
+				2D6FAC3D1B35DDCD0022BE38 /* Regex.swift in Sources */,
 				2DD8E7D31B1A62DA00E3BC5B /* NSNumber+FSStorable.swift in Sources */,
-				2DD8E7E61B1A62DA00E3BC5B /* NSString+PathExtensions.swift in Sources */,
-				2DD8E7DC1B1A62DA00E3BC5B /* JLogger.swift in Sources */,
-				2DD8E7D81B1A62DA00E3BC5B /* JMutableAssignArray.swift in Sources */,
+				2D6FAC3F1B35DDDA0022BE38 /* String+PathExtensions.swift in Sources */,
+				2D6FAC381B35DDAD0022BE38 /* DictionaryHelperBlocks.swift in Sources */,
+				2D6FAC391B35DDAD0022BE38 /* NSDictionary+ExtendedDictionary.swift in Sources */,
+				2D6FAC2C1B35DD850022BE38 /* Error.swift in Sources */,
+				2D6FAC351B35DD9E0022BE38 /* AssignObjectHolder.swift in Sources */,
 				2DD8E7DD1B1A62DA00E3BC5B /* NSDate+Utils.swift in Sources */,
-				2DD8E7DA1B1A62DA00E3BC5B /* JResult.swift in Sources */,
 				2DD8E7D11B1A62DA00E3BC5B /* NSData+ToString.swift in Sources */,
-				2DD8E7D61B1A62DA00E3BC5B /* JGCDAdditions.swift in Sources */,
 				2DD8E7EB1B1A62DA00E3BC5B /* String+toURL.swift in Sources */,
-				2DD8E7D91B1A62DA00E3BC5B /* JMutableAssignDictionary.swift in Sources */,
-				2DD8E7CE1B1A62DA00E3BC5B /* JError.swift in Sources */,
+				2D6FAC281B35DC9B0022BE38 /* MutableAssignDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
