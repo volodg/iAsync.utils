@@ -14,7 +14,7 @@ class JSchedulerTest: XCTestCase {
     
     func testCancelWhenDeallocedScheduler() {
         
-        let sharedTimer = JTimer.sharedByThreadTimer()
+        let sharedTimer = Timer.sharedByThreadTimer()
         
         var fired = false
         var timeDifference: Double = 0.0
@@ -24,11 +24,11 @@ class JSchedulerTest: XCTestCase {
             timeDifference = difference;
         }
         
-        weak var weakTimer: JTimer?
+        weak var weakTimer: Timer?
         
         autoreleasepool {
             
-            let timer = JTimer()
+            let timer = Timer()
             weakTimer = timer
             
             let cancel1 = timer.addBlock({ (cancel: JCancelScheduledBlock) -> () in
@@ -60,16 +60,16 @@ class JSchedulerTest: XCTestCase {
     
     func testCancelBlockReturned() {
         
-        weak var weakTimer: JTimer?
+        weak var weakTimer: Timer?
         
         autoreleasepool {
             
-            let sharedScheduler = JTimer.sharedByThreadTimer()
+            let sharedScheduler = Timer.sharedByThreadTimer()
             
             var fired = false
             var timeDifference = 0.0
             
-            let timer = JTimer()
+            let timer = Timer()
             weakTimer = timer
             
             let mainCancel = timer.addBlock({ (cancel: JCancelScheduledBlock) -> () in
@@ -106,16 +106,16 @@ class JSchedulerTest: XCTestCase {
     
     func testCancelAllScheduledOperations() {
         
-        weak var weakTimer: JTimer?
+        weak var weakTimer: Timer?
         
         autoreleasepool {
             
             var fired = false
             var timeDifference = 0.0
             
-            let sharedScheduler = JTimer.sharedByThreadTimer()
+            let sharedScheduler = Timer.sharedByThreadTimer()
             
-            let timer = JTimer()
+            let timer = Timer()
             weakTimer = timer
             
             let cancel1 = timer.addBlock({ (cancel: JCancelScheduledBlock) -> () in
@@ -160,7 +160,7 @@ class JSchedulerTest: XCTestCase {
     
     func testNormalScheduledOperationTwice() {
         
-        let sharedScheduler = JTimer.sharedByThreadTimer()
+        let sharedScheduler = Timer.sharedByThreadTimer()
         
         var timeDifference = 0.0
         

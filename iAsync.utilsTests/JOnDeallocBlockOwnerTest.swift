@@ -34,7 +34,7 @@ class JOnDeallocBlockOwnerTest: XCTestCase {
                 return ()
             })
             
-            let owner = JOnDeallocBlockOwner(block: {
+            let owner = OnDeallocBlockOwner(block: {
                 if blockContext != nil {
                     setBlockCalled(true)
                 }
@@ -56,7 +56,7 @@ class JOnDeallocBlockOwnerTest: XCTestCase {
         autoreleasepool {
             let owner = NSObject()
             
-            let onDeallocBlockHolder = JOnDeallocBlockOwner(block: {
+            let onDeallocBlockHolder = OnDeallocBlockOwner(block: {
                 blockCalled = true
             })
             

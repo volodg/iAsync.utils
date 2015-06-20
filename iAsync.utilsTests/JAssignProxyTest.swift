@@ -16,7 +16,7 @@ class JAssignProxyTest: XCTestCase {
     
     func testAssignProxyDealloc() {
         
-        var proxy: JAssignObjectHolder<ProxyTargetTest>?
+        var proxy: AssignObjectHolder<ProxyTargetTest>?
         var targetDeallocated = false;
         
         { () -> () in
@@ -26,7 +26,7 @@ class JAssignProxyTest: XCTestCase {
             })
             
             let ptr = Unmanaged<ProxyTargetTest>.passUnretained(target)
-            proxy = JAssignObjectHolder(targetPtr: ptr)
+            proxy = AssignObjectHolder(targetPtr: ptr)
         }()
         
         XCTAssertTrue(targetDeallocated, "Target should be dealloced")

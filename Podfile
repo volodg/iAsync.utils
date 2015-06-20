@@ -3,7 +3,7 @@ use_frameworks!
 
 def import_pods
 
-pod 'Box'#, '~> 1.2.1'
+pod 'Result'#, '~> 1.2.1'
 
 end
 
