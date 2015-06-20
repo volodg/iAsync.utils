@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Result
+
 public extension SequenceType {
     
     public func firstMatch(
@@ -56,7 +58,7 @@ public extension SequenceType {
 }
 
 //TODO refactor
-public func >>=<Sequence: SequenceType, R>(obj: Sequence, f: Sequence.Generator.Element -> Result<R>) -> Result<[R]> {
+public func >>=<Sequence: SequenceType, R>(obj: Sequence, f: Sequence.Generator.Element -> Result<R, NSError>) -> Result<[R], NSError> {
     
     var result = [R]()
     
@@ -65,12 +67,12 @@ public func >>=<Sequence: SequenceType, R>(obj: Sequence, f: Sequence.Generator.
         let newObject = f(object)
         
         switch newObject {
-        case let .Error(e):
-            return Result.error(e)
-        case let .Value(value):
+        case let .Failure(error):
+            return Result.failure(error)
+        case let .Success(value):
             result.append(value)
         }
     }
     
-    return Result.value(result)
+    return Result.success(result)
 }

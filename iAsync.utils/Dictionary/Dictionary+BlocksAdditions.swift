@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Result
+
 extension Dictionary {
     
     func map<R>(block : (key : Key, value : Value) -> R) -> [Key:R] {
@@ -38,7 +40,7 @@ extension Dictionary {
     }
 }
 
-public func >>=<K: Hashable, V, R>(obj: [K:V], f: (K, V) -> Result<R>) -> Result<[K:R]> {
+public func >>=<K: Hashable, V, R>(obj: [K:V], f: (K, V) -> Result<R, NSError>) -> Result<[K:R], NSError> {
     
     var result: [K:R] = [K:R]()
     
@@ -47,14 +49,14 @@ public func >>=<K: Hashable, V, R>(obj: [K:V], f: (K, V) -> Result<R>) -> Result
         let newObject = f(key, value)
         
         switch newObject {
-        case let .Error(e):
-            return Result.error(e)
-        case let .Value(value):
+        case let .Failure(error):
+            return Result.failure(error)
+        case let .Success(value):
             result[key] = value
         }
     }
     
-    return Result.value(result)
+    return Result.success(result)
 }
 
 public func +<K: Hashable, V>(a: [K:V], b: [K:V]?) -> [K:V]

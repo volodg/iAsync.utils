@@ -10,11 +10,11 @@ import XCTest
 
 import iAsync_utils
 
-class JMutableAssignDictionaryTest: XCTestCase {
+class MutableAssignDictionaryTest: XCTestCase {
     
     func testMutableAssignDictionaryAssignIssue() {
-        var dict1: JMutableAssignDictionary<String, NSObject>?
-        var dict2: JMutableAssignDictionary<String, NSObject>?
+        var dict1: MutableAssignDictionary<String, NSObject>?
+        var dict2: MutableAssignDictionary<String, NSObject>?
         var targetDeallocated = false;
         
         { () -> () in
@@ -24,10 +24,10 @@ class JMutableAssignDictionaryTest: XCTestCase {
                 targetDeallocated = true
             })
             
-            dict1 = JMutableAssignDictionary<String, NSObject>()
+            dict1 = MutableAssignDictionary<String, NSObject>()
             dict1!["1"] = target
             
-            dict2 = JMutableAssignDictionary<String, NSObject>()
+            dict2 = MutableAssignDictionary<String, NSObject>()
             dict2!["1"] = target
             dict2!["2"] = target
             
@@ -44,16 +44,16 @@ class JMutableAssignDictionaryTest: XCTestCase {
         
         let target = NSObject()
         
-        weak var weakDict1: JMutableAssignDictionary<String, NSObject>?
-        weak var weakDict2: JMutableAssignDictionary<String, NSObject>?
+        weak var weakDict1: MutableAssignDictionary<String, NSObject>?
+        weak var weakDict2: MutableAssignDictionary<String, NSObject>?
         
         autoreleasepool {
-            let dict1 = JMutableAssignDictionary<String, NSObject>()
+            let dict1 = MutableAssignDictionary<String, NSObject>()
             weakDict1 = dict1
             
             dict1["1"] = target
             
-            let dict2 = JMutableAssignDictionary<String, NSObject>()
+            let dict2 = MutableAssignDictionary<String, NSObject>()
             weakDict2 = dict2
             
             dict2["2"] = target
@@ -65,7 +65,7 @@ class JMutableAssignDictionaryTest: XCTestCase {
     
     func testObjectForKey() {
         
-        let dict = JMutableAssignDictionary<String, NSObject>()
+        let dict = MutableAssignDictionary<String, NSObject>()
         
         var targetDeallocated_ = false
         
@@ -115,7 +115,7 @@ class JMutableAssignDictionaryTest: XCTestCase {
     
     func testReplaceObjectInDict()
     {
-        let dict = JMutableAssignDictionary<String, NSObject>()
+        let dict = MutableAssignDictionary<String, NSObject>()
         
         autoreleasepool {
             
@@ -157,7 +157,7 @@ class JMutableAssignDictionaryTest: XCTestCase {
     
     func testMapMethod()
     {
-        let dict = JMutableAssignDictionary<String, NSNumber>()
+        let dict = MutableAssignDictionary<String, NSNumber>()
         
         dict["1"] = 1
         dict["2"] = 2
@@ -187,7 +187,7 @@ class JMutableAssignDictionaryTest: XCTestCase {
             "3" : 3,
         ]
         
-        let dict = JMutableAssignDictionary<String, NSObject>()
+        let dict = MutableAssignDictionary<String, NSObject>()
         
         for (key, val) in patternDict {
             dict[key] = val

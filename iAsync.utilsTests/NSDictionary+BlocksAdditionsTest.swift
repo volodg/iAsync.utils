@@ -39,7 +39,6 @@ class NSDictionary_BlocksAdditionsTest: XCTestCase {
         
         XCTAssertEqual(result.count,  3)
         XCTAssertFalse(result is NSMutableDictionary)
-        XCTAssertTrue (result is NSDictionary)
         
         XCTAssertEqual(1, result.objectForKey("1") as! NSObject)
         XCTAssertEqual(4, result.objectForKey("2") as! NSObject)
@@ -110,7 +109,6 @@ class NSDictionary_BlocksAdditionsTest: XCTestCase {
         
         XCTAssertEqual(result.count, 3)
         XCTAssertFalse(result is NSMutableDictionary)
-        XCTAssertTrue (result is NSDictionary)
         
         XCTAssertEqual(1, result.objectForKey("ONE1") as! NSObject)
         XCTAssertEqual(2, result.objectForKey("TWO2") as! NSObject)
@@ -141,7 +139,6 @@ class NSDictionary_BlocksAdditionsTest: XCTestCase {
         XCTAssertNotNil(result)
         XCTAssertEqual(result!.count, 3)
         XCTAssertFalse(result! is NSMutableDictionary)
-        XCTAssertTrue (result! is NSDictionary)
         
         XCTAssertEqual(1, result!.objectForKey("1") as! NSObject)
         XCTAssertEqual(4, result!.objectForKey("2") as! NSObject)
@@ -158,7 +155,7 @@ class NSDictionary_BlocksAdditionsTest: XCTestCase {
         
         var error: NSError?
         
-        let errorForMap = JError(description : "test error")
+        let errorForMap = Error(description : "test error")
         
         let result = (dict as NSDictionary).map({ (key : AnyObject, object : AnyObject, outError : NSErrorPointer) -> AnyObject? in
             

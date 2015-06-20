@@ -14,10 +14,10 @@ class JSimpleBlockHolderTest: XCTestCase {
     
     func testSimpleBlockHolderBehavior()  {
         
-        weak var weakHolder: JSimpleBlockHolder?
+        weak var weakHolder: SimpleBlockHolder?
         
         autoreleasepool {
-            let strongHolder: JSimpleBlockHolder? = JSimpleBlockHolder()
+            let strongHolder: SimpleBlockHolder? = SimpleBlockHolder()
             weakHolder = strongHolder
             
             var blockContextDeallocated = false

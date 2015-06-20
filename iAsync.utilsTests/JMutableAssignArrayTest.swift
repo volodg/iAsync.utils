@@ -14,7 +14,7 @@ class JMutableAssignArrayTest: XCTestCase {
     
     func testMutableAssignArrayAssignIssue() {
         
-        var array: JMutableAssignArray<NSObject>!;
+        var array: MutableAssignArray<NSObject>!;
         
         { () -> () in
             
@@ -25,7 +25,7 @@ class JMutableAssignArrayTest: XCTestCase {
                 
                 weakTarget = target
                 
-                array = JMutableAssignArray()
+                array = MutableAssignArray()
                 array.append(target)
                 
                 XCTAssertTrue(1 == array.count, "Contains 1 object")
@@ -39,11 +39,11 @@ class JMutableAssignArrayTest: XCTestCase {
     
     func testMutableAssignArrayFirstRelease()
     {
-        weak var weakArray: JMutableAssignArray<NSObject>?;
+        weak var weakArray: MutableAssignArray<NSObject>?;
         
         { () -> () in
             
-            let array = JMutableAssignArray<NSObject>()
+            let array = MutableAssignArray<NSObject>()
             
             weakArray = array
             
@@ -56,7 +56,7 @@ class JMutableAssignArrayTest: XCTestCase {
     
     func testLastObject()
     {
-        let array = JMutableAssignArray<NSObject>()
+        let array = MutableAssignArray<NSObject>()
         
         let object = NSObject()
         array.append(object)
@@ -68,7 +68,7 @@ class JMutableAssignArrayTest: XCTestCase {
     {
         autoreleasepool {
             
-            var array = JMutableAssignArray<NSObject>()
+            var array = MutableAssignArray<NSObject>()
             
             weak var object1Ptr: NSObject?
             
@@ -76,7 +76,7 @@ class JMutableAssignArrayTest: XCTestCase {
             
             { () -> () in
                 
-                array = JMutableAssignArray<NSObject>()
+                array = MutableAssignArray<NSObject>()
                 
                 let object1 = NSObject()
                 object1Ptr = object1
