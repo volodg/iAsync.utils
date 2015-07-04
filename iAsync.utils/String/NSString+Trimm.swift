@@ -8,18 +8,24 @@
 
 import Foundation
 
-public extension NSString {
+public extension String {
     
-    private func rangeForQuotesRemoval() -> NSRange {
+    private func rangeForQuotesRemoval() -> Range<String.Index>
+    {
+        let start = advance(self.startIndex,  1)
+        let end   = advance(self.endIndex  , -1)
         
-        let quotedString = self
+        return start..<end
+    }
+    
+    func stringByTrimmingQuotes() -> NSString {
         
-        let firstQuoteOffset = 1
-        let quotesCount      = 2
-        let rangeLength = quotedString.length - quotesCount
+        let rangeWithoutQuotes = rangeForQuotesRemoval()
+        let result = substringWithRange(rangeWithoutQuotes)
         
-        let result = NSMakeRange(firstQuoteOffset, rangeLength)
-        return result
+        let termWhitespaces = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        
+        return result.stringByTrimmingCharactersInSet(termWhitespaces)
     }
     
     func stringByTrimmingWhitespaces() -> String {
@@ -32,15 +38,5 @@ public extension NSString {
         
         let set = NSCharacterSet.punctuationCharacterSet()
         return stringByTrimmingCharactersInSet(set)
-    }
-    
-    func stringByTrimmingQuotes() -> NSString {
-        
-        let rangeWithoutQuotes = rangeForQuotesRemoval()
-        let result = substringWithRange(rangeWithoutQuotes)
-        
-        let termWhitespaces = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        
-        return result.stringByTrimmingCharactersInSet(termWhitespaces)
     }
 }
