@@ -8,6 +8,7 @@
 
 import Foundation
 
+//TODO should be protocol
 public class Error : NSError {
     
     //TODO it make protected, TODO rename
