@@ -11,7 +11,7 @@ import Foundation
 //compares elements by pointers only
 public class MutableAssignArray<T: NSObjectProtocol> : SequenceType, CustomStringConvertible {
     
-    typealias Generator = Array<T>.Generator
+    public typealias Generator = Array<T>.Generator
     
     public func generate() -> Generator {
         

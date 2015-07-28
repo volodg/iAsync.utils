@@ -12,7 +12,7 @@ public struct HashableArray<T: Equatable> : Hashable, SequenceType, CustomString
     
     internal var array: Array<T>
     
-    typealias Generator = Array<T>.Generator
+    public typealias Generator = Array<T>.Generator
     
     public func generate() -> Generator {
         
