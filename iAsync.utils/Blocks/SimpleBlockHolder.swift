@@ -8,7 +8,6 @@
 
 import Foundation
 
-//TODO remove inheritence from NSObject
 public class SimpleBlockHolder : NSObject {
     
     public var simpleBlock: SimpleBlock?
