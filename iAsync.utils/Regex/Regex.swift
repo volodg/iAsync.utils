@@ -19,14 +19,12 @@ public class Regex {
     }
     
     public func test(input: String) -> Bool {
-        
         return matches(input).count > 0
     }
     
     public func matches(input: String) -> [NSTextCheckingResult] {
         
-        let matches = self.internalExpression.matchesInString(input, options: nil, range:NSMakeRange(0, count(input)))
-        return matches as! [NSTextCheckingResult]
+        return self.internalExpression.matchesInString(input, options: [], range: NSMakeRange(0, input.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)))
     }
 }
 
