@@ -13,10 +13,11 @@ public typealias JScheduledBlock = (cancel: JCancelScheduledBlock) -> Void
 
 private let emptyTimerBlock: () -> Void = {}
 
-//TODO remove NSObject inheritence
-public class Timer : NSObject {
+public class Timer {
     
     private var cancelBlocks = [SimpleBlockHolder]()
+    
+    public init() {}
     
     deinit {
         cancelAllScheduledOperations()
