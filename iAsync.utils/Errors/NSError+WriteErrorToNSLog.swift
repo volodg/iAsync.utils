@@ -49,7 +49,7 @@ public extension NSError {
         
         let action = { () -> Void in
             if let logStr = self.errorLogDescription {
-                println("only log - %@", logStr)
+                print("only log - %@", logStr)
             }
         }
         
