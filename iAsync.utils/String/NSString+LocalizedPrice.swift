@@ -1,5 +1,5 @@
 //
-//  NSString+LocalizedPrice.swift
+//  String+LocalizedPrice.swift
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 09.06.14.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-public extension NSString {
+public extension String {
     
-    class func localizedPrice(price: NSNumber, priceLocale: NSLocale) -> NSString {
+    static func localizedPrice(price: NSNumber, priceLocale: NSLocale) -> NSString {
         
         let numberFormatter = NSNumberFormatter()
         
