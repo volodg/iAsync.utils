@@ -14,14 +14,9 @@ private var staticLogHandler: LogHandler? = nil
 
 public let iAsync_utils_logger = Logger()
 
-public class Logger : NSObject {
+public class Logger {
     
-    private override init() {}
-    
-    //for objc only, todo remove
-    @objc public class func sharedJLogger() -> Logger {
-        return iAsync_utils_logger
-    }
+    private init() {}
     
     public var logHandler: LogHandler {
         get {

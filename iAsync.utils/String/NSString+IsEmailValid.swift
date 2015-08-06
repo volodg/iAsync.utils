@@ -1,5 +1,5 @@
 //
-//  NSString+IsEmailValid.swift
+//  String+IsEmailValid.swift
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 08.06.14.
@@ -9,12 +9,11 @@
 
 import Foundation
 
-public extension NSString {
+public extension String {
     
     func isEmailValid() -> Bool {
         
         let emailRegex = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$"
-        
-        return self as String =~ emailRegex
+        return self =~ emailRegex
     }
 }

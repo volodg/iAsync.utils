@@ -1,5 +1,5 @@
 //
-//  NSString+Search.swift
+//  String+Search.swift
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 06.06.14.
