@@ -16,3 +16,17 @@ public struct Weak<T: AnyObject> {
         self.value = value
     }
 }
+
+public struct EquatableWeak<T: AnyObject where T: Equatable> : Equatable {
+    public weak var value: T?
+    
+    public init(_ value: T)
+    {
+        self.value = value
+    }
+}
+
+public func ==<T: AnyObject where T: Equatable>(lhs: EquatableWeak<T>, rhs: EquatableWeak<T>) -> Bool {
+
+    return lhs.value == rhs.value
+}

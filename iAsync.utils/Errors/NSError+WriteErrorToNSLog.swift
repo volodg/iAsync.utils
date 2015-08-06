@@ -47,9 +47,9 @@ public extension NSError {
     
     func writeErrorToNSLog() {
         
-        let action = { () -> () in
+        let action = { () -> Void in
             if let logStr = self.errorLogDescription {
-                NSLog("only log - %@", logStr)
+                println("only log - %@", logStr)
             }
         }
         
@@ -58,7 +58,7 @@ public extension NSError {
     
     func writeErrorWithJLogger() {
         
-        let action = { () -> () in
+        let action = { () -> Void in
             if let logStr = self.errorLogDescription {
                 iAsync_utils_logger.logError(logStr)
             }
