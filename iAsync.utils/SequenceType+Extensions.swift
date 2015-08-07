@@ -8,10 +8,7 @@
 
 import Foundation
 
-import Result
-
 public extension SequenceType {
-    
     public func firstMatch(
         @noescape predicate: (value: Generator.Element) -> Bool) -> Generator.Element?
     {
@@ -55,24 +52,4 @@ public extension SequenceType {
             return !predicate(object)
         }
     }
-}
-
-//TODO refactor
-public func >>=<Sequence: SequenceType, R>(obj: Sequence, f: Sequence.Generator.Element -> Result<R, NSError>) -> Result<[R], NSError> {
-    
-    var result = [R]()
-    
-    for object in obj {
-        
-        let newObject = f(object)
-        
-        switch newObject {
-        case let .Failure(error):
-            return Result.failure(error)
-        case let .Success(value):
-            result.append(value)
-        }
-    }
-    
-    return Result.success(result)
 }
