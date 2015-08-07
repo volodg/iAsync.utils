@@ -8,6 +8,13 @@
 
 import Foundation
 
+/// Represents an error that can be sent upon or received from a signal.
+public protocol ErrorType {
+}
+
+extension NSError: ErrorType {
+}
+
 //TODO should be protocol
 public class Error : NSError {
     

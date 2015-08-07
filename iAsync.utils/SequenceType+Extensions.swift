@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Result
-
 public func firstMatch<Sequence: SequenceType>(
     sequence : Sequence,
     @noescape predicate: (value: Sequence.Generator.Element) -> Bool) -> Sequence.Generator.Element? {
@@ -55,23 +53,4 @@ public func all<Sequence: SequenceType>(sequence: Sequence, @noescape predicate 
     return !any(sequence) { (object: Sequence.Generator.Element) -> Bool in
         return !predicate(object)
     }
-}
-
-public func >>=<Sequence: SequenceType, R>(obj: Sequence, f: Sequence.Generator.Element -> Result<R, NSError>) -> Result<[R], NSError> {
-    
-    var result = [R]()
-    
-    for object in obj {
-        
-        let newObject = f(object)
-        
-        switch newObject {
-        case let .Failure(e):
-            return Result.failure(e.value)
-        case let .Success(v):
-            result.append(v.value)
-        }
-    }
-    
-    return Result.success(result)
 }
