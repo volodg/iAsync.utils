@@ -29,7 +29,7 @@ public func writeToFile<T>(object: T, documentFile: String) -> Bool {
     let string = toString(object)
     
     //TODO should be String, not NSString type
-    let fileName :NSString = String.documentsPathByAppendingPathComponent(documentFile)
+    let fileName: NSString = String.documentsPathByAppendingPathComponent(documentFile)
     
     let result = string.writeToFile(
         fileName as String,
