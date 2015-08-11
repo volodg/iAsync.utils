@@ -2,8 +2,8 @@
 //  iAsync.utils.h
 //  iAsync.utils
 //
-//  Created by Volodymyr on 31.05.15.
-//  Copyright (c) 2015 Volodymyr. All rights reserved.
+//  Created by Vladimir Gorbenko on 31.05.15.
+//  Copyright (c) 2015 Vladimir Gorbenko. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
