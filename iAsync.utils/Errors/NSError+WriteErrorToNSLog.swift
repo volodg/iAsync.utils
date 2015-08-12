@@ -14,23 +14,28 @@ private struct ErrorWithAction {
     let action: SimpleBlock
 }
 
-private var nsLogErrorsQueue  : [ErrorWithAction] = []
-private var jLoggerErrorsQueue: [ErrorWithAction] = []
+private class ActionsHolder {
+    
+    var queue = [ErrorWithAction]()
+}
 
-private func delayedPerformAction(error: NSError, action: SimpleBlock, inout queue: [ErrorWithAction])
+private var nsLogErrorsQueue   = ActionsHolder()
+private var jLoggerErrorsQueue = ActionsHolder()
+
+private func delayedPerformAction(error: NSError, action: SimpleBlock, queue: ActionsHolder)
 {
-    if queue.firstMatch( { $0.error === error } ) != nil {
+    if queue.queue.indexOf({ $0.error === error }) != nil {
         return
     }
     
-    queue.append(ErrorWithAction(error: error, action: action))
+    queue.queue.append(ErrorWithAction(error: error, action: action))
     
-    if queue.count == 1 {
+    if queue.queue.count == 1 {
         
         dispatch_async(dispatch_get_main_queue(), {
             
-            let tmpQueue = queue
-            queue.removeAll(keepCapacity: true)
+            let tmpQueue = queue.queue
+            queue.queue.removeAll(keepCapacity: true)
             for info in tmpQueue {
                 info.action()
             }
@@ -53,7 +58,7 @@ public extension NSError {
             }
         }
         
-        delayedPerformAction(self, action: action, queue: &nsLogErrorsQueue)
+        delayedPerformAction(self, action: action, queue: nsLogErrorsQueue)
     }
     
     func writeErrorWithJLogger() {
@@ -64,6 +69,6 @@ public extension NSError {
             }
         }
         
-        delayedPerformAction(self, action: action, queue: &jLoggerErrorsQueue)
+        delayedPerformAction(self, action: action, queue: jLoggerErrorsQueue)
     }
 }
