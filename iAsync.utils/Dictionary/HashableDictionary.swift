@@ -10,20 +10,20 @@ import Foundation
 
 public struct HashableDictionary<Key : Hashable, Value: Equatable> : Hashable, CustomStringConvertible {
     
-    private var dict = [Key:Value]()
+    public private(set) var dict = [Key:Value]()
     
     public var hashValue: Int {
         return dict.count
     }
     
-    public init(dict: [Key:Value]) {
+    public init(_ dict: [Key:Value]) {
         
         self.dict = dict
     }
     
     public init() {
     
-        self.init(dict: [Key:Value]())
+        self.init([Key:Value]())
     }
     
     public var description: String {
