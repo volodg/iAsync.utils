@@ -11,6 +11,9 @@ import Foundation
 public extension String {
     
     func toDouble() -> Double? {
-        return NSNumberFormatter().numberFromString(self)?.doubleValue
+        
+        let numFormatter = NSNumberFormatter()
+        numFormatter.decimalSeparator = "."
+        return numFormatter.numberFromString(self)?.doubleValue
     }
 }
