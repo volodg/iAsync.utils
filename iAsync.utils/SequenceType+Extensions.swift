@@ -22,18 +22,6 @@ public func firstMatch<Sequence: SequenceType>(
 
 public func indexOf<Sequence: SequenceType>(
     sequence: Sequence,
-    @noescape predicate: (value: Sequence.Generator.Element) -> Bool) -> Int
-{
-    for (index, element) in enumerate(sequence) {
-        if predicate(value: element) {
-            return index
-        }
-    }
-    return Int.max
-}
-
-public func optionIndexOf<Sequence: SequenceType>(
-    sequence: Sequence,
     @noescape predicate: (value: Sequence.Generator.Element) -> Bool) -> Int?
 {
     for (index, element) in enumerate(sequence) {
