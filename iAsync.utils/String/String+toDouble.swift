@@ -10,10 +10,10 @@ import Foundation
 
 public extension String {
     
-    func toDouble() -> Double? {
+    func toDouble(decimalSeparator: String = ".") -> Double? {
         
         let numFormatter = NSNumberFormatter()
-        numFormatter.decimalSeparator = "."
+        numFormatter.decimalSeparator = decimalSeparator
         return numFormatter.numberFromString(self)?.doubleValue
     }
 }
