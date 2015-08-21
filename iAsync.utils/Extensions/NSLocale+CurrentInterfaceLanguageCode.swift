@@ -20,6 +20,7 @@ public extension NSLocale {
     class var currentInterfaceISO2LanguageCode: String {
         
         let languageCode = self.currentInterfaceLanguageCode
-        return languageCode.componentsSeparatedByString("_")[0]
+        //TODO vlg, its woraround for IOS9, should be "_" character only
+        return languageCode.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: "_-"))[0]
     }
 }
