@@ -31,14 +31,14 @@ public struct HashableArray<T: Equatable> : Hashable, SequenceType, Printable {
         return array.count
     }
     
-    public init(array: [T]) {
+    public init(_ array: [T]) {
         
         self.array = array
     }
     
     public init() {
         
-        self.init(array: [T]())
+        self.init([])
     }
     
     public var description: String {
