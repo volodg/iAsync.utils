@@ -11,8 +11,8 @@ import Foundation
 public extension String {
     
     private func rangeForQuotesRemoval() -> Range<String.Index> {
-        let start = advance(self.startIndex,  1)
-        let end   = advance(self.endIndex  , -1)
+        let start = self.startIndex.advancedBy(1)
+        let end   = self.endIndex.advancedBy(-1)
         
         return start..<end
     }
