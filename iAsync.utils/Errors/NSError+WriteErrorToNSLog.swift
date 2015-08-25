@@ -45,7 +45,6 @@ private func delayedPerformAction(error: NSError, action: SimpleBlock, queue: Ac
 
 public extension NSError {
     
-    //TODO make it protected
     var errorLogDescription: String? {
         return "\(self.dynamicType) : \(localizedDescription), domain : \(domain) code : \(code.description)"
     }
