@@ -60,7 +60,7 @@ public extension NSError {
         delayedPerformAction(self, action, nsLogErrorsQueue)
     }
     
-    func writeErrorWithJLogger() {
+    func writeErrorWithLogger() {
         
         let action = { () -> Void in
             if let logStr = self.errorLogDescription {
