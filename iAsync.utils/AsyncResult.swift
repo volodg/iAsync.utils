@@ -42,9 +42,9 @@ public enum AsyncResult<T, Error: ErrorType>: Printable, DebugPrintable {
     public func map<R>(@noescape transform: T -> R) -> AsyncResult<R, Error> {
         
         switch self {
-        case let .Success(v):
+        case .Success(let v):
             return AsyncResult<R, Error>.success(transform(v.value))
-        case let .Failure(v):
+        case .Failure(let v):
             return .Failure(v)
         case .Interrupted:
             return .Interrupted
@@ -56,9 +56,9 @@ public enum AsyncResult<T, Error: ErrorType>: Printable, DebugPrintable {
     public func mapError<NewError: ErrorType>(@noescape transform: Error -> NewError) -> AsyncResult<T, NewError> {
         
         switch self {
-        case let .Success(v):
+        case .Success(let v):
             return .Success(v)
-        case let .Failure(v):
+        case .Failure(let v):
             return AsyncResult<T, NewError>.failure(transform(v.value))
         case .Interrupted:
             return .Interrupted
@@ -83,7 +83,7 @@ public enum AsyncResult<T, Error: ErrorType>: Printable, DebugPrintable {
     /// Returns the value from `Success` Results, `nil` otherwise.
     public var value: T? {
         switch self {
-        case let .Success(value):
+        case .Success(let value):
             return value.value
         default:
             return nil
@@ -93,7 +93,7 @@ public enum AsyncResult<T, Error: ErrorType>: Printable, DebugPrintable {
     /// Returns the error from `Failure` Results, `nil` otherwise.
     public var error: Error? {
         switch self {
-        case let .Failure(error):
+        case .Failure(let error):
             return error.value
         default:
             return nil
@@ -104,13 +104,13 @@ public enum AsyncResult<T, Error: ErrorType>: Printable, DebugPrintable {
     
     public var description: String {
         switch self {
-        case let .Success(value):
+        case .Success(let value):
             return ".Success(\(value.value))"
-        case let .Failure(error):
+        case .Failure(let error):
             return ".Failure(\(error.value))"
-        case let .Interrupted:
+        case .Interrupted:
             return ".Interrupted"
-        case let .Unsubscribed:
+        case .Unsubscribed:
             return ".Unsubscribed"
         }
     }
