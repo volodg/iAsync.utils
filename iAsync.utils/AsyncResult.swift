@@ -40,9 +40,9 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
     public func map<R>(@noescape transform: T -> R) -> AsyncResult<R, Error> {
         
         switch self {
-        case let .Success(value):
+        case .Success(let value):
             return AsyncResult<R, Error>.success(transform(value))
-        case let .Failure(error):
+        case .Failure(let error):
             return .Failure(error)
         case .Interrupted:
             return .Interrupted
@@ -54,9 +54,9 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
     public func mapError<NewError: ErrorType>(@noescape transform: Error -> NewError) -> AsyncResult<T, NewError> {
         
         switch self {
-        case let .Success(v):
-            return .Success(v)
-        case let .Failure(value):
+        case .Success(let value):
+            return .Success(value)
+        case .Failure(let value):
             return AsyncResult<T, NewError>.failure(transform(value))
         case .Interrupted:
             return .Interrupted
@@ -81,7 +81,7 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
     /// Returns the value from `Success` Results, `nil` otherwise.
     public var value: T? {
         switch self {
-        case let .Success(value):
+        case .Success(let value):
             return value
         default:
             return nil
@@ -91,7 +91,7 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
     /// Returns the error from `Failure` Results, `nil` otherwise.
     public var error: Error? {
         switch self {
-        case let .Failure(error):
+        case .Failure(let error):
             return error
         default:
             return nil
@@ -102,9 +102,9 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
     
     public var description: String {
         switch self {
-        case let .Success(value):
+        case .Success(let value):
             return ".Success(\(value))"
-        case let .Failure(error):
+        case .Failure(let error):
             return ".Failure(\(error))"
         case .Interrupted:
             return ".Interrupted"
