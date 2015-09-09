@@ -69,11 +69,9 @@ public enum AsyncResult<T, Error: ErrorType>: Printable, DebugPrintable {
     
     public var interruptedOrUnsubscribed: Bool {
         switch self {
-        case .Interrupted:
+        case .Interrupted, .Unsubscribed:
             return true
-        case .Unsubscribed:
-            return true
-        default:
+        case .Success, .Failure:
             return false
         }
     }
@@ -85,7 +83,7 @@ public enum AsyncResult<T, Error: ErrorType>: Printable, DebugPrintable {
         switch self {
         case .Success(let value):
             return value.value
-        default:
+        case .Failure, .Interrupted, .Unsubscribed:
             return nil
         }
     }
@@ -95,7 +93,7 @@ public enum AsyncResult<T, Error: ErrorType>: Printable, DebugPrintable {
         switch self {
         case .Failure(let error):
             return error.value
-        default:
+        case .Success, .Interrupted, .Unsubscribed:
             return nil
         }
     }

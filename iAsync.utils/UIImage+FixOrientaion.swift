@@ -69,8 +69,8 @@ extension UIImage {
         case .Left, .LeftMirrored, .Right, .RightMirrored:
             CGContextDrawImage(ctx, CGRectMake(0,0,size.height,size.width), CGImage)
             break
-            
-        default:
+        
+        case .Up, .Down, .UpMirrored, .DownMirrored:
             CGContextDrawImage(ctx, CGRectMake(0,0, size.width, size.height), CGImage)
             break
         }
