@@ -20,7 +20,6 @@ public class Regex {
     }
     
     public func test(input: String) -> Bool {
-        
         return matches(input).count > 0
     }
     
