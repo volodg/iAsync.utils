@@ -14,7 +14,7 @@ private struct ErrorWithAction {
     let action: SimpleBlock
 }
 
-private class ActionsHolder {
+final private class ActionsHolder {
     
     var queue = [ErrorWithAction]()
 }

@@ -13,7 +13,7 @@ public typealias JScheduledBlock = (cancel: JCancelScheduledBlock) -> Void
 
 private let emptyTimerBlock: () -> Void = {}
 
-public class Timer {
+final public class Timer {
     
     private var cancelBlocks = [SimpleBlockHolder]()
     
@@ -32,7 +32,7 @@ public class Timer {
         }
     }
     
-    public class func sharedByThreadTimer() -> Timer {
+    public static func sharedByThreadTimer() -> Timer {
         
         let thread = NSThread.currentThread()
         

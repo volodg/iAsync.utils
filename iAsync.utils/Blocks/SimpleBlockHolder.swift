@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SimpleBlockHolder : NSObject {
+final public class SimpleBlockHolder : NSObject {
     
     public var simpleBlock: SimpleBlock?
     

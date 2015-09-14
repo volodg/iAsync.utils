@@ -9,7 +9,7 @@
 
 import Foundation
 
-public class Regex {
+final public class Regex {
     let internalExpression: NSRegularExpression!
     let pattern: String
     

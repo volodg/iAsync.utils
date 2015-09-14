@@ -10,14 +10,14 @@ import Foundation
 
 public extension NSLocale {
     
-    class var currentInterfaceLanguageCode: String {
+    static var currentInterfaceLanguageCode: String {
         
         let languageCodes = self.preferredLanguages() as [String]
         let languageCode = languageCodes[0]
         return languageCode
     }
     
-    class var currentInterfaceISO2LanguageCode: String {
+    static var currentInterfaceISO2LanguageCode: String {
         
         let languageCode = self.currentInterfaceLanguageCode
         //TODO vlg, its woraround for IOS9, should be "_" character only

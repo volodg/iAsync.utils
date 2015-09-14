@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class AssignObjectHolder<T: AnyObject> {
+final public class AssignObjectHolder<T: AnyObject> {
     
     private(set) var target: Unmanaged<T>
     

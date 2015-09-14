@@ -14,7 +14,7 @@ private var staticLogHandler: LogHandler? = nil
 
 public let iAsync_utils_logger = Logger()
 
-public class Logger {
+final public class Logger {
     
     private init() {}
     
