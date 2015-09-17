@@ -49,7 +49,7 @@ extension UIImage {
             transform = CGAffineTransformScale(transform, -1, 1)
             break
         case .Up, .Down, .Left, .Right:
-            break;
+            break
         }
         
         // Now we draw the underlying CGImage into a new context, applying the transform
