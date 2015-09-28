@@ -49,7 +49,8 @@ final public class Timer {
         return result
     }
     
-    func addBlock(actionBlock: JScheduledBlock,
+    func addBlock(
+        actionBlock  : JScheduledBlock,
         duration     : NSTimeInterval,
         dispatchQueue: dispatch_queue_t) -> JCancelScheduledBlock
     {
@@ -111,8 +112,9 @@ final public class Timer {
         return cancelTimerBlockHolder.onceSimpleBlock()
     }
     
-    public func addBlock(actionBlock: JScheduledBlock,
-        duration: NSTimeInterval) -> JCancelScheduledBlock
+    public func addBlock(
+        actionBlock: JScheduledBlock,
+        duration   : NSTimeInterval) -> JCancelScheduledBlock
     {
         return addBlock(actionBlock,
             duration: duration,

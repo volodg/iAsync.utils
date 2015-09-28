@@ -8,7 +8,7 @@
 
 import Foundation
 
-private func parseNumber<T>(documentFile documentFile: String, scanner: (String) -> T?) -> T? {
+private func parseNumber<T>(documentFile documentFile: String, @noescape scanner: (String) -> T?) -> T? {
     
     let path = String.documentsPathByAppendingPathComponent(documentFile)
     
