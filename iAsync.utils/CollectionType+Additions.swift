@@ -22,4 +22,13 @@ extension CollectionType {
             return !predicate(object)
         }
     }
+    
+    public func foldr<B>(zero: B, f: (Generator.Element, () -> B) -> B) -> B {
+        
+        var g = generate()
+        var next: () -> B = {zero}
+        
+        next = { return g.next().map {x in f(x, next)} ?? zero }
+        return next()
+    }
 }
