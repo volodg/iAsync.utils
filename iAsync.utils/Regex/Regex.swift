@@ -23,7 +23,6 @@ final public class Regex {
     }
     
     public func matches(input: String) -> [NSTextCheckingResult] {
-        
         return self.internalExpression.matchesInString(input, options: [], range: NSMakeRange(0, input.characters.count))
     }
 }
