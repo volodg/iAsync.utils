@@ -10,8 +10,7 @@ import Foundation
 
 public extension NSString {
     
-    private func numberofOccurencesWithRangeSearcher(
-        @noescape rangeSearcher: (NSRange) -> NSRange, step: Int) -> Int {
+    private func numberofOccurencesWithRangeSearcher(@noescape rangeSearcher: (NSRange) -> NSRange, step: Int) -> Int {
         
         var result = 0
         
