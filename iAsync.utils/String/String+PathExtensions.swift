@@ -10,7 +10,7 @@ import Foundation
 
 public extension String {
     
-    private static func pathWithSearchDirecory(directory: NSSearchPathDirectory) -> NSString {
+    private static func pathWithSearchDirecory(directory: NSSearchPathDirectory) -> String {
         
         let pathes = NSSearchPathForDirectoriesInDomains(directory, .UserDomainMask, true)
         return pathes[pathes.endIndex - 1]
@@ -23,10 +23,10 @@ public extension String {
         }
         
         if let str = str {
-            return Static.instance.stringByAppendingPathComponent(str)
+            return (Static.instance as NSString).stringByAppendingPathComponent(str)
         }
         
-        return Static.instance as String
+        return Static.instance
     }
     
     static func cachesPathByAppendingPathComponent(str: String?) -> String {
@@ -36,7 +36,7 @@ public extension String {
         }
         
         if let str = str {
-            return Static.instance.stringByAppendingPathComponent(str)
+            return (Static.instance as NSString).stringByAppendingPathComponent(str)
         }
         
         return Static.instance as String
