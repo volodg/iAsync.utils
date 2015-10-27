@@ -1,0 +1,2 @@
+
+1. http://digginginswift.com/2015/10/25/how-to-setup-your-iosmac-oss-project/
