@@ -17,7 +17,7 @@ public extension String {
         numberFormatter.formatterBehavior = .Behavior10_4
         numberFormatter.numberStyle       = .CurrencyStyle
         numberFormatter.locale            = priceLocale
-        
+
         let result = numberFormatter.stringFromNumber(price)
         return result!
     }
