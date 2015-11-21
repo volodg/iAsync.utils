@@ -27,9 +27,14 @@ private class DeallocWatcher<Key: Hashable> {
 public class WeakRefMap<Key: Hashable, Value: AnyObject> {
     
     private var mapping = [Key: WeakBox<Value>]()
+
+    public func removeAll() {
+
+        mapping.removeAll()
+    }
     
     public init() {}
-    
+
     public subscript(key: Key) -> Value? {
         get { return mapping[key]?.raw }
         set {
