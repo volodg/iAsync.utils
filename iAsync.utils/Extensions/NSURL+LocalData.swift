@@ -25,15 +25,26 @@ extension NSURL {
 
             assetLibrary.assetForURL(self, resultBlock: { (asset) -> Void in
 
-                let rep      = asset.defaultRepresentation()
-                let buffer   = UnsafeMutablePointer<UInt8>.alloc(Int(rep.size()))
-                let buffered = rep.getBytes(buffer, fromOffset: 0, length: Int(rep.size()), error: nil)
-                let data     = NSData(bytesNoCopy: buffer, length: buffered, freeWhenDone: true)
+                if let asset = asset {
+                    let rep      = asset.defaultRepresentation()
+                    let buffer   = UnsafeMutablePointer<UInt8>.alloc(Int(rep.size()))
+                    let buffered = rep.getBytes(buffer, fromOffset: 0, length: Int(rep.size()), error: nil)
+                    let data     = NSData(bytesNoCopy: buffer, length: buffered, freeWhenDone: true)
 
-                onData(data)
+                    onData(data)
+                } else {
+
+                    onError(SilentError(description: "no data for local url: \(self)"))
+                }
             }, failureBlock: { (error) -> Void in
 
-                onError(error)
+                if let error = error {
+
+                    onError(error)
+                } else {
+
+                    onError(SilentError(description: "no data for local url: \(self)"))
+                }
             })
 
             return
@@ -42,7 +53,7 @@ extension NSURL {
         if let result = NSData(contentsOfURL: self) {
             onData(result)
         } else {
-            onError(Error(description: "no data for local url: \(self)"))
+            onError(SilentError(description: "no data for local url: \(self)"))
         }
     }
 }
