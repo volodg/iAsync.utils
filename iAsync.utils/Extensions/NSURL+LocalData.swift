@@ -14,7 +14,7 @@ extension NSURL {
 
     public func isAssetURL() -> Bool {
 
-        return self.scheme == "assets-library"
+        return scheme == "assets-library"
     }
 
     public func localDataWithCallbacks(onData: (NSData) -> Void, onError: (NSError) -> Void) {

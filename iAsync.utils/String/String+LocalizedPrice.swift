@@ -11,9 +11,9 @@ import Foundation
 public extension String {
     
     static func localizedPrice(price: NSNumber, priceLocale: NSLocale) -> NSString {
-        
+
         let numberFormatter = NSNumberFormatter()
-        
+
         numberFormatter.formatterBehavior = .Behavior10_4
         numberFormatter.numberStyle       = .CurrencyStyle
         numberFormatter.locale            = priceLocale

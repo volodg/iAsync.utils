@@ -9,9 +9,10 @@
 import Foundation
 
 public extension NSLocale {
-    
+
     static var preferredISO2Languages: [String] {
-        
-        return self.preferredLanguages().map { $0.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: "_-"))[0] }
+
+        let characters = NSCharacterSet(charactersInString: "_-")
+        return preferredLanguages().map { $0.componentsSeparatedByCharactersInSet(characters)[0] }
     }
 }
