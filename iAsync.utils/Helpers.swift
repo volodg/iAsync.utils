@@ -19,3 +19,7 @@ public func synced<R>(lock: AnyObject, @noescape _ closure: () -> R) -> R {
 public func flip<A, B, C>(method: A -> B -> C)(_ b: B)(_ a: A) -> C {
     return method(a)(b)
 }
+
+public func id<T>(val: T) -> T {
+    return val
+}
