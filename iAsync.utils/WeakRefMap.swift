@@ -24,15 +24,16 @@ private class DeallocWatcher<Key: Hashable> {
     deinit { notify(keys: keys) }
 }
 
+//TODO : SequenceType
 public class WeakRefMap<Key: Hashable, Value: AnyObject> {
     
-    private var mapping = [Key: WeakBox<Value>]()
+    public var mapping = [Key: WeakBox<Value>]()
 
     public func removeAll() {
 
         mapping.removeAll()
     }
-    
+
     public init() {}
 
     public subscript(key: Key) -> Value? {
