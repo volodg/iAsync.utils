@@ -79,10 +79,10 @@ final public class Timer {
 
         cancelTimerBlockHolder.simpleBlock = { [weak self] () -> () in
 
-            guard let timer = timer else { return }
+            guard let timer_ = timer else { return }
 
-            dispatch_source_set_event_handler(timer, emptyTimerBlock)
-            dispatch_source_cancel(timer)
+            dispatch_source_set_event_handler(timer_, emptyTimerBlock)
+            dispatch_source_cancel(timer_)
             timer = nil
 
             guard let self_ = self else { return }
