@@ -14,16 +14,16 @@ private var onceToken : dispatch_once_t = 0
 private var dispatchByLabel = [String:dispatch_queue_t]()
 
 public func dispatch_queue_get_or_create(label label: String, attr: dispatch_queue_attr_t) -> dispatch_queue_t {
-    
+
     return synced(lockObject) { () -> dispatch_queue_t in
-        
+
         if let result = dispatchByLabel[label] {
             return result
         }
-        
+
         let result = dispatch_queue_create(label, attr)
         dispatchByLabel[label] = result
-        
+
         return result
     }
 }

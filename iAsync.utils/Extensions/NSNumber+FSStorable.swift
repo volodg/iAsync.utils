@@ -82,10 +82,6 @@ public extension Bool {
 
     public static func readFromFile(documentFile: String) -> Bool? {
 
-        if let result = Int.readFromFile(documentFile) {
-            return result != 0
-        }
-
-        return nil
+        return Int.readFromFile(documentFile).flatMap { $0 != 0 }
     }
 }
