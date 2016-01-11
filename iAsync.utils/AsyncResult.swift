@@ -14,31 +14,31 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
     case Failure(Error)
     case Interrupted
     case Unsubscribed //TODO remove?
-    
+
     // MARK: Constructors
-    
+
     /// Constructs a success wrapping a `value`.
     public init(value: T) {
         self = .Success(value)
     }
-    
+
     /// Constructs a failure wrapping an `error`.
     public init(error: Error) {
         self = .Failure(error)
     }
-    
+
     /// Constructs a success wrapping a `value`.
     public static func success(value: T) -> AsyncResult {
         return AsyncResult(value: value)
     }
-    
+
     /// Constructs a failure wrapping an `error`.
     public static func failure(error: Error) -> AsyncResult {
         return AsyncResult(error: error)
     }
-    
+
     public func map<R>(@noescape transform: T -> R) -> AsyncResult<R, Error> {
-        
+
         switch self {
         case .Success(let value):
             return AsyncResult<R, Error>.success(transform(value))
@@ -50,9 +50,9 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return .Unsubscribed
         }
     }
-    
+
     public func mapError<NewError: ErrorType>(@noescape transform: Error -> NewError) -> AsyncResult<T, NewError> {
-        
+
         switch self {
         case .Success(let value):
             return .Success(value)
@@ -64,7 +64,7 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return .Unsubscribed
         }
     }
-    
+
     public var interruptedOrUnsubscribed: Bool {
         switch self {
         case .Interrupted, .Unsubscribed:
@@ -73,9 +73,9 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return false
         }
     }
-    
+
     // MARK: Deconstruction
-    
+
     /// Returns the value from `Success` Results, `nil` otherwise.
     public var value: T? {
         switch self {
@@ -85,7 +85,7 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return nil
         }
     }
-    
+
     /// Returns the error from `Failure` Results, `nil` otherwise.
     public var error: Error? {
         switch self {
@@ -95,9 +95,9 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return nil
         }
     }
-    
+
     // MARK: Printable
-    
+
     public var description: String {
         switch self {
         case .Success(let value):
@@ -110,9 +110,9 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return ".Unsubscribed"
         }
     }
-    
+
     // MARK: DebugPrintable
-    
+
     public var debugDescription: String {
         return description
     }
