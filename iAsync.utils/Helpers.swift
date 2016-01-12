@@ -8,7 +8,7 @@
 
 import Foundation
 
-public func synced<R>(lock: AnyObject, @noescape closure: () -> R) -> R {
+public func synced<R>(lock: AnyObject, @noescape _ closure: () -> R) -> R {
     objc_sync_enter(lock)
     let result = closure()
     objc_sync_exit(lock)
