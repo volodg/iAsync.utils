@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension NSString {
+public extension String {
     
     func addSkipBackupAttribute() {
         
@@ -16,7 +16,7 @@ public extension NSString {
         let attributeName = "com.apple.MobileBackup".UTF8String
         
         let result = withUnsafePointer(&b) { value -> Int32 in
-            let result = bridg_setxattr(self.fileSystemRepresentation, attributeName, value, Int(1), UInt32(0), CInt(0))
+            let result = setxattr((self as NSString).fileSystemRepresentation, attributeName, value, Int(1), UInt32(0), CInt(0))
             return result
         }
         

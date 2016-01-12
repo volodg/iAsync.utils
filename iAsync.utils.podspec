@@ -75,11 +75,8 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "iAsync.utils/**/*.{swift,m,h}"
+  s.source_files  = "iAsync.utils/**/*.{swift}"
   # s.exclude_files = "Classes/Exclude"
-
-  s.public_header_files = "iAsync.utils/iAsync.utils-Bridging-Header.h"
-
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -94,6 +91,11 @@ Pod::Spec.new do |s|
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
+  # ――― Project Module ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+
+  # make the sys/xattr as a C library that behave like a module
+  s.xcconfig         = { 'SWIFT_INCLUDE_PATHS' => '${PODS_ROOT}/SysXattr' }
+  s.preserve_path    = 'SysXattr/*'
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -115,8 +117,6 @@ Pod::Spec.new do |s|
   #  you can include multiple dependencies to ensure it works.
 
   # s.requires_arc = true
-
-  s.pod_target_xcconfig = { 'SWIFT_WHOLE_MODULE_OPTIMIZATION' => 'YES' }
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.xcconfig = { "SWIFT_OBJC_BRIDGING_HEADER" => "Lib/iAsyncUtils-Bridging-Header.h" }

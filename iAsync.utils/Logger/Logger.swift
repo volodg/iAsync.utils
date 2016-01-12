@@ -14,7 +14,7 @@ private var staticLogHandler: LogHandler? = nil
 
 public let iAsync_utils_logger = Logger()
 
-public class Logger {
+final public class Logger {
     
     private init() {}
     
@@ -24,7 +24,7 @@ public class Logger {
                 return result
             }
             let result = { (level: String, log: String, context: AnyObject?) in
-                println("\(log): \(level)")
+                print("\(log): \(level)")
             }
             staticLogHandler = result
             return result

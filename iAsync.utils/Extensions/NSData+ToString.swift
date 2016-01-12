@@ -9,8 +9,17 @@
 import Foundation
 
 public extension NSData {
-    
+
     func toString() -> String? {
         return NSString(data: self, encoding: NSUTF8StringEncoding) as? String
+    }
+
+    func apnsToString() -> String {
+        
+        let result = self.description
+            .stringByReplacingOccurrencesOfString("<", withString: "")
+            .stringByReplacingOccurrencesOfString(">", withString: "")
+            .stringByReplacingOccurrencesOfString(" ", withString: "")
+        return result
     }
 }

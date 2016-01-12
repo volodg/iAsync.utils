@@ -8,46 +8,46 @@
 
 import Foundation
 
-private func parseNumber<T>(documentFile: String, scanner: (String) -> T?) -> T? {
-    
+private func parseNumber<T>(documentFile documentFile: String, @noescape scanner: (String) -> T?) -> T? {
+
     let path = String.documentsPathByAppendingPathComponent(documentFile)
-    
-    let string = NSString(
-        contentsOfFile :path,
-        encoding       :NSUTF8StringEncoding,
-        error          :nil) as? String
-    
-    if let value = string {
-        return scanner(value)
+
+    do {
+        let string = try NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+        return scanner(string as String)
+    } catch _ {
+        return nil
     }
-    
-    return nil
 }
 
-public func writeToFile<T>(object: T, documentFile: String) -> Bool {
-    
-    let string = toString(object)
-    
-    //TODO should be String, not NSString type
-    let fileName: NSString = String.documentsPathByAppendingPathComponent(documentFile)
-    
-    let result = string.writeToFile(
-        fileName as String,
-        atomically: true,
-        encoding  : NSUTF8StringEncoding,
-        error     : nil)
-    
+public func writeObject<T>(object: T, toDocumentFile documentFile: String) -> Bool {
+
+    let string = String(object)
+
+    let fileName = String.documentsPathByAppendingPathComponent(documentFile)
+
+    let result: Bool
+    do {
+        try string.writeToFile(
+                fileName,
+                atomically: true,
+                encoding  : NSUTF8StringEncoding)
+        result = true
+    } catch _ {
+        result = false
+    }
+
     if result {
         fileName.addSkipBackupAttribute()
     }
-    
+
     return result
 }
 
 public extension Int {
-    
+
     public static func readFromFile(documentFile: String) -> Int? {
-        
+
         let scanner = { (string: String) -> Int? in
             var scannedNumber: Int = 0
             let scanner = NSScanner(string: string)
@@ -56,15 +56,15 @@ public extension Int {
             }
             return nil
         }
-        
-        return parseNumber(documentFile, scanner)
+
+        return parseNumber(documentFile: documentFile, scanner: scanner)
     }
 }
 
 public extension Double {
-    
+
     public static func readFromFile(documentFile: String) -> Double? {
-        
+
         let scanner = { (string: String) -> Double? in
             var scannedNumber: Double = 0
             let scanner = NSScanner(string: string)
@@ -73,19 +73,15 @@ public extension Double {
             }
             return nil
         }
-        
-        return parseNumber(documentFile, scanner)
+
+        return parseNumber(documentFile: documentFile, scanner: scanner)
     }
 }
 
 public extension Bool {
-    
+
     public static func readFromFile(documentFile: String) -> Bool? {
-        
-        if let result = Int.readFromFile(documentFile) {
-            return result != 0
-        }
-        
-        return nil
+
+        return Int.readFromFile(documentFile).flatMap { $0 != 0 }
     }
 }

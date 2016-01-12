@@ -8,11 +8,11 @@
 
 import Foundation
 
-public struct HashableArray<T: Equatable> : Hashable, SequenceType, Printable {
+public struct HashableArray<T: Equatable> : Hashable, SequenceType, CustomStringConvertible {
     
     internal var array: Array<T>
     
-    typealias Generator = Array<T>.Generator
+    public typealias Generator = Array<T>.Generator
     
     public func generate() -> Generator {
         

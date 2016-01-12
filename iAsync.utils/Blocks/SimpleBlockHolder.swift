@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class SimpleBlockHolder : NSObject {
-    
+final public class SimpleBlockHolder : NSObject {
+
     public var simpleBlock: SimpleBlock?
-    
+
     public func onceSimpleBlock() -> SimpleBlock {
-        
+
         return {
-            
+
             if let block = self.simpleBlock {
                 self.simpleBlock = nil
                 block()

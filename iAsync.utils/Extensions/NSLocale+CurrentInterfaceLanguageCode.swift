@@ -9,17 +9,10 @@
 import Foundation
 
 public extension NSLocale {
-    
-    class var currentInterfaceLanguageCode: String {
-        
-        let languageCodes = self.preferredLanguages() as! [String]
-        let languageCode = languageCodes[0]
-        return languageCode
-    }
-    
-    class var currentInterfaceISO2LanguageCode: String {
-        
-        let languageCode = self.currentInterfaceLanguageCode
-        return languageCode.componentsSeparatedByString("_")[0]
+
+    static var preferredISO2Languages: [String] {
+
+        let characters = NSCharacterSet(charactersInString: "_-")
+        return preferredLanguages().map { $0.componentsSeparatedByCharactersInSet(characters)[0] }
     }
 }

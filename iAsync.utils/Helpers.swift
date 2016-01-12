@@ -14,3 +14,12 @@ public func synced<R>(lock: AnyObject, @noescape closure: () -> R) -> R {
     objc_sync_exit(lock)
     return result
 }
+
+//source - http://oleb.net/blog/2015/09/more-pattern-matching-examples/
+public func flip<A, B, C>(method: A -> B -> C)(_ b: B)(_ a: A) -> C {
+    return method(a)(b)
+}
+
+public func id<T>(val: T) -> T {
+    return val
+}

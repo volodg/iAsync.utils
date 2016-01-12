@@ -9,36 +9,32 @@
 import Foundation
 
 public extension String {
-    
+
     private static func pathWithSearchDirecory(directory: NSSearchPathDirectory) -> String {
-        
-        let pathes = NSSearchPathForDirectoriesInDomains(directory, .UserDomainMask, true) as! [String]
+
+        let pathes = NSSearchPathForDirectoriesInDomains(directory, .UserDomainMask, true)
         return pathes[pathes.endIndex - 1]
     }
-    
+
     static func documentsPathByAppendingPathComponent(str: String?) -> String {
-        
+
         struct Static {
             static var instance = String.pathWithSearchDirecory(.DocumentDirectory)
         }
-        
-        if let str = str {
-            return Static.instance.stringByAppendingPathComponent(str)
-        }
-        
-        return Static.instance
+
+        guard let str = str else { return Static.instance }
+
+        return (Static.instance as NSString).stringByAppendingPathComponent(str)
     }
-    
+
     static func cachesPathByAppendingPathComponent(str: String?) -> String {
-        
+
         struct Static {
             static var instance = String.pathWithSearchDirecory(.CachesDirectory)
         }
-        
-        if let str = str {
-            return Static.instance.stringByAppendingPathComponent(str)
-        }
-        
-        return Static.instance
+
+        guard let str = str else { return Static.instance }
+
+        return (Static.instance as NSString).stringByAppendingPathComponent(str)
     }
 }

@@ -9,13 +9,13 @@
 import Foundation
 
 private struct ErrorWithAction {
-    
+
     let error : NSError
     let action: SimpleBlock
 }
 
-private class ActionsHolder {
-    
+final private class ActionsHolder {
+
     var queue = [ErrorWithAction]()
 }
 
@@ -24,16 +24,16 @@ private var jLoggerErrorsQueue = ActionsHolder()
 
 private func delayedPerformAction(error: NSError, action: SimpleBlock, queue: ActionsHolder)
 {
-    if firstMatch(queue.queue, { $0.error === error }) != nil {
+    if queue.queue.indexOf({ $0.error === error }) != nil {
         return
     }
-    
+
     queue.queue.append(ErrorWithAction(error: error, action: action))
-    
+
     if queue.queue.count == 1 {
-        
+
         dispatch_async(dispatch_get_main_queue(), {
-            
+
             let tmpQueue = queue.queue
             queue.queue.removeAll(keepCapacity: true)
             for info in tmpQueue {
@@ -44,30 +44,30 @@ private func delayedPerformAction(error: NSError, action: SimpleBlock, queue: Ac
 }
 
 public extension NSError {
-    
+
     var errorLogDescription: String? {
         return "\(self.dynamicType) : \(localizedDescription), domain : \(domain) code : \(code.description)"
     }
-    
+
     func writeErrorToNSLog() {
-        
+
         let action = { () -> Void in
             if let logStr = self.errorLogDescription {
-                println("only log - \(logStr)")
+                print("only log - \(logStr)")
             }
         }
-        
-        delayedPerformAction(self, action, nsLogErrorsQueue)
+
+        delayedPerformAction(self, action: action, queue: nsLogErrorsQueue)
     }
-    
+
     func writeErrorWithLogger() {
-        
+
         let action = { () -> Void in
             if let logStr = self.errorLogDescription {
                 iAsync_utils_logger.logError(logStr)
             }
         }
-        
-        delayedPerformAction(self, action, jLoggerErrorsQueue)
+
+        delayedPerformAction(self, action: action, queue: jLoggerErrorsQueue)
     }
 }
