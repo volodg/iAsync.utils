@@ -16,8 +16,12 @@ public func synced<R>(lock: AnyObject, @noescape _ closure: () -> R) -> R {
 }
 
 //source - http://oleb.net/blog/2015/09/more-pattern-matching-examples/
-public func flip<A, B, C>(method: A -> B -> C)(_ b: B)(_ a: A) -> C {
-    return method(a)(b)
+public func flip<A, B, C>(method: A -> B -> C) -> (B) -> (A) -> C {
+    return { (b: B) -> A -> C in
+        return { (a: A) -> C in
+            method(a)(b)
+        }
+    }
 }
 
 public func id<T>(val: T) -> T {
