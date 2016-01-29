@@ -22,8 +22,8 @@ final private class ActionsHolder {
 private var nsLogErrorsQueue   = ActionsHolder()
 private var jLoggerErrorsQueue = ActionsHolder()
 
-private func delayedPerformAction(error: NSError, action: SimpleBlock, queue: ActionsHolder)
-{
+private func delayedPerformAction(error: NSError, action: SimpleBlock, queue: ActionsHolder) {
+
     if queue.queue.indexOf({ $0.error === error }) != nil {
         return
     }
