@@ -12,7 +12,8 @@ public extension NSLocale {
 
     static var preferredISO2Languages: [String] {
 
+        let preferredLangs = preferredLanguages()
         let characters = NSCharacterSet(charactersInString: "_-")
-        return preferredLanguages().map { $0.componentsSeparatedByCharactersInSet(characters)[0] }
+        return preferredLangs.map { $0.componentsSeparatedByCharactersInSet(characters)[0] }
     }
 }
