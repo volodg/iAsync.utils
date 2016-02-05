@@ -68,6 +68,8 @@ final public class Timer {
     {
         var timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatchQueue)
 
+        var actionBlockHolder: JScheduledBlock? = actionBlock
+
         let delta = Int64(duration * Double(NSEC_PER_SEC))
         dispatch_source_set_timer(timer,
             dispatch_time(DISPATCH_TIME_NOW, delta),
@@ -81,6 +83,7 @@ final public class Timer {
 
             guard let timer_ = timer else { return }
 
+            actionBlockHolder = nil
             dispatch_source_set_event_handler(timer_, emptyTimerBlock)
             dispatch_source_cancel(timer_)
             timer = nil
@@ -100,7 +103,7 @@ final public class Timer {
         cancelBlocks.append(cancelTimerBlockHolder)
 
         let eventHandlerBlock = { () -> () in
-            actionBlock(cancel: cancelTimerBlockHolder.onceSimpleBlock())
+            actionBlockHolder?(cancel: cancelTimerBlockHolder.onceSimpleBlock())
         }
 
         dispatch_source_set_event_handler(timer, eventHandlerBlock)
