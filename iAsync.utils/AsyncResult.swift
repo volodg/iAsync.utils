@@ -12,7 +12,6 @@ import Foundation
 public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDebugStringConvertible {
     case Success(T)
     case Failure(Error)
-    case Unsubscribed //TODO remove?
 
     // MARK: Constructors
 
@@ -43,8 +42,6 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return AsyncResult<R, Error>.success(transform(value))
         case .Failure(let error):
             return .Failure(error)
-        case .Unsubscribed:
-            return .Unsubscribed
         }
     }
 
@@ -55,15 +52,11 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return .Success(value)
         case .Failure(let value):
             return AsyncResult<T, NewError>.failure(transform(value))
-        case .Unsubscribed:
-            return .Unsubscribed
         }
     }
 
-    public var interruptedOrUnsubscribed: Bool {
+    public var interrupted: Bool {
         switch self {
-        case .Unsubscribed:
-            return true
         case .Success:
             return false
         case .Failure(let error):
@@ -78,7 +71,7 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
         switch self {
         case .Success(let value):
             return value
-        case .Failure, .Unsubscribed:
+        case .Failure:
             return nil
         }
     }
@@ -88,7 +81,7 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
         switch self {
         case .Failure(let error):
             return error
-        case .Success, .Unsubscribed:
+        case .Success:
             return nil
         }
     }
@@ -101,8 +94,6 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return ".Success(\(value))"
         case .Failure(let error):
             return ".Failure(\(error))"
-        case .Unsubscribed:
-            return ".Unsubscribed"
         }
     }
 
