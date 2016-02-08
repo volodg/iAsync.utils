@@ -12,7 +12,6 @@ import Foundation
 public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDebugStringConvertible {
     case Success(T)
     case Failure(Error)
-    case Interrupted
     case Unsubscribed //TODO remove?
 
     // MARK: Constructors
@@ -44,8 +43,6 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return AsyncResult<R, Error>.success(transform(value))
         case .Failure(let error):
             return .Failure(error)
-        case .Interrupted:
-            return .Interrupted
         case .Unsubscribed:
             return .Unsubscribed
         }
@@ -58,8 +55,6 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return .Success(value)
         case .Failure(let value):
             return AsyncResult<T, NewError>.failure(transform(value))
-        case .Interrupted:
-            return .Interrupted
         case .Unsubscribed:
             return .Unsubscribed
         }
@@ -67,10 +62,12 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
 
     public var interruptedOrUnsubscribed: Bool {
         switch self {
-        case .Interrupted, .Unsubscribed:
+        case .Unsubscribed:
             return true
-        case .Success, .Failure:
+        case .Success:
             return false
+        case .Failure(let error):
+            return error is AsyncInterruptedError
         }
     }
 
@@ -81,7 +78,7 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
         switch self {
         case .Success(let value):
             return value
-        case .Failure, .Interrupted, .Unsubscribed:
+        case .Failure, .Unsubscribed:
             return nil
         }
     }
@@ -91,7 +88,7 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
         switch self {
         case .Failure(let error):
             return error
-        case .Success, .Interrupted, .Unsubscribed:
+        case .Success, .Unsubscribed:
             return nil
         }
     }
@@ -104,8 +101,6 @@ public enum AsyncResult<T, Error: ErrorType>: CustomStringConvertible, CustomDeb
             return ".Success(\(value))"
         case .Failure(let error):
             return ".Failure(\(error))"
-        case .Interrupted:
-            return ".Interrupted"
         case .Unsubscribed:
             return ".Unsubscribed"
         }
