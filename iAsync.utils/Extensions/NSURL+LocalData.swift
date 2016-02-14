@@ -10,6 +10,23 @@ import Foundation
 
 import AssetsLibrary
 
+public class CanNotSelectPhotoError : Error {
+
+    let url: NSURL
+    init(url: NSURL) {
+        self.url = url
+        super.init(description: "")
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override public var errorLogDescription: String? {
+        return "<CanNotSelectPhotoError url: \(url)>"
+    }
+}
+
 extension NSURL {
 
     public func isAssetURL() -> Bool {
@@ -23,7 +40,7 @@ extension NSURL {
 
             let assetLibrary = ALAssetsLibrary()
 
-            assetLibrary.assetForURL(self, resultBlock: { (asset) -> Void in
+            assetLibrary.assetForURL(self, resultBlock: { asset -> Void in
 
                 if let asset = asset {
                     let rep      = asset.defaultRepresentation()
@@ -34,16 +51,16 @@ extension NSURL {
                     onData(data)
                 } else {
 
-                    onError(SilentError(description: "no data for local url: \(self)"))
+                    onError(CanNotSelectPhotoError(url: self))
                 }
-            }, failureBlock: { (error) -> Void in
+            }, failureBlock: { error -> Void in
 
                 if let error = error {
 
                     onError(error)
                 } else {
 
-                    onError(SilentError(description: "no data for local url: \(self)"))
+                    onError(CanNotSelectPhotoError(url: self))
                 }
             })
 
@@ -53,7 +70,7 @@ extension NSURL {
         if let result = NSData(contentsOfURL: self) {
             onData(result)
         } else {
-            onError(SilentError(description: "no data for local url: \(self)"))
+            onError(CanNotSelectPhotoError(url: self))
         }
     }
 }
