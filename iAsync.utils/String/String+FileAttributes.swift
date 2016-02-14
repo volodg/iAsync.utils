@@ -1,5 +1,5 @@
 //
-//  NSString+FileAttributes.swift
+//  String+FileAttributes.swift
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 06.06.14.
@@ -9,27 +9,27 @@
 import Foundation
 
 public extension String {
-    
+
     func addSkipBackupAttribute() {
-        
+
         var b: UInt8 = 1
         let attributeName = "com.apple.MobileBackup".UTF8String
-        
+
         let result = withUnsafePointer(&b) { value -> Int32 in
             let result = setxattr((self as NSString).fileSystemRepresentation, attributeName, value, Int(1), UInt32(0), CInt(0))
             return result
         }
-        
+
         if result != -1 {
             return
         }
-        
+
         let logger = { (log: String) in
             iAsync_utils_logger.logError(log)
         }
-        
-        switch (errno)
-        {
+
+        switch (errno) {
+
         case ENOENT:
             //options is set to XATTR_REPLACE and the named attribute does not exist.
             logger("addSkipBackupAttribute: No such file or directory")
