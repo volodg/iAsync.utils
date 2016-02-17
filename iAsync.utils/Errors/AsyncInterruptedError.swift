@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class AsyncInterruptedError : SilentError {
+public final class AsyncInterruptedError : SilentError {
 
     public init() {
         super.init(description: "AsyncInterruptedError")

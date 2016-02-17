@@ -10,7 +10,7 @@ import Foundation
 
 import AssetsLibrary
 
-public class CanNotSelectPhotoError : Error {
+public final class CanNotSelectPhotoError : Error {
 
     let url: NSURL
     init(url: NSURL) {
