@@ -10,17 +10,17 @@ import Foundation
 
 //TODO should be protocol
 public class Error : NSError {
-    
+
     public class func iAsyncErrorsDomain() -> String {
         return "com.just_for_fun.library"
     }
-    
+
     public init(description: String, domain: String = Error.iAsyncErrorsDomain(), code: Int = 0) {
-        
+
         let userInfo = [NSLocalizedDescriptionKey : description]
         super.init(domain: domain, code: code, userInfo: userInfo)
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
