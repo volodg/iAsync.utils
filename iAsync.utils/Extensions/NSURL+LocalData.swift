@@ -34,7 +34,7 @@ extension NSURL {
         return scheme == "assets-library"
     }
 
-    public func localDataWithCallbacks(onData: (NSData) -> Void, onError: (NSError) -> Void) {
+    public func localDataWithCallbacks(onData: NSData -> Void, onError: NSError -> Void) {
 
         if isAssetURL() {
 
