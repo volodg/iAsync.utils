@@ -49,7 +49,7 @@ public final class WeakRefMap<Key: Hashable, Value: AnyObject> {
                     watcher.insertKey(key)
                 } else {
 
-                    let watcher = DeallocWatcher { [unowned self] (keys: Set<Key>) -> Void in
+                    let watcher = DeallocWatcher { [unowned self] (keys: Set<Key>) in
                         for key in keys {
                             self.mapping[key] = nil
                         }

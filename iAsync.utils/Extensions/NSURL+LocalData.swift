@@ -40,7 +40,7 @@ extension NSURL {
 
             let assetLibrary = ALAssetsLibrary()
 
-            assetLibrary.assetForURL(self, resultBlock: { asset -> Void in
+            assetLibrary.assetForURL(self, resultBlock: { asset in
 
                 if let asset = asset {
                     let rep      = asset.defaultRepresentation()
@@ -53,7 +53,7 @@ extension NSURL {
 
                     onError(CanNotSelectPhotoError(url: self))
                 }
-            }, failureBlock: { error -> Void in
+            }, failureBlock: { error in
 
                 if let error = error {
 
