@@ -10,7 +10,7 @@ import Foundation
 
 //source - http://stackoverflow.com/questions/28670796/can-i-hook-when-a-weakly-referenced-object-of-arbitrary-type-is-freed
 
-private class DeallocWatcher<Key: Hashable> {
+private final class DeallocWatcher<Key: Hashable> {
 
     let notify:(keys: Set<Key>)->Void
 
@@ -25,7 +25,7 @@ private class DeallocWatcher<Key: Hashable> {
 }
 
 //TODO : SequenceType
-public class WeakRefMap<Key: Hashable, Value: AnyObject> {
+public final class WeakRefMap<Key: Hashable, Value: AnyObject> {
 
     public var mapping = [Key: WeakBox<Value>]()
 
@@ -49,7 +49,7 @@ public class WeakRefMap<Key: Hashable, Value: AnyObject> {
                     watcher.insertKey(key)
                 } else {
 
-                    let watcher = DeallocWatcher { [unowned self] (keys: Set<Key>) -> Void in
+                    let watcher = DeallocWatcher { [unowned self] (keys: Set<Key>) in
                         for key in keys {
                             self.mapping[key] = nil
                         }

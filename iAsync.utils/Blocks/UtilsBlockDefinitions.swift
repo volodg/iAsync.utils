@@ -8,11 +8,13 @@
 
 import Foundation
 
+import ReactiveKit
+
 public typealias SimpleBlock = () -> ()
 
 public enum UtilsBlockDefinitions2<T1, T2, Error: ErrorType> {
 
     public typealias MappingBlock = (object: T1) -> T2
 
-    public typealias Analyzer = (object: T1) -> AsyncResult<T2, Error>
+    public typealias Analyzer = (object: T1) -> Result<T2, Error>
 }

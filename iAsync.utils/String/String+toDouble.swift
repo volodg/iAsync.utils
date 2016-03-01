@@ -9,9 +9,9 @@
 import Foundation
 
 public extension String {
-    
+
     func toDouble(decimalSeparator: String = ".") -> Double? {
-        
+
         let numFormatter = NSNumberFormatter()
         numFormatter.decimalSeparator = decimalSeparator
         return numFormatter.numberFromString(self)?.doubleValue
