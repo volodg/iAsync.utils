@@ -93,10 +93,6 @@ Pod::Spec.new do |s|
 
   # ――― Project Module ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  # make the sys/xattr as a C library that behave like a module
-  s.xcconfig         = { 'SWIFT_INCLUDE_PATHS' => '${PODS_ROOT}/SysXattr' }
-  s.preserve_path    = 'SysXattr/*'
-
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Link your library with frameworks, or libraries. Libraries do not include

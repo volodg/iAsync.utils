@@ -1,5 +1,0 @@
-module SysXattr [system] {
-    header "/usr/include/sys/xattr.h"
-
-    export *
-}
