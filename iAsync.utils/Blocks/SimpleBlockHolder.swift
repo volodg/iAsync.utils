@@ -10,9 +10,9 @@ import Foundation
 
 final public class SimpleBlockHolder : NSObject {
 
-    public var simpleBlock: SimpleBlock?
+    public var simpleBlock: (() -> ())?
 
-    public func onceSimpleBlock() -> SimpleBlock {
+    public func onceSimpleBlock() -> (() -> ()) {
 
         return {
 

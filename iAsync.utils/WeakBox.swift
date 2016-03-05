@@ -10,7 +10,7 @@ import Foundation
 
 public struct WeakBox<T: AnyObject> {
     public weak var raw: T?
-    
+
     public init(_ raw: T?) {
         self.raw = raw
     }
@@ -18,13 +18,13 @@ public struct WeakBox<T: AnyObject> {
 
 public struct EquatableWeakBox<T: AnyObject where T: Equatable> : Equatable {
     public weak var raw: T?
-    
+
     public init(_ raw: T) {
         self.raw = raw
     }
 }
 
 public func ==<T: AnyObject where T: Equatable>(lhs: EquatableWeakBox<T>, rhs: EquatableWeakBox<T>) -> Bool {
-    
+
     return lhs.raw == rhs.raw
 }

@@ -15,7 +15,7 @@ public extension NSData {
     }
 
     func apnsToString() -> String {
-        
+
         let result = self.description
             .stringByReplacingOccurrencesOfString("<", withString: "")
             .stringByReplacingOccurrencesOfString(">", withString: "")
