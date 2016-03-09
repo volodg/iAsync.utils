@@ -49,7 +49,7 @@ public extension Int {
     public static func readFromFile(documentFile: String) -> Int? {
 
         let scanner = { (string: String) -> Int? in
-            var scannedNumber: Int = 0
+            var scannedNumber = 0
             let scanner = NSScanner(string: string)
             if scanner.scanInteger(&scannedNumber) {
                 return scannedNumber
@@ -66,7 +66,7 @@ public extension Double {
     public static func readFromFile(documentFile: String) -> Double? {
 
         let scanner = { (string: String) -> Double? in
-            var scannedNumber: Double = 0
+            var scannedNumber = 0.0
             let scanner = NSScanner(string: string)
             if scanner.scanDouble(&scannedNumber) {
                 return scannedNumber
