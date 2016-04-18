@@ -34,7 +34,7 @@ extension NSURL {
         return scheme == "assets-library"
     }
 
-    public func localDataWithCallbacks(onData: NSData -> Void, onError: NSError -> Void) {
+    public func localDataWithCallbacks(onData: NSData -> Void, onError: ErrorWithContext -> Void) {
 
         if isAssetURL() {
 
@@ -51,16 +51,19 @@ extension NSURL {
                     onData(data)
                 } else {
 
-                    onError(CanNotSelectPhotoError(url: self))
+                    let error = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: "no asset")
+                    onError(error)
                 }
             }, failureBlock: { error in
 
                 if let error = error {
 
-                    onError(error)
+                    let contextError = ErrorWithContext(error: error, context: "assetLibrary.assetForURL")
+                    onError(contextError)
                 } else {
 
-                    onError(CanNotSelectPhotoError(url: self))
+                    let contextError = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: "assetLibrary.assetForURL no error")
+                    onError(contextError)
                 }
             })
 
@@ -70,7 +73,8 @@ extension NSURL {
         if let result = NSData(contentsOfURL: self) {
             onData(result)
         } else {
-            onError(CanNotSelectPhotoError(url: self))
+            let contextError = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: "localDataWithCallbacks, no data")
+            onError(contextError)
         }
     }
 }

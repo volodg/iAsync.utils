@@ -15,9 +15,9 @@ private var staticLogHandler: LogHandler? = nil
 public let iAsync_utils_logger = Logger()
 
 final public class Logger {
-    
+
     private init() {}
-    
+
     public var logHandler: LogHandler {
         get {
             if let result = staticLogHandler {
@@ -33,19 +33,19 @@ final public class Logger {
             staticLogHandler = newLogHandler
         }
     }
-    
+
     public func logError(log: String) {
         logHandler(level: "error", log: log, context: nil)
     }
-    
-    public func logError(context: AnyObject, log: String) {
+
+    public func logError(log: String, context: AnyObject) {
         logHandler(level: "error", log: log, context: context)
     }
-    
+
     func logInfo(log: String) {
         logHandler(level: "info", log: log, context: nil)
     }
-    
+
     func log(level: String, context: AnyObject, log: String) {
         logHandler(level: level, log: log, context: context)
     }

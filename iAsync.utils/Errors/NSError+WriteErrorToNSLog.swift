@@ -60,11 +60,11 @@ public extension NSError {
         delayedPerformAction(self, action: action, queue: nsLogErrorsQueue)
     }
 
-    func writeErrorWithLogger() {
+    func writeErrorWithLogger(context: AnyObject) {
 
         let action = { () in
             if let logStr = self.errorLogDescription {
-                iAsync_utils_logger.logError(logStr)
+                iAsync_utils_logger.logError(logStr, context: context)
             }
         }
 
