@@ -23,8 +23,8 @@ final public class Timer {
         cancelAllScheduledOperations()
     }
 
-    public func cancelAllScheduledOperations()
-    {
+    public func cancelAllScheduledOperations() {
+
         let cancelBlocks = self.cancelBlocks
         self.cancelBlocks.removeAll(keepCapacity: true)
         for cancelHolder in cancelBlocks {
@@ -52,8 +52,8 @@ final public class Timer {
     func addBlock(
         actionBlock  : JScheduledBlock,
         duration     : NSTimeInterval,
-        dispatchQueue: dispatch_queue_t) -> JCancelScheduledBlock
-    {
+        dispatchQueue: dispatch_queue_t) -> JCancelScheduledBlock {
+
         return self.addBlock(actionBlock,
             duration     : duration,
             leeway       : duration/10.0,
@@ -64,8 +64,8 @@ final public class Timer {
         actionBlock  : JScheduledBlock,
         duration     : NSTimeInterval,
         leeway       : NSTimeInterval,
-        dispatchQueue: dispatch_queue_t) -> JCancelScheduledBlock
-    {
+        dispatchQueue: dispatch_queue_t) -> JCancelScheduledBlock {
+
         var timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatchQueue)
 
         var actionBlockHolder: JScheduledBlock? = actionBlock
@@ -92,7 +92,7 @@ final public class Timer {
 
             for (index, cancelHolder) in self_.cancelBlocks.enumerate() {
 
-                if cancelHolder === weakCancelTimerBlockHolder! {
+                if cancelHolder === weakCancelTimerBlockHolder {
                     self_.cancelBlocks.removeAtIndex(index)
                     weakCancelTimerBlockHolder = nil
                     break
@@ -115,8 +115,8 @@ final public class Timer {
 
     public func addBlock(
         actionBlock: JScheduledBlock,
-        duration   : NSTimeInterval) -> JCancelScheduledBlock
-    {
+        duration   : NSTimeInterval) -> JCancelScheduledBlock {
+
         return addBlock(actionBlock,
             duration: duration,
             leeway  : duration/10.0)
@@ -124,8 +124,8 @@ final public class Timer {
 
     public func addBlock(actionBlock: JScheduledBlock,
         duration: NSTimeInterval,
-        leeway  : NSTimeInterval) -> JCancelScheduledBlock
-    {
+        leeway  : NSTimeInterval) -> JCancelScheduledBlock {
+
         return addBlock(actionBlock,
             duration     : duration,
             leeway       : leeway,

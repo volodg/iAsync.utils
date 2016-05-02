@@ -13,7 +13,7 @@ public extension String {
     func addSkipBackupAttribute() {
 
         let url = NSURL(fileURLWithPath: self)
-        assert(NSFileManager.defaultManager().fileExistsAtPath(url.path!))
+        assert(NSFileManager.defaultManager().fileExistsAtPath(self))
 
         do {
             try url.setResourceValue(true, forKey: NSURLIsExcludedFromBackupKey)

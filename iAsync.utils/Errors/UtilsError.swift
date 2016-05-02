@@ -1,5 +1,5 @@
 //
-//  Error.swift
+//  UtilsError.swift
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 05.06.14.
@@ -9,13 +9,13 @@
 import Foundation
 
 //TODO should be protocol
-public class Error : NSError {
+public class UtilsError : NSError {
 
     public class func iAsyncErrorsDomain() -> String {
         return "com.just_for_fun.library"
     }
 
-    public init(description: String, domain: String = Error.iAsyncErrorsDomain(), code: Int = 0) {
+    public init(description: String, domain: String = UtilsError.iAsyncErrorsDomain(), code: Int = 0) {
 
         let userInfo = [NSLocalizedDescriptionKey : description]
         super.init(domain: domain, code: code, userInfo: userInfo)
