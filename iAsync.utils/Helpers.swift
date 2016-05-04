@@ -24,6 +24,6 @@ public func flip<A, B, C>(method: A -> B -> C) -> (B) -> (A) -> C {
     }
 }
 
-public func id<T>(val: T) -> T {
+public func id_<T>(val: T) -> T {
     return val
 }
