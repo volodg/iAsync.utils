@@ -18,9 +18,9 @@ public extension String {
         do {
             try url.setResourceValue(true, forKey: NSURLIsExcludedFromBackupKey)
         } catch let error as NSError {
-            iAsync_utils_logger.logError("setResourceValue error: \(error) path: \(self)")
+            iAsync_utils_logger.logError("setResourceValue error: \(error) path: \(self)", context: #function)
         } catch _ {
-            iAsync_utils_logger.logError("setResourceValue error to path: \(self)")
+            iAsync_utils_logger.logError("setResourceValue error to path: \(self)", context: #function)
         }
     }
 }

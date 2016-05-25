@@ -34,10 +34,6 @@ final public class Logger {
         }
     }
 
-    public func logError(log: String) {
-        logHandler(level: "error", log: log, context: nil)
-    }
-
     public func logError(log: String, context: AnyObject) {
         logHandler(level: "error", log: log, context: context)
     }
