@@ -3,7 +3,7 @@
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 02.10.14.
-//  Copyright (c) 2014 EmbeddedSources. All rights reserved.
+//  Copyright © 2014 EmbeddedSources. All rights reserved.
 //
 
 import Foundation
