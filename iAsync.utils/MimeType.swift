@@ -7,10 +7,36 @@
 //
 
 import Foundation
+import MobileCoreServices
 
 //doc - http://webdesign.about.com/od/multimedia/a/mime-types-by-file-extension.htm
 
 public final class MimeType {
+
+    public static func contentTypeForFile(fileName: String) -> String {
+
+        let contentTypeFunc = { () -> String? in
+
+            let fileExtension = (fileName as NSString).pathExtension
+            let UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, nil)
+
+            return UTI.flatMap { val -> String? in
+
+                let contentType = UTTypeCopyPreferredTagWithClass(val.takeUnretainedValue(), kUTTagClassMIMEType)
+                return contentType?.takeUnretainedValue() as? String
+            }
+        }
+
+        let fixContentTypeFunc = { () -> String in
+
+            let fileExtension = (fileName as NSString).pathExtension.lowercaseString
+            let result = MimeType.detectMimeType(fileExtension)
+            return result
+        }
+
+        let result = contentTypeFunc() ?? fixContentTypeFunc()
+        return result
+    }
 
     public static func detectMimeType(ext: String) -> String {
 
