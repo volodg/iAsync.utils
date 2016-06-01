@@ -20,7 +20,7 @@ private func readStringWithScanner<T>(documentFile documentFile: String, @noesca
     }
 }
 
-public func writeObject<T>(object: T?, toDocumentFile documentFile: String) -> Bool {
+public func writeObject<T>(object: T?, toDocumentFile documentFile: String, logError: Bool = true) -> Bool {
 
     let filePath = String.documentsPathByAppendingPathComponent(documentFile)
 
@@ -30,10 +30,14 @@ public func writeObject<T>(object: T?, toDocumentFile documentFile: String) -> B
             try NSFileManager.defaultManager().removeItemAtPath(filePath)
             return true
         } catch let error as NSError {
-            iAsync_utils_logger.logError("can not remove file error: \(error) filePath: \(filePath)", context: #function)
+            if logError {
+                iAsync_utils_logger.logError("can not remove file error: \(error) filePath: \(filePath)", context: #function)
+            }
             return false
         } catch _ {
-            iAsync_utils_logger.logError("can not remove file: \(filePath)", context: #function)
+            if logError {
+                iAsync_utils_logger.logError("can not remove file: \(filePath)", context: #function)
+            }
             return false
         }
     }
