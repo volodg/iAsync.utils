@@ -10,47 +10,24 @@ import Foundation
 
 private func readStringWithScanner<T>(documentFile documentFile: String, @noescape scanner: (String) -> T?) -> T? {
 
-    let path = String.documentsPathByAppendingPathComponent(documentFile)
-
-    do {
-        let string = try NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding)
-        return scanner(string as String)
-    } catch _ {
-        return nil
-    }
+    let path        = documentFile.documentsPath
+    let filesString = path.stringContent()
+    let result      = filesString.flatMap { scanner($0) }
+    return result
 }
 
 public func writeObject<T>(object: T?, toDocumentFile documentFile: String, logError: Bool = true) -> Bool {
 
-    let filePath = String.documentsPathByAppendingPathComponent(documentFile)
+    let filePath = documentFile.documentsPath
 
     guard let object = object else {
 
-        do {
-            try NSFileManager.defaultManager().removeItemAtPath(filePath)
-            return true
-        } catch let error as NSError {
-            if logError {
-                iAsync_utils_logger.logError("can not remove file error: \(error) filePath: \(filePath)", context: #function)
-            }
-            return false
-        } catch _ {
-            if logError {
-                iAsync_utils_logger.logError("can not remove file: \(filePath)", context: #function)
-            }
-            return false
-        }
+        return filePath.removeItem(logError)
     }
 
     let string = String(object)
 
-    let result: Bool
-    do {
-        try string.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
-        result = true
-    } catch _ {
-        result = false
-    }
+    let result = filePath.writeToFile(string)
 
     if result {
         filePath.addSkipBackupAttribute()
