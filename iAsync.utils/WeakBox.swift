@@ -10,9 +10,11 @@ import Foundation
 
 public struct WeakBox<T: AnyObject> {
     public weak var raw: T?
+    internal let rawPtr: UnsafePointer<Void>
 
-    public init(_ raw: T?) {
+    public init(_ raw: T) {
         self.raw = raw
+        self.rawPtr = unsafeAddressOf(raw)
     }
 }
 

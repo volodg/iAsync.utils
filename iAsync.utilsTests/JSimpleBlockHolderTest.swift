@@ -11,33 +11,27 @@ import XCTest
 import iAsync_utils
 
 class JSimpleBlockHolderTest: XCTestCase {
-    
+
     func testSimpleBlockHolderBehavior()  {
-        
+
         weak var weakHolder: SimpleBlockHolder?
-        
+
         autoreleasepool {
             let strongHolder: SimpleBlockHolder? = SimpleBlockHolder()
             weakHolder = strongHolder
-            
-            var blockContextDeallocated = false
-            
-            let setObjectDeallocated = { (newVal: Bool) -> Void in
-                blockContextDeallocated = newVal
-            }
-            
+
+            weak var blockContextDeallocated: NSObject?
+
             var performBlockCount = 0
-            
+
             let increasePerformBlockCount = { () -> Void in
-                ++performBlockCount
+                performBlockCount += 1
             }
-            
+
             autoreleasepool {
                 let blockContext: NSObject? = NSObject()
-                blockContext!.addOnDeallocBlock({
-                    setObjectDeallocated(true)
-                })
-                
+                blockContextDeallocated = blockContext
+
                 strongHolder!.simpleBlock = {
                     if blockContext != nil && strongHolder != nil {
                         increasePerformBlockCount()
@@ -47,14 +41,14 @@ class JSimpleBlockHolderTest: XCTestCase {
                 strongHolder!.onceSimpleBlock()()
                 strongHolder!.onceSimpleBlock()()
             }
-            
-            XCTAssertTrue (blockContextDeallocated, "Block context should be dealloced")
+
+            XCTAssertTrue (blockContextDeallocated == nil, "Block context should be dealloced")
             XCTAssertEqual(1, performBlockCount   , "Block was called once")
-            
+
             let block = strongHolder?.simpleBlock
             XCTAssertTrue(block == nil)
         }
-        
+
         XCTAssertNil(weakHolder, "Block holder should be dealloced")
     }
 }

@@ -12,16 +12,20 @@ import Foundation
 
 private final class DeallocWatcher<Key: Hashable> {
 
-    let notify:(keys: Set<Key>)->Void
-
+    var notify: ((watcher: DeallocWatcher<Key>, keys: Set<Key>)->Void)?
+    let owner: UnsafePointer<Void>
     private var keys = Set<Key>()
 
     func insertKey(key: Key) {
         keys.insert(key)
     }
 
-    init(_ notify:(keys: Set<Key>)->Void) { self.notify = notify }
-    deinit { notify(keys: keys) }
+    init(_ notify:(watcher: DeallocWatcher<Key>, keys: Set<Key>)->Void, owner: UnsafePointer<Void>) {
+        self.notify = notify
+        self.owner  = owner
+    }
+
+    deinit { notify?(watcher: self, keys: keys) }
 }
 
 //TODO : SequenceType
@@ -44,16 +48,22 @@ public final class WeakRefMap<Key: Hashable, Value: AnyObject> {
                 // When `o` is deallocated, `watcher` is also deallocated.
                 // So, `watcher.deinit()` will get called.
 
+                let owner = unsafeAddressOf(o)
+
                 if let watcher = objc_getAssociatedObject(o, unsafeAddressOf(self)) as? DeallocWatcher<Key> {
 
                     watcher.insertKey(key)
                 } else {
+                    let watcher = DeallocWatcher({ [unowned self] (watcher: DeallocWatcher<Key>, keys: Set<Key>) in
 
-                    let watcher = DeallocWatcher { [unowned self] (keys: Set<Key>) in
                         for key in keys {
-                            self.mapping[key] = nil
+
+                            if watcher.owner == self.mapping[key]?.rawPtr {
+
+                                self.mapping[key] = nil
+                            }
                         }
-                    }
+                    }, owner: owner)
 
                     watcher.insertKey(key)
 
@@ -76,7 +86,13 @@ public final class WeakRefMap<Key: Hashable, Value: AnyObject> {
     deinit {
         // cleanup
         for e in self.mapping.values {
-            objc_setAssociatedObject(e.raw, unsafeAddressOf(self), nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+
+            if let val = e.raw, watcher = objc_getAssociatedObject(val, unsafeAddressOf(self)) as? DeallocWatcher<Key> {
+
+                watcher.notify = nil
+
+                objc_setAssociatedObject(e.raw, unsafeAddressOf(self), nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
         }
     }
 }

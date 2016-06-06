@@ -13,25 +13,25 @@ import Foundation
 import iAsync_utils
 
 class NSObject_OwnershipsTest: XCTestCase {
-    
+
     func testObjectOwnershipsExtension() {
-        
-        weak var ownedDeallocated: NSObject?;
-        
-        { () -> () in
-            
-            let owner = NSObject();
-            
-            { () -> Void in
-                
-                let owned = NSObject();
-                ownedDeallocated = owned;
-                owner.addOwnedObject(owned);
-            }();
-            
-            XCTAssertNotNil(ownedDeallocated, "Owned should not be dealloced");
-        }();
-        
+
+        weak var ownedDeallocated: NSObject?
+
+        autoreleasepool {
+
+            let owner = NSObject()
+
+            autoreleasepool {
+
+                let owned = NSObject()
+                ownedDeallocated = owned
+                owner.addOwnedObject(owned)
+            }
+
+            XCTAssertNotNil(ownedDeallocated, "Owned should not be dealloced")
+        }
+
         XCTAssertNil(ownedDeallocated, "Owned should be dealloced")
     }
 }
