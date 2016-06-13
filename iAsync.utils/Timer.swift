@@ -92,7 +92,7 @@ final public class Timer {
 
             for (index, cancelHolder) in self_.cancelBlocks.enumerate() {
 
-                if cancelHolder === weakCancelTimerBlockHolder {
+                if cancelHolder === weakCancelTimerBlockHolder! {
                     self_.cancelBlocks.removeAtIndex(index)
                     weakCancelTimerBlockHolder = nil
                     break

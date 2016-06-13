@@ -51,18 +51,18 @@ extension NSURL {
                     onData(data)
                 } else {
 
-                    let error = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: #function + ":1")
+                    let error = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: "no asset")
                     onError(error)
                 }
             }, failureBlock: { error in
 
                 if let error = error {
 
-                    let contextError = ErrorWithContext(error: error, context: #function)
+                    let contextError = ErrorWithContext(error: error, context: "assetLibrary.assetForURL")
                     onError(contextError)
                 } else {
 
-                    let contextError = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: #function + ":2")
+                    let contextError = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: "assetLibrary.assetForURL no error")
                     onError(contextError)
                 }
             })
@@ -73,7 +73,7 @@ extension NSURL {
         if let result = NSData(contentsOfURL: self) {
             onData(result)
         } else {
-            let contextError = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: #function + ":3")
+            let contextError = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: "localDataWithCallbacks, no data")
             onError(contextError)
         }
     }

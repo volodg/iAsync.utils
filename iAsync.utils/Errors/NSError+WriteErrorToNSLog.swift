@@ -49,11 +49,11 @@ public extension NSError {
         return "\(self.dynamicType) : \(localizedDescription), domain : \(domain) code : \(code.description)"
     }
 
-    func writeErrorToNSLog(context: AnyObject) {
+    func writeErrorToNSLog() {
 
         let action = { () in
             if let logStr = self.errorLogDescription {
-                print("only log - \(logStr) context - \(context)")
+                print("only log - \(logStr)")
             }
         }
 

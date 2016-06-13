@@ -8,7 +8,7 @@
 
 import Foundation
 
-private func readStringWithScanner<T>(documentFile documentFile: String, @noescape scanner: (String) -> T?) -> T? {
+private func parseNumber<T>(documentFile documentFile: String, @noescape scanner: (String) -> T?) -> T? {
 
     let path = String.documentsPathByAppendingPathComponent(documentFile)
 
@@ -20,36 +20,25 @@ private func readStringWithScanner<T>(documentFile documentFile: String, @noesca
     }
 }
 
-public func writeObject<T>(object: T?, toDocumentFile documentFile: String) -> Bool {
-
-    let filePath = String.documentsPathByAppendingPathComponent(documentFile)
-
-    guard let object = object else {
-
-        do {
-            try NSFileManager.defaultManager().removeItemAtPath(filePath)
-            return true
-        } catch let error as NSError {
-            iAsync_utils_logger.logError("can not remove file error: \(error) filePath: \(filePath)", context: #function)
-            return false
-        } catch _ {
-            iAsync_utils_logger.logError("can not remove file: \(filePath)", context: #function)
-            return false
-        }
-    }
+public func writeObject<T>(object: T, toDocumentFile documentFile: String) -> Bool {
 
     let string = String(object)
 
+    let fileName = String.documentsPathByAppendingPathComponent(documentFile)
+
     let result: Bool
     do {
-        try string.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
+        try string.writeToFile(
+                fileName,
+                atomically: true,
+                encoding  : NSUTF8StringEncoding)
         result = true
     } catch _ {
         result = false
     }
 
     if result {
-        filePath.addSkipBackupAttribute()
+        fileName.addSkipBackupAttribute()
     }
 
     return result
@@ -68,7 +57,7 @@ public extension Int {
             return nil
         }
 
-        return readStringWithScanner(documentFile: documentFile, scanner: scanner)
+        return parseNumber(documentFile: documentFile, scanner: scanner)
     }
 }
 
@@ -85,19 +74,7 @@ public extension Double {
             return nil
         }
 
-        return readStringWithScanner(documentFile: documentFile, scanner: scanner)
-    }
-}
-
-public extension String {
-
-    public static func readFromFile(documentFile: String) -> String? {
-
-        let scanner = { (string: String) -> String? in
-            return string
-        }
-
-        return readStringWithScanner(documentFile: documentFile, scanner: scanner)
+        return parseNumber(documentFile: documentFile, scanner: scanner)
     }
 }
 
