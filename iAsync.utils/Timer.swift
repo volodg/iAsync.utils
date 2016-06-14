@@ -66,7 +66,7 @@ final public class Timer {
         leeway       : NSTimeInterval,
         dispatchQueue: dispatch_queue_t) -> JCancelScheduledBlock {
 
-        var timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatchQueue)
+        var timer: dispatch_source_t! = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatchQueue)
 
         var actionBlockHolder: JScheduledBlock? = actionBlock
 
