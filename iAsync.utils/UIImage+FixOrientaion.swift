@@ -58,24 +58,24 @@ extension UIImage {
             nil,
             Int(size.width),
             Int(size.height),
-            CGImageGetBitsPerComponent(CGImage),
+            CGImageGetBitsPerComponent(CGImage!),
             0,
-            CGImageGetColorSpace(CGImage),
-            CGImageGetBitmapInfo(CGImage).rawValue)
+            CGImageGetColorSpace(CGImage!)!,
+            CGImageGetBitmapInfo(CGImage!).rawValue)
 
-        CGContextConcatCTM(ctx, transform)
+        CGContextConcatCTM(ctx!, transform)
 
         switch imageOrientation {
         case .Left, .LeftMirrored, .Right, .RightMirrored:
-            CGContextDrawImage(ctx, CGRectMake(0,0,size.height,size.width), CGImage)
+            CGContextDrawImage(ctx!, CGRectMake(0,0,size.height,size.width), CGImage!)
             break
 
         case .Up, .Down, .UpMirrored, .DownMirrored:
-            CGContextDrawImage(ctx, CGRectMake(0,0, size.width, size.height), CGImage)
+            CGContextDrawImage(ctx!, CGRectMake(0,0, size.width, size.height), CGImage!)
             break
         }
 
         // And now we just create a new UIImage from the drawing context
-        return CGBitmapContextCreateImage(ctx).flatMap { UIImage(CGImage: $0) }
+        return CGBitmapContextCreateImage(ctx!).flatMap { UIImage(CGImage: $0) }
     }
 }
