@@ -61,7 +61,8 @@ public extension NSError {
     public var errorLog: NSDictionary {
         let log = errorLogText
         let result = [
-            "Text" : log
+            "Text" : log,
+            "Type" : self.dynamicType.description()
         ]
         return result
     }
@@ -82,7 +83,7 @@ public extension ErrorWithContext {
                 let action = { () in
                     var log = self.error.errorLog as! [String:String]
                     log["Context"] = self.context
-                    iAsync_utils_logger.logWith(level: "error", log: log)
+                    iAsync_utils_logger.logWith(level: .LogError, log: log)
                 }
 
                 delayedPerformAction(self, action: action, queue: jLoggerErrorsQueue)

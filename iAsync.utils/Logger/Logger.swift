@@ -8,11 +8,17 @@
 
 import Foundation
 
-public typealias LogHandler = (level: String, log: [String:String]) -> Void
+public typealias LogHandler = (level: LogLevel, log: [String:String]) -> Void
 
 private var staticLogHandler: LogHandler? = nil
 
 public let iAsync_utils_logger = Logger()
+
+public enum LogLevel: String {
+
+    case LogError = "error"
+    case LogInfo  = "info"
+}
 
 final public class Logger {
 
@@ -23,7 +29,7 @@ final public class Logger {
             if let result = staticLogHandler {
                 return result
             }
-            let result = { (level: String, log: [String:String]) in
+            let result = { (level: LogLevel, log: [String:String]) in
                 print("\(level): \(log)")
             }
             staticLogHandler = result
@@ -35,14 +41,14 @@ final public class Logger {
     }
 
     public func logError(log: String, context: String? = nil) {
-        logWith(level: "error", log: log, context: context)
+        logWith(level: .LogError, log: log, context: context)
     }
 
     public func logInfo(log: String, context: String? = nil) {
-        logWith(level: "info", log: log, context: context)
+        logWith(level: .LogInfo, log: log, context: context)
     }
 
-    public func logWith(level level: String, log: String, context: String?) {
+    public func logWith(level level: LogLevel, log: String, context: String?) {
         var log = [ "Text" : log ]
         if let context = context {
             log["Context"] = context
@@ -50,7 +56,7 @@ final public class Logger {
         logHandler(level: level, log: log)
     }
 
-    public func logWith(level level: String, log: [String:String]) {
+    public func logWith(level level: LogLevel, log: [String:String]) {
         logHandler(level: level, log: log)
     }
 }
