@@ -10,7 +10,7 @@ import Foundation
 
 private struct ErrorWithAction {
 
-    let error : NSError
+    let error : ErrorWithContext
     let action: (() -> ())
 }
 
@@ -22,9 +22,9 @@ final private class ActionsHolder {
 private var nsLogErrorsQueue   = ActionsHolder()
 private var jLoggerErrorsQueue = ActionsHolder()
 
-private func delayedPerformAction(error: NSError, action: (() -> ()), queue: ActionsHolder) {
+private func delayedPerformAction(error: ErrorWithContext, action: (() -> ()), queue: ActionsHolder) {
 
-    if queue.queue.indexOf({ $0.error === error }) != nil {
+    if queue.queue.indexOf({ $0.error.error === error.error && $0.error.context == error.context }) != nil {
         return
     }
 
@@ -43,31 +43,61 @@ private func delayedPerformAction(error: NSError, action: (() -> ()), queue: Act
     }
 }
 
+public enum LogTarget: Int {
+
+    case Logger
+    case Console
+    case Nothing
+}
+
 public extension NSError {
 
-    var errorLogDescription: String? {
-        return "\(self.dynamicType) : \(localizedDescription), domain : \(domain) code : \(code.description)"
+    public var errorLogText: String {
+        let result = "\(self.dynamicType) : \(localizedDescription), domain : \(domain) code : \(code.description)"
+        return result
     }
 
-    func writeErrorToNSLog(context: String) {
-
-        let action = { () in
-            if let logStr = self.errorLogDescription {
-                print("only log - \(logStr) context - \(context)")
-            }
-        }
-
-        delayedPerformAction(self, action: action, queue: nsLogErrorsQueue)
+    //return type NSDictionary is workaround, should be a [String:String]
+    public var errorLog: NSDictionary {
+        let log = errorLogText
+        let result = [
+            "Text" : log
+        ]
+        return result
     }
 
-    func writeErrorWithLogger(context: String) {
+    //return type Int is workaround, should be a LogTarget
+    public var logTarget: Int {
+        return LogTarget.Logger.rawValue
+    }
+}
 
-        let action = { () in
-            if let logStr = self.errorLogDescription {
-                iAsync_utils_logger.logError(logStr, context: context)
+public extension ErrorWithContext {
+
+    func postToLog() {
+
+        if let target = LogTarget(rawValue: error.logTarget) {
+            switch target {
+            case .Logger:
+                let action = { () in
+                    var log = self.error.errorLog as! [String:String]
+                    log["Context"] = self.context
+                    iAsync_utils_logger.logWith(level: "error", log: log)
+                }
+
+                delayedPerformAction(self, action: action, queue: jLoggerErrorsQueue)
+            case .Console:
+                let action = { () in
+                    let log = self.error.errorLog
+                    print("only log - \(log) context - \(self.context)")
+                }
+
+                delayedPerformAction(self, action: action, queue: nsLogErrorsQueue)
+            case .Nothing:
+                break
             }
+        } else {
+            assert(false)
         }
-
-        delayedPerformAction(self, action: action, queue: jLoggerErrorsQueue)
     }
 }

@@ -18,8 +18,4 @@ public struct ErrorWithContext : ErrorType {
         self.error   = error
         self.context = context
     }
-
-    public func writeErrorWithLogger() {
-        error.writeErrorWithLogger(context)
-    }
 }

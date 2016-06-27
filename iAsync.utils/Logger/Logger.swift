@@ -49,4 +49,8 @@ final public class Logger {
         }
         logHandler(level: level, log: log)
     }
+
+    public func logWith(level level: String, log: [String:String]) {
+        logHandler(level: level, log: log)
+    }
 }
