@@ -11,9 +11,9 @@ import Foundation
 public struct ErrorWithContext : ErrorType {
 
     public let error  : NSError
-    public let context: AnyObject
+    public let context: String
 
-    public init(error: NSError, context: AnyObject) {
+    public init(error: NSError, context: String) {
 
         self.error   = error
         self.context = context

@@ -18,7 +18,7 @@ public class SilentError : UtilsError {
         super.init(description: description)
     }
 
-    public override func writeErrorWithLogger(context: AnyObject) {
+    public override func writeErrorWithLogger(context: String) {
         writeErrorToNSLog(context)
     }
 }

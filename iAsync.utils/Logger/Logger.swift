@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias LogHandler = (level: String, log: String, context: AnyObject?) -> Void
+public typealias LogHandler = (level: String, log: [String:String]) -> Void
 
 private var staticLogHandler: LogHandler? = nil
 
@@ -23,8 +23,8 @@ final public class Logger {
             if let result = staticLogHandler {
                 return result
             }
-            let result = { (level: String, log: String, context: AnyObject?) in
-                print("\(log): \(level)")
+            let result = { (level: String, log: [String:String]) in
+                print("\(level): \(log)")
             }
             staticLogHandler = result
             return result
@@ -34,15 +34,19 @@ final public class Logger {
         }
     }
 
-    public func logError(log: String, context: AnyObject) {
-        logHandler(level: "error", log: log, context: context)
+    public func logError(log: String, context: String? = nil) {
+        logWith(level: "error", log: log, context: context)
     }
 
-    func logInfo(log: String) {
-        logHandler(level: "info", log: log, context: nil)
+    public func logInfo(log: String, context: String? = nil) {
+        logWith(level: "info", log: log, context: context)
     }
 
-    func log(level: String, context: AnyObject, log: String) {
-        logHandler(level: level, log: log, context: context)
+    public func logWith(level level: String, log: String, context: String?) {
+        var log = [ "Text" : log ]
+        if let context = context {
+            log["Context"] = context
+        }
+        logHandler(level: level, log: log)
     }
 }

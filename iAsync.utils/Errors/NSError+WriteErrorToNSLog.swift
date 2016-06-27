@@ -49,7 +49,7 @@ public extension NSError {
         return "\(self.dynamicType) : \(localizedDescription), domain : \(domain) code : \(code.description)"
     }
 
-    func writeErrorToNSLog(context: AnyObject) {
+    func writeErrorToNSLog(context: String) {
 
         let action = { () in
             if let logStr = self.errorLogDescription {
@@ -60,7 +60,7 @@ public extension NSError {
         delayedPerformAction(self, action: action, queue: nsLogErrorsQueue)
     }
 
-    func writeErrorWithLogger(context: AnyObject) {
+    func writeErrorWithLogger(context: String) {
 
         let action = { () in
             if let logStr = self.errorLogDescription {
