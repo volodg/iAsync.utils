@@ -73,6 +73,13 @@ public extension NSError {
     }
 }
 
+public func debugOnlyPrint(_ str: String) {
+
+    if _isDebugAssertConfiguration() {
+        print(str)
+    }
+}
+
 public extension ErrorWithContext {
 
     func postToLog() {
@@ -90,7 +97,7 @@ public extension ErrorWithContext {
             case .Console:
                 let action = { () in
                     let log = self.error.errorLog
-                    print("only log - \(log) context - \(self.context)")
+                    debugOnlyPrint("only log - \(log) context - \(self.context)")
                 }
 
                 delayedPerformAction(self, action: action, queue: nsLogErrorsQueue)
