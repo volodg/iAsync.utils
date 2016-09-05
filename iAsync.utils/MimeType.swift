@@ -13,12 +13,18 @@ import MobileCoreServices
 
 public final class MimeType {
 
+    private static func fileExtension(fileName: String) -> String {
+
+        let result = (fileName as NSString).pathExtension.lowercaseString
+        return result
+    }
+
     public static func contentTypeForFile(fileName: String) -> String {
 
         let contentTypeFunc = { () -> String? in
 
-            let fileExtension = (fileName as NSString).pathExtension
-            let UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, nil)
+            let fileExtension_ = fileExtension(fileName)
+            let UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension_, nil)
 
             return UTI.flatMap { val -> String? in
 
@@ -29,8 +35,8 @@ public final class MimeType {
 
         let fixContentTypeFunc = { () -> String in
 
-            let fileExtension = (fileName as NSString).pathExtension.lowercaseString
-            let result = MimeType.detectMimeType(fileExtension)
+            let fileExtension_ = fileExtension(fileName)
+            let result = MimeType.detectMimeType(fileExtension_)
             return result
         }
 
