@@ -53,12 +53,13 @@ public enum LogTarget: Int {
 public extension NSError {
 
     public var errorLogText: String {
+
         let result = "\(self.dynamicType) : \(localizedDescription), domain : \(domain) code : \(code.description)"
         return result
     }
 
     //return type NSDictionary is workaround, should be a [String:String]
-    public var errorLog: NSDictionary {
+    public var errorLog: [String:String] {
         let log = errorLogText
         let result = [
             "Text" : log,
@@ -88,7 +89,7 @@ public extension ErrorWithContext {
             switch target {
             case .Logger:
                 let action = { () in
-                    var log = self.error.errorLog as! [String:String]
+                    var log = self.error.errorLog
                     log["Context"] = self.context
                     iAsync_utils_logger.logWith(level: .LogError, log: log)
                 }
