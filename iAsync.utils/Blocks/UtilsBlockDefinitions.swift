@@ -8,7 +8,7 @@
 
 import Foundation
 
-import ReactiveKit
+import ReactiveKit_old
 
 public enum UtilsBlockDefinitions2<T1, T2, Error: ErrorType> {
 
