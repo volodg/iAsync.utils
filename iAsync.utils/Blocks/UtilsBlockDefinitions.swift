@@ -9,7 +9,6 @@
 import Foundation
 
 import enum ReactiveKit.Result
-import ReactiveKit_old
 
 public enum UtilsBlockDefinitions2<T1, T2, Error: ErrorType> {
 
