@@ -117,6 +117,4 @@ Pod::Spec.new do |s|
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.xcconfig = { "SWIFT_OBJC_BRIDGING_HEADER" => "Lib/iAsyncUtils-Bridging-Header.h" }
 
-  s.dependency "ReactiveKit_old"#, '~> 1.1.3'
-
 end
