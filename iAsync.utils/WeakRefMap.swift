@@ -13,14 +13,14 @@ import Foundation
 private final class DeallocWatcher<Key: Hashable> {
 
     var notify: ((_ watcher: DeallocWatcher<Key>, _ keys: Set<Key>)->Void)?
-    let owner: UnsafeRawPointer
+    let owner: UnsafeMutableRawPointer
     fileprivate var keys = Set<Key>()
 
     func insertKey(_ key: Key) {
         keys.insert(key)
     }
 
-    init(_ notify:@escaping (_ watcher: DeallocWatcher<Key>, _ keys: Set<Key>)->Void, owner: UnsafeRawPointer) {
+    init(_ notify:@escaping (_ watcher: DeallocWatcher<Key>, _ keys: Set<Key>)->Void, owner: UnsafeMutableRawPointer) {
         self.notify = notify
         self.owner  = owner
     }
