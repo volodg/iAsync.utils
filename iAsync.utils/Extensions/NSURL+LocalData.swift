@@ -12,8 +12,8 @@ import AssetsLibrary
 
 public final class CanNotSelectPhotoError : UtilsError {
 
-    let url: NSURL
-    init(url: NSURL) {
+    let url: URL
+    init(url: URL) {
         self.url = url
         super.init(description: "")
     }
@@ -28,26 +28,26 @@ public final class CanNotSelectPhotoError : UtilsError {
     }
 }
 
-extension NSURL {
+extension URL {
 
     public func isAssetURL() -> Bool {
 
         return scheme == "assets-library"
     }
 
-    public func localDataWithCallbacks(onData: NSData -> Void, onError: ErrorWithContext -> Void) {
+    public func localDataWithCallbacks(_ onData: @escaping (Data) -> Void, onError: @escaping (ErrorWithContext) -> Void) {
 
         if isAssetURL() {
 
             let assetLibrary = ALAssetsLibrary()
 
-            assetLibrary.assetForURL(self, resultBlock: { asset in
+            assetLibrary.asset(for: self, resultBlock: { asset in
 
                 if let asset = asset {
                     let rep      = asset.defaultRepresentation()
-                    let buffer   = UnsafeMutablePointer<UInt8>.alloc(Int(rep.size()))
-                    let buffered = rep.getBytes(buffer, fromOffset: 0, length: Int(rep.size()), error: nil)
-                    let data     = NSData(bytesNoCopy: buffer, length: buffered, freeWhenDone: true)
+                    let buffer   = UnsafeMutablePointer<UInt8>.allocate(capacity: Int((rep?.size())!))
+                    let buffered = rep?.getBytes(buffer, fromOffset: 0, length: Int((rep?.size())!), error: nil)
+                    let data     = Data(bytesNoCopy: UnsafeMutablePointer<UInt8>(buffer), count: buffered!, deallocator: .free)
 
                     onData(data)
                 } else {
@@ -59,7 +59,7 @@ extension NSURL {
 
                 if let error = error {
 
-                    let contextError = ErrorWithContext(error: error, context: #function)
+                    let contextError = ErrorWithContext(error: error as NSError, context: #function)
                     onError(contextError)
                 } else {
 
@@ -71,7 +71,7 @@ extension NSURL {
             return
         }
 
-        if let result = NSData(contentsOfURL: self) {
+        if let result = try? Data(contentsOf: self) {
             onData(result)
         } else {
             let contextError = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: #function + ":3")

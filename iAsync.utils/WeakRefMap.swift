@@ -12,20 +12,20 @@ import Foundation
 
 private final class DeallocWatcher<Key: Hashable> {
 
-    var notify: ((watcher: DeallocWatcher<Key>, keys: Set<Key>)->Void)?
-    let owner: UnsafePointer<Void>
-    private var keys = Set<Key>()
+    var notify: ((_ watcher: DeallocWatcher<Key>, _ keys: Set<Key>)->Void)?
+    let owner: UnsafeRawPointer
+    fileprivate var keys = Set<Key>()
 
-    func insertKey(key: Key) {
+    func insertKey(_ key: Key) {
         keys.insert(key)
     }
 
-    init(_ notify:(watcher: DeallocWatcher<Key>, keys: Set<Key>)->Void, owner: UnsafePointer<Void>) {
+    init(_ notify:@escaping (_ watcher: DeallocWatcher<Key>, _ keys: Set<Key>)->Void, owner: UnsafeRawPointer) {
         self.notify = notify
         self.owner  = owner
     }
 
-    deinit { notify?(watcher: self, keys: keys) }
+    deinit { notify?(self, keys) }
 }
 
 //TODO : SequenceType
@@ -48,9 +48,9 @@ public final class WeakRefMap<Key: Hashable, Value: AnyObject> {
                 // When `o` is deallocated, `watcher` is also deallocated.
                 // So, `watcher.deinit()` will get called.
 
-                let owner = unsafeAddressOf(o)
+                let owner = Unmanaged.passUnretained(o).toOpaque()
 
-                if let watcher = objc_getAssociatedObject(o, unsafeAddressOf(self)) as? DeallocWatcher<Key> {
+                if let watcher = objc_getAssociatedObject(o, Unmanaged.passUnretained(self).toOpaque()) as? DeallocWatcher<Key> {
 
                     watcher.insertKey(key)
                 } else {
@@ -67,16 +67,16 @@ public final class WeakRefMap<Key: Hashable, Value: AnyObject> {
 
                     watcher.insertKey(key)
 
-                    objc_setAssociatedObject(o, unsafeAddressOf(self), watcher, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                    objc_setAssociatedObject(o, Unmanaged.passUnretained(self).toOpaque(), watcher, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 }
 
                 mapping[key] = WeakBox(o)
             } else {
-                guard let index = mapping.indexForKey(key) else { return }
+                guard let index = mapping.index(forKey: key) else { return }
 
                 let (_, value) = mapping[index]
-                objc_setAssociatedObject(value.raw, unsafeAddressOf(self), nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-                mapping.removeAtIndex(index)
+                objc_setAssociatedObject(value.raw, Unmanaged.passUnretained(self).toOpaque(), nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                mapping.remove(at: index)
             }
         }
     }
@@ -87,11 +87,11 @@ public final class WeakRefMap<Key: Hashable, Value: AnyObject> {
         // cleanup
         for e in self.mapping.values {
 
-            if let val = e.raw, watcher = objc_getAssociatedObject(val, unsafeAddressOf(self)) as? DeallocWatcher<Key> {
+            if let val = e.raw, let watcher = objc_getAssociatedObject(val, Unmanaged.passUnretained(self).toOpaque()) as? DeallocWatcher<Key> {
 
                 watcher.notify = nil
 
-                objc_setAssociatedObject(e.raw, unsafeAddressOf(self), nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(e.raw, Unmanaged.passUnretained(self).toOpaque(), nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
         }
     }

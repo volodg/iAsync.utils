@@ -9,13 +9,13 @@
 import Foundation
 
 public typealias JCancelScheduledBlock = () -> Void
-public typealias JScheduledBlock = (cancel: JCancelScheduledBlock) -> Void
+public typealias JScheduledBlock = (_ cancel: JCancelScheduledBlock) -> Void
 
 private let emptyTimerBlock: () -> Void = {}
 
 final public class Timer {
 
-    private var cancelBlocks = [SimpleBlockHolder]()
+    fileprivate var cancelBlocks = [SimpleBlockHolder]()
 
     public init() {}
 
@@ -26,7 +26,7 @@ final public class Timer {
     public func cancelAllScheduledOperations() {
 
         let cancelBlocks = self.cancelBlocks
-        self.cancelBlocks.removeAll(keepCapacity: true)
+        self.cancelBlocks.removeAll(keepingCapacity: true)
         for cancelHolder in cancelBlocks {
             cancelHolder.onceSimpleBlock()()
         }
@@ -34,7 +34,7 @@ final public class Timer {
 
     public static func sharedByThreadTimer() -> Timer {
 
-        let thread = NSThread.currentThread()
+        let thread = Thread.current
 
         let key = "iAsync.utils.Timer.threadLocalTimer"
 
@@ -50,50 +50,51 @@ final public class Timer {
     }
 
     func addBlock(
-        actionBlock  : JScheduledBlock,
-        duration     : NSTimeInterval,
-        dispatchQueue: dispatch_queue_t) -> JCancelScheduledBlock {
+        _ actionBlock  : @escaping JScheduledBlock,
+        duration     : TimeInterval,
+        dispatchQueue: DispatchQueue) -> JCancelScheduledBlock {
 
         return self.addBlock(actionBlock,
-            duration     : duration,
-            leeway       : duration/10.0,
-            dispatchQueue: dispatchQueue)
+                             duration     : duration,
+                             leeway       : duration/10.0,
+                             dispatchQueue: dispatchQueue)
     }
 
     public func addBlock(
-        actionBlock  : JScheduledBlock,
-        duration     : NSTimeInterval,
-        leeway       : NSTimeInterval,
-        dispatchQueue: dispatch_queue_t) -> JCancelScheduledBlock {
+        _ actionBlock  : @escaping JScheduledBlock,
+        duration     : TimeInterval,
+        leeway       : TimeInterval,
+        dispatchQueue: DispatchQueue) -> JCancelScheduledBlock {
 
-        var timer: dispatch_source_t! = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatchQueue)
+        let timer =
+            DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: UInt(0)), queue: dispatchQueue)
 
         var actionBlockHolder: JScheduledBlock? = actionBlock
 
-        let delta = Int64(duration * Double(NSEC_PER_SEC))
-        dispatch_source_set_timer(timer,
-            dispatch_time(DISPATCH_TIME_NOW, delta),
-            UInt64(delta),
-            UInt64(leeway * Double(NSEC_PER_SEC)))
+        timer.scheduleRepeating(
+            deadline: DispatchTime.now() + duration,
+            interval: DispatchTimeInterval.milliseconds(Int(duration*1000)),
+            leeway  : DispatchTimeInterval.milliseconds(Int(leeway*1000))
+        )
 
         let cancelTimerBlockHolder = SimpleBlockHolder()
         weak var weakCancelTimerBlockHolder = cancelTimerBlockHolder
 
-        cancelTimerBlockHolder.simpleBlock = { [weak self] () -> () in
+        cancelTimerBlockHolder.simpleBlock = { [weak self, weak timer] () -> () in
 
             guard let timer_ = timer else { return }
 
             actionBlockHolder = nil
-            dispatch_source_set_event_handler(timer_, emptyTimerBlock)
-            dispatch_source_cancel(timer_)
+            timer_.setEventHandler(handler: emptyTimerBlock)
+            timer_.cancel()
             timer = nil
 
             guard let self_ = self else { return }
 
-            for (index, cancelHolder) in self_.cancelBlocks.enumerate() {
+            for (index, cancelHolder) in self_.cancelBlocks.enumerated() {
 
                 if cancelHolder === weakCancelTimerBlockHolder {
-                    self_.cancelBlocks.removeAtIndex(index)
+                    self_.cancelBlocks.remove(at: index)
                     weakCancelTimerBlockHolder = nil
                     break
                 }
@@ -103,32 +104,32 @@ final public class Timer {
         cancelBlocks.append(cancelTimerBlockHolder)
 
         let eventHandlerBlock = { () -> () in
-            actionBlockHolder?(cancel: cancelTimerBlockHolder.onceSimpleBlock())
+            actionBlockHolder?(cancelTimerBlockHolder.onceSimpleBlock())
         }
 
-        dispatch_source_set_event_handler(timer, eventHandlerBlock)
+        timer.setEventHandler(handler: eventHandlerBlock)
 
-        dispatch_resume(timer)
+        timer.resume()
 
         return cancelTimerBlockHolder.onceSimpleBlock()
     }
 
     public func addBlock(
-        actionBlock: JScheduledBlock,
-        duration   : NSTimeInterval) -> JCancelScheduledBlock {
+        _ actionBlock: @escaping JScheduledBlock,
+        duration   : TimeInterval) -> JCancelScheduledBlock {
 
         return addBlock(actionBlock,
-            duration: duration,
-            leeway  : duration/10.0)
+                        duration: duration,
+                        leeway  : duration/10.0)
     }
 
-    public func addBlock(actionBlock: JScheduledBlock,
-        duration: NSTimeInterval,
-        leeway  : NSTimeInterval) -> JCancelScheduledBlock {
+    public func addBlock(_ actionBlock: @escaping JScheduledBlock,
+                         duration: TimeInterval,
+                         leeway  : TimeInterval) -> JCancelScheduledBlock {
 
         return addBlock(actionBlock,
-            duration     : duration,
-            leeway       : leeway,
-            dispatchQueue: dispatch_get_main_queue())
+                        duration     : duration,
+                        leeway       : leeway,
+                        dispatchQueue: DispatchQueue.main)
     }
 }

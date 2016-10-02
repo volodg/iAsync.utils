@@ -8,13 +8,14 @@
 
 import Foundation
 
-public extension NSData {
+public extension Data {
 
-    func tmpFilePath(fileName: String = NSUUID().UUIDString) -> String {
+    func tmpFilePath(_ fileName: String = UUID().uuidString) -> String {
 
         let filePath = String.cachesPathByAppendingPathComponent(fileName)
 
-        writeToFile(filePath, atomically: true)
+        let url = URL(fileURLWithPath: filePath)
+        try? write(to: url, options: [])//todo log error
 
         return filePath
     }

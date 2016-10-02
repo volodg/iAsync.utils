@@ -10,7 +10,7 @@ import Foundation
 
 import enum ReactiveKit.Result
 
-public enum UtilsBlockDefinitions2<T1, T2, Error: ErrorType> {
+public enum UtilsBlockDefinitions2<T1, T2, Error: Swift.Error> {
 
-    public typealias Analyzer = (object: T1) -> Result<T2, Error>
+    public typealias Analyzer = (_ object: T1) -> Result<T2, Error>
 }

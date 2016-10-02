@@ -16,43 +16,42 @@ extension String {
     ///  - parameter right: The right bookend
     ///
     ///  - returns: The string between the two bookends, or nil if the bookends cannot be found, the bookends are the same or appear contiguously.
-    public func between(left: String, _ right: String) -> String? {
+    public func between(_ left: String, _ right: String) -> String? {
         guard
-            let leftRange = rangeOfString(left), let rightRange = rangeOfString(right, options: .BackwardsSearch)
-            where left != right && leftRange.endIndex != rightRange.startIndex
+            let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards)
+            , left != right && leftRange.upperBound != rightRange.lowerBound
             else { return nil }
-        
-        return self[leftRange.endIndex...rightRange.startIndex.predecessor()]
-        
+
+        return self[leftRange.upperBound...self.index(before: rightRange.lowerBound)]
     }
 
-    public func substring(startIndex: Int, length: Int) -> String {
-        let start = self.startIndex.advancedBy(startIndex)
-        let end = self.startIndex.advancedBy(startIndex + length)
+    public func substring(_ startIndex: Int, length: Int) -> String {
+        let start = self.characters.index(self.startIndex, offsetBy: startIndex)
+        let end = self.characters.index(self.startIndex, offsetBy: startIndex + length)
         return self[start..<end]
     }
 
-    public func contains(substring: String) -> Bool {
-        return rangeOfString(substring) != nil
+    public func contains(_ substring: String) -> Bool {
+        return range(of: substring) != nil
     }
 
-    public func toDouble(locale: NSLocale = NSLocale.systemLocale()) -> Double? {
-        let nf = NSNumberFormatter()
+    public func toDouble(_ locale: Locale = Locale.current) -> Double? {
+        let nf = NumberFormatter()
         nf.locale = locale
-        if let number = nf.numberFromString(self) {
+        if let number = nf.number(from: self) {
             return number.doubleValue
         }
         return nil
     }
 
     public func toInt() -> Int? {
-        if let number = NSNumberFormatter().numberFromString(self) {
-            return number.integerValue
+        if let number = NumberFormatter().number(from: self) {
+            return number.intValue
         }
         return nil
     }
 
     public func trimmed() -> String {
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 }

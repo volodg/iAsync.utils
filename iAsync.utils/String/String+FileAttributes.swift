@@ -12,11 +12,11 @@ public extension String {
 
     func addSkipBackupAttribute() {
 
-        let url = NSURL(fileURLWithPath: self)
-        assert(NSFileManager.defaultManager().fileExistsAtPath(self))
+        let url = URL(fileURLWithPath: self)
+        assert(FileManager.default.fileExists(atPath: self))
 
         do {
-            try url.setResourceValue(true, forKey: NSURLIsExcludedFromBackupKey)
+            try (url as NSURL).setResourceValue(true, forKey: URLResourceKey.isExcludedFromBackupKey)
         } catch let error as NSError {
             iAsync_utils_logger.logError("setResourceValue error: \(error) path: \(self)", context: #function)
         } catch _ {
