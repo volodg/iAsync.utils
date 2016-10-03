@@ -24,6 +24,10 @@ public struct HashableArray<T: Equatable> : Hashable, Collection/*, MutableColle
 //    public subscript (position: Self.Index) -> Self.Generator.Element { get set }
 //    public subscript (bounds: Range<Self.Index>) -> Self.SubSequence { get set }
 
+    public var last: T? {
+        return array.last
+    }
+
     public typealias Iterator = Array<T>.Iterator
 
     public typealias Index = Array<T>.Index
