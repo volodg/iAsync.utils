@@ -18,7 +18,7 @@ open class SilentError : UtilsError {
         super.init(description: description)
     }
 
-    override open var logTarget: Int {
-        return LogTarget.console.rawValue
-    }
+    //override open var logTarget: Int {
+    //    return LogTarget.console.rawValue
+    //}
 }

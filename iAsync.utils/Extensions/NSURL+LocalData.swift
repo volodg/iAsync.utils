@@ -22,7 +22,7 @@ public final class CanNotSelectPhotoError : UtilsError {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override public var errorLogText: String {
+    override open var errorLogText: String {
         let result = "<CanNotSelectPhotoError url: \(url)>"
         return result
     }

@@ -69,9 +69,9 @@ public extension NSError {
     }
 
     //return type Int is workaround, should be a LogTarget
-    public var logTarget: Int {
-        return LogTarget.logger.rawValue
-    }
+    //public var logTarget: Int {
+    //    return LogTarget.logger.rawValue
+    //}
 }
 
 public func debugOnlyPrint(_ str: String) {
@@ -85,7 +85,8 @@ public extension ErrorWithContext {
 
     func postToLog() {
 
-        if let target = LogTarget(rawValue: error.logTarget) {
+        //todo swift3
+        /*if let target = LogTarget(rawValue: error.logTarget) {
             switch target {
             case .logger:
                 let action = { () in
@@ -107,6 +108,6 @@ public extension ErrorWithContext {
             }
         } else {
             assert(false)
-        }
+        }*/
     }
 }
