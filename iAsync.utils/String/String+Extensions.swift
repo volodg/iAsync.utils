@@ -8,6 +8,8 @@
 
 import Foundation
 
+//source - SwiftString
+
 extension String {
 
     ///  Finds the string between two bookend strings if it can be found.
@@ -49,5 +51,13 @@ extension String {
 
     public func trimmed() -> String {
         return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    }
+
+    public subscript(r: CountableClosedRange<Int>) -> String {
+        get {
+            let startIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
+            let endIndex = self.index(startIndex, offsetBy: r.upperBound - r.lowerBound)
+            return self[startIndex..<endIndex]
+        }
     }
 }
