@@ -9,9 +9,9 @@
 import Foundation
 
 //TODO should be protocol
-public class UtilsError : NSError {
+open class UtilsError : NSError {
 
-    public class func iAsyncErrorsDomain() -> String {
+    open class func iAsyncErrorsDomain() -> String {
         return "com.just_for_fun.library"
     }
 

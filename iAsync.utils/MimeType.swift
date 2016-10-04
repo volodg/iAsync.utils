@@ -13,18 +13,18 @@ import MobileCoreServices
 
 public final class MimeType {
 
-    private static func fileExtension(fileName: String) -> String {
+    fileprivate static func fileExtension(_ fileName: String) -> String {
 
-        let result = (fileName as NSString).pathExtension.lowercaseString
+        let result = (fileName as NSString).pathExtension.lowercased()
         return result
     }
 
-    public static func contentTypeForFile(fileName: String) -> String {
+    public static func contentTypeForFile(_ fileName: String) -> String {
 
         let contentTypeFunc = { () -> String? in
 
             let fileExtension_ = fileExtension(fileName)
-            let UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension_, nil)
+            let UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension_ as CFString, nil)
 
             return UTI.flatMap { val -> String? in
 
@@ -44,7 +44,7 @@ public final class MimeType {
         return result
     }
 
-    public static func detectMimeType(ext: String) -> String {
+    public static func detectMimeType(_ ext: String) -> String {
 
         let default_ = "application/octet-stream"
         let result   = table[ext]

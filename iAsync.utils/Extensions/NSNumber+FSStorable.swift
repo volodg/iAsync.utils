@@ -8,7 +8,7 @@
 
 import Foundation
 
-private func readStringWithScanner<T>(documentFile documentFile: String, @noescape scanner: (String) -> T?) -> T? {
+private func readStringWithScanner<T>(documentFile: String, scanner: (String) -> T?) -> T? {
 
     let path        = documentFile.documentsPath
     let filesString = path.stringContent()
@@ -16,7 +16,7 @@ private func readStringWithScanner<T>(documentFile documentFile: String, @noesca
     return result
 }
 
-public func writeObject<T>(object: T?, toDocumentFile documentFile: String, logError: Bool = true) -> Bool {
+public func writeObject<T>(_ object: T?, toDocumentFile documentFile: String, logError: Bool = true) -> Bool {
 
     let filePath = documentFile.documentsPath
 
@@ -25,7 +25,7 @@ public func writeObject<T>(object: T?, toDocumentFile documentFile: String, logE
         return filePath.removeItem(logError)
     }
 
-    let string = String(object)
+    let string = String(describing: object)
 
     let result = filePath.writeToFile(string)
 
@@ -38,12 +38,12 @@ public func writeObject<T>(object: T?, toDocumentFile documentFile: String, logE
 
 public extension Int {
 
-    public static func readFromFile(documentFile: String) -> Int? {
+    public static func readFromFile(_ documentFile: String) -> Int? {
 
         let scanner = { (string: String) -> Int? in
             var scannedNumber = 0
-            let scanner = NSScanner(string: string)
-            if scanner.scanInteger(&scannedNumber) {
+            let scanner = Scanner(string: string)
+            if scanner.scanInt(&scannedNumber) {
                 return scannedNumber
             }
             return nil
@@ -55,11 +55,11 @@ public extension Int {
 
 public extension Double {
 
-    public static func readFromFile(documentFile: String) -> Double? {
+    public static func readFromFile(_ documentFile: String) -> Double? {
 
         let scanner = { (string: String) -> Double? in
             var scannedNumber = 0.0
-            let scanner = NSScanner(string: string)
+            let scanner = Scanner(string: string)
             if scanner.scanDouble(&scannedNumber) {
                 return scannedNumber
             }
@@ -72,7 +72,7 @@ public extension Double {
 
 public extension String {
 
-    public static func readFromFile(documentFile: String) -> String? {
+    public static func readFromFile(_ documentFile: String) -> String? {
 
         let scanner = { (string: String) -> String? in
             return string
@@ -84,7 +84,7 @@ public extension String {
 
 public extension Bool {
 
-    public static func readFromFile(documentFile: String) -> Bool? {
+    public static func readFromFile(_ documentFile: String) -> Bool? {
 
         return Int.readFromFile(documentFile).flatMap { $0 != 0 }
     }

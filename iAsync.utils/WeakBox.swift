@@ -10,15 +10,15 @@ import Foundation
 
 public struct WeakBox<T: AnyObject> {
     public weak var raw: T?
-    internal let rawPtr: UnsafePointer<Void>
+    internal let rawPtr: UnsafeMutableRawPointer
 
     public init(_ raw: T) {
         self.raw = raw
-        self.rawPtr = unsafeAddressOf(raw)
+        self.rawPtr = Unmanaged.passUnretained(raw).toOpaque()
     }
 }
 
-public struct EquatableWeakBox<T: AnyObject where T: Equatable> : Equatable {
+public struct EquatableWeakBox<T: AnyObject> : Equatable where T: Equatable {
     public weak var raw: T?
 
     public init(_ raw: T) {
@@ -26,7 +26,7 @@ public struct EquatableWeakBox<T: AnyObject where T: Equatable> : Equatable {
     }
 }
 
-public func ==<T: AnyObject where T: Equatable>(lhs: EquatableWeakBox<T>, rhs: EquatableWeakBox<T>) -> Bool {
+public func ==<T: AnyObject>(lhs: EquatableWeakBox<T>, rhs: EquatableWeakBox<T>) -> Bool where T: Equatable {
 
     return lhs.raw == rhs.raw
 }

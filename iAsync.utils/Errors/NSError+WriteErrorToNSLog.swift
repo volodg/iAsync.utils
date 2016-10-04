@@ -22,9 +22,9 @@ final private class ActionsHolder {
 private var nsLogErrorsQueue   = ActionsHolder()
 private var jLoggerErrorsQueue = ActionsHolder()
 
-private func delayedPerformAction(error: ErrorWithContext, action: (() -> ()), queue: ActionsHolder) {
+private func delayedPerformAction(_ error: ErrorWithContext, action: @escaping (() -> ()), queue: ActionsHolder) {
 
-    if queue.queue.indexOf({ $0.error.error === error.error && $0.error.context == error.context }) != nil {
+    if queue.queue.index(where: { $0.error.error === error.error && $0.error.context == error.context }) != nil {
         return
     }
 
@@ -32,10 +32,10 @@ private func delayedPerformAction(error: ErrorWithContext, action: (() -> ()), q
 
     if queue.queue.count == 1 {
 
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
 
             let tmpQueue = queue.queue
-            queue.queue.removeAll(keepCapacity: true)
+            queue.queue.removeAll(keepingCapacity: true)
             for info in tmpQueue {
                 info.action()
             }
@@ -43,34 +43,25 @@ private func delayedPerformAction(error: ErrorWithContext, action: (() -> ()), q
     }
 }
 
-public enum LogTarget: Int {
+public extension LoggedObject where Self : NSError {
 
-    case Logger
-    case Console
-    case Nothing
-}
+    var logTarget: LogTarget {
+        return LogTarget.logger
+    }
 
-public extension NSError {
+    var errorLogText: String {
 
-    public var errorLogText: String {
-
-        let result = "\(self.dynamicType) : \(localizedDescription), domain : \(domain) code : \(code.description)"
+        let result = "\(type(of: self)) : \(localizedDescription), domain : \(domain) code : \(code.description)"
         return result
     }
 
-    //return type NSDictionary is workaround, should be a [String:String]
-    public var errorLog: [String:String] {
+    var errorLog: [String:String] {
         let log = errorLogText
         let result = [
             "Text" : log,
-            "Type" : self.dynamicType.description()
+            "Type" : type(of: self).description()
         ]
         return result
-    }
-
-    //return type Int is workaround, should be a LogTarget
-    public var logTarget: Int {
-        return LogTarget.Logger.rawValue
     }
 }
 
@@ -85,9 +76,10 @@ public extension ErrorWithContext {
 
     func postToLog() {
 
-        if let target = LogTarget(rawValue: error.logTarget) {
+        //todo swift3 !!!
+        /*if let target = LogTarget(rawValue: error.logTarget) {
             switch target {
-            case .Logger:
+            case .logger:
                 let action = { () in
                     var log = self.error.errorLog
                     log["Context"] = self.context
@@ -95,18 +87,18 @@ public extension ErrorWithContext {
                 }
 
                 delayedPerformAction(self, action: action, queue: jLoggerErrorsQueue)
-            case .Console:
+            case .console:
                 let action = { () in
                     let log = self.error.errorLog
                     debugOnlyPrint("only log - \(log) context - \(self.context)")
                 }
 
                 delayedPerformAction(self, action: action, queue: nsLogErrorsQueue)
-            case .Nothing:
+            case .nothing:
                 break
             }
         } else {
             assert(false)
-        }
+        }*/
     }
 }

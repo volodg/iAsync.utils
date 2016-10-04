@@ -8,7 +8,15 @@
 
 import Foundation
 
-public struct HashableArray<T: Equatable> : Hashable, CollectionType/*, MutableCollectionType*/, CustomStringConvertible, ArrayLiteralConvertible {
+public struct HashableArray<T: Equatable> : Hashable, Collection/*, MutableCollectionType*/, CustomStringConvertible, ExpressibleByArrayLiteral {
+    /// Returns the position immediately after the given index.
+    ///
+    /// - Parameter i: A valid index of the collection. `i` must be less than
+    ///   `endIndex`.
+    /// - Returns: The index value immediately after `i`.
+    public func index(after i: Int) -> Int {
+        return array.index(after: i)
+    }
 
     public var array: Array<T>
 
@@ -16,7 +24,11 @@ public struct HashableArray<T: Equatable> : Hashable, CollectionType/*, MutableC
 //    public subscript (position: Self.Index) -> Self.Generator.Element { get set }
 //    public subscript (bounds: Range<Self.Index>) -> Self.SubSequence { get set }
 
-    public typealias Generator = Array<T>.Generator
+    public var last: T? {
+        return array.last
+    }
+
+    public typealias Iterator = Array<T>.Iterator
 
     public typealias Index = Array<T>.Index
     //    public typealias Generator = Array<T>.Generator
@@ -30,16 +42,16 @@ public struct HashableArray<T: Equatable> : Hashable, CollectionType/*, MutableC
         return array[position]
     }
 
-    public func generate() -> Generator {
+    public func makeIterator() -> Iterator {
 
-        return array.generate()
+        return array.makeIterator()
     }
 
     public mutating func removeAll() {
         array.removeAll()
     }
 
-    public mutating func append(el: T) {
+    public mutating func append(_ el: T) {
         array.append(el)
     }
 

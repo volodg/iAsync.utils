@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ErrorWithContext : ErrorType {
+public struct ErrorWithContext : Swift.Error {
 
     public let error  : NSError
     public let context: String
