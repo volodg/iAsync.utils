@@ -17,8 +17,9 @@ open class SilentError : UtilsError {
     public init(description: String) {
         super.init(description: description)
     }
+}
 
-    //override open var logTarget: Int {
-    //    return LogTarget.console.rawValue
-    //}
+public extension LoggedObject where Self : SilentError {
+
+    var logTarget: LogTarget { return LogTarget.console }
 }

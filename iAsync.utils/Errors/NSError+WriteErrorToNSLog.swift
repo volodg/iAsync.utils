@@ -76,20 +76,19 @@ public extension ErrorWithContext {
 
     func postToLog() {
 
-        //todo swift3 !!!
-        /*if let target = LogTarget(rawValue: error.logTarget) {
-            switch target {
+        if let object = self.error as? LoggedObject {
+            switch object.logTarget {
             case .logger:
                 let action = { () in
-                    var log = self.error.errorLog
+                    var log = object.errorLog
                     log["Context"] = self.context
-                    iAsync_utils_logger.logWith(level: .LogError, log: log)
+                    iAsync_utils_logger.logWith(level: .logError, log: log)
                 }
 
                 delayedPerformAction(self, action: action, queue: jLoggerErrorsQueue)
             case .console:
                 let action = { () in
-                    let log = self.error.errorLog
+                    let log = object.errorLog
                     debugOnlyPrint("only log - \(log) context - \(self.context)")
                 }
 
@@ -99,6 +98,6 @@ public extension ErrorWithContext {
             }
         } else {
             assert(false)
-        }*/
+        }
     }
 }
