@@ -31,10 +31,6 @@ extension String {
         return self[start..<end]
     }
 
-    public func contains(_ substring: String) -> Bool {
-        return range(of: substring) != nil
-    }
-
     public func toDouble(_ locale: Locale = Locale.current) -> Double? {
         let nf = NumberFormatter()
         nf.locale = locale
