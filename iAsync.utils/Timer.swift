@@ -63,7 +63,7 @@ final public class Timer {
     var timer :DispatchSourceTimer?
 
     public func addBlock(
-        _ actionBlock  : @escaping JScheduledBlock,
+        _ actionBlock: @escaping JScheduledBlock,
         duration     : TimeInterval,
         leeway       : TimeInterval,
         dispatchQueue: DispatchQueue) -> JCancelScheduledBlock {
@@ -75,8 +75,8 @@ final public class Timer {
 
         timer.scheduleRepeating(
             deadline: DispatchTime.now() + duration,
-            interval: DispatchTimeInterval.milliseconds(Int(duration)),
-            leeway  : DispatchTimeInterval.milliseconds(Int(leeway))
+            interval: DispatchTimeInterval.nanoseconds(Int(duration * Double(NSEC_PER_SEC))),
+            leeway  : DispatchTimeInterval.nanoseconds(Int(leeway   * Double(NSEC_PER_SEC)))
         )
 
         let cancelTimerBlockHolder = SimpleBlockHolder()
