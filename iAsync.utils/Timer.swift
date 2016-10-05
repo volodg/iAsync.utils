@@ -49,40 +49,25 @@ final public class Timer {
         return result
     }
 
-    func addBlock(
-        _ actionBlock  : @escaping JScheduledBlock,
-        duration     : TimeInterval,
-        dispatchQueue: DispatchQueue) -> JCancelScheduledBlock {
-
-        return self.addBlock(actionBlock,
-                             duration     : duration,
-                             leeway       : duration/10.0,
-                             dispatchQueue: dispatchQueue)
-    }
-
-    var timer :DispatchSourceTimer?
-
     public func addBlock(
         _ actionBlock: @escaping JScheduledBlock,
-        duration     : TimeInterval,
-        leeway       : TimeInterval,
-        dispatchQueue: DispatchQueue) -> JCancelScheduledBlock {
+        delay        : DispatchTimeInterval,
+        interval     : DispatchTimeInterval,
+        dispatchQueue: DispatchQueue = DispatchQueue.main) -> JCancelScheduledBlock {
 
-        let timer = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: UInt(0)), queue: dispatchQueue)
-        self.timer = timer
+        var initialTimer = DispatchSource.makeTimerSource(queue: dispatchQueue)
+        var timer: DispatchSourceTimer? = initialTimer
 
         var actionBlockHolder: JScheduledBlock? = actionBlock
 
-        timer.scheduleRepeating(
-            deadline: DispatchTime.now() + duration,
-            interval: DispatchTimeInterval.nanoseconds(Int(duration * Double(NSEC_PER_SEC))),
-            leeway  : DispatchTimeInterval.nanoseconds(Int(leeway   * Double(NSEC_PER_SEC)))
-        )
+        initialTimer.scheduleRepeating(
+            deadline: DispatchTime.now() + delay,
+            interval: interval)
 
         let cancelTimerBlockHolder = SimpleBlockHolder()
         weak var weakCancelTimerBlockHolder = cancelTimerBlockHolder
 
-        cancelTimerBlockHolder.simpleBlock = { [weak self, weak timer] () -> () in
+        cancelTimerBlockHolder.simpleBlock = { [weak self] () -> () in
 
             guard let timer_ = timer else { return }
 
@@ -109,29 +94,20 @@ final public class Timer {
             actionBlockHolder?(cancelTimerBlockHolder.onceSimpleBlock())
         }
 
-        timer.setEventHandler(handler: eventHandlerBlock)
+        initialTimer.setEventHandler(handler: eventHandlerBlock)
 
-        timer.resume()
+        initialTimer.resume()
 
         return cancelTimerBlockHolder.onceSimpleBlock()
     }
 
-    public func addBlock(
-        _ actionBlock: @escaping JScheduledBlock,
-        duration   : TimeInterval) -> JCancelScheduledBlock {
-
-        return addBlock(actionBlock,
-                        duration: duration,
-                        leeway  : duration/10.0)
-    }
-
     public func addBlock(_ actionBlock: @escaping JScheduledBlock,
-                         duration: TimeInterval,
-                         leeway  : TimeInterval) -> JCancelScheduledBlock {
+                         delay : DispatchTimeInterval,
+                         dispatchQueue: DispatchQueue = DispatchQueue.main) -> JCancelScheduledBlock {
 
         return addBlock(actionBlock,
-                        duration     : duration,
-                        leeway       : leeway,
-                        dispatchQueue: DispatchQueue.main)
+                        delay   : delay,
+                        interval: delay,
+                        dispatchQueue: dispatchQueue)
     }
 }
