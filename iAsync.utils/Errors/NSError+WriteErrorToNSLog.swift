@@ -97,7 +97,7 @@ public extension ErrorWithContext {
                 break
             }
         } else {
-            assert(false)
+            //swift3 assert(false)
         }
     }
 }
