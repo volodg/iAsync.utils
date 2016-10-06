@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias LogHandler = (level: LogLevel, log: [String:String]) -> Void
+public typealias LogHandler = (_ level: LogLevel, _ log: [String:String]) -> Void
 
 private var staticLogHandler: LogHandler? = nil
 
@@ -16,13 +16,27 @@ public let iAsync_utils_logger = Logger()
 
 public enum LogLevel: String {
 
-    case LogError = "error"
-    case LogInfo  = "info"
+    case logError = "error"
+    case logInfo  = "info"
+}
+
+public enum LogTarget: Int {
+
+    case logger
+    case console
+    case nothing
+}
+
+public protocol LoggedObject {
+
+    var logTarget   : LogTarget       { get }
+    var errorLogText: String          { get }
+    var errorLog    : [String:String] { get }
 }
 
 final public class Logger {
 
-    private init() {}
+    fileprivate init() {}
 
     public var logHandler: LogHandler {
         get {
@@ -40,23 +54,23 @@ final public class Logger {
         }
     }
 
-    public func logError(log: String, context: String? = nil) {
-        logWith(level: .LogError, log: log, context: context)
+    public func logError(_ log: String, context: String? = nil) {
+        logWith(level: .logError, log: log, context: context)
     }
 
-    public func logInfo(log: String, context: String? = nil) {
-        logWith(level: .LogInfo, log: log, context: context)
+    public func logInfo(_ log: String, context: String? = nil) {
+        logWith(level: .logInfo, log: log, context: context)
     }
 
-    public func logWith(level level: LogLevel, log: String, context: String?) {
+    public func logWith(level: LogLevel, log: String, context: String?) {
         var log = [ "Text" : log ]
         if let context = context {
             log["Context"] = context
         }
-        logHandler(level: level, log: log)
+        logHandler(level, log)
     }
 
-    public func logWith(level level: LogLevel, log: [String:String]) {
-        logHandler(level: level, log: log)
+    public func logWith(level: LogLevel, log: [String:String]) {
+        logHandler(level, log)
     }
 }

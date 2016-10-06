@@ -8,12 +8,12 @@
 
 import Foundation
 
-public extension NSLocale {
+public extension Locale {
 
     static var preferredISO2Languages: [String] {
 
-        let preferredLangs = preferredLanguages()
-        let characters     = NSCharacterSet(charactersInString: "_-")
-        return preferredLangs.map { $0.componentsSeparatedByCharactersInSet(characters)[0] }
+        let preferredLangs = preferredLanguages
+        let characters     = CharacterSet(charactersIn: "_-")
+        return preferredLangs.map { $0.components(separatedBy: characters)[0] }
     }
 }

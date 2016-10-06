@@ -8,24 +8,24 @@
 
 import Foundation
 
-extension CollectionType {
+extension Collection {
 
-    public func any(@noescape predicate: (Self.Generator.Element) -> Bool) -> Bool {
+    public func any(_ predicate: (Self.Iterator.Element) -> Bool) -> Bool {
 
-        let index = indexOf(predicate)
+        let index = self.index(where: predicate)
         return index != nil
     }
 
-    public func all(@noescape predicate: (Self.Generator.Element) -> Bool) -> Bool {
+    public func all(_ predicate: (Self.Iterator.Element) -> Bool) -> Bool {
 
-        return !any { (object: Generator.Element) -> Bool in
+        return !any { (object: Iterator.Element) -> Bool in
             return !predicate(object)
         }
     }
 
-    public func foldr<B>(zero: B, f: (Generator.Element, () -> B) -> B) -> B {
+    public func foldr<B>(_ zero: B, f: @escaping (Iterator.Element, () -> B) -> B) -> B {
 
-        var g = generate()
+        var g = makeIterator()
         var next: (() -> B)! = {zero}
 
         next = { return g.next().map {x in f(x, next)} ?? zero }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SilentError : UtilsError {
+open class SilentError : UtilsError {
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -17,8 +17,9 @@ public class SilentError : UtilsError {
     public init(description: String) {
         super.init(description: description)
     }
+}
 
-    override public var logTarget: Int {
-        return LogTarget.Console.rawValue
-    }
+public extension LoggedObject where Self : SilentError {
+
+    var logTarget: LogTarget { return LogTarget.console }
 }

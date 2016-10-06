@@ -17,7 +17,7 @@ public protocol FilePath {
 extension FilePath {
 
     public var folder: String {
-        let result = (path as NSString).stringByDeletingLastPathComponent
+        let result = (path as NSString).deletingLastPathComponent
         return result
     }
 
@@ -29,7 +29,7 @@ extension FilePath {
     public func stringContent() -> String? {
 
         do {
-            let result = try NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+            let result = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue)
             return result as String
         } catch _ {
             return nil
@@ -38,20 +38,20 @@ extension FilePath {
 
     public func dictionaryContent() -> NSDictionary? {
 
-        let result = try NSDictionary(contentsOfFile: path)
+        let result = NSDictionary(contentsOfFile: path)
         return result
     }
 
-    public func dataContent() -> NSData? {
+    public func dataContent() -> Data? {
 
-        let result = try NSData(contentsOfFile: path)
+        let result = try? Data(contentsOf: URL(fileURLWithPath: path))
         return result
     }
 
-    public func removeItem(logError: Bool = true) -> Bool {
+    public func removeItem(_ logError: Bool = true) -> Bool {
 
         do {
-            try NSFileManager.defaultManager().removeItemAtPath(path)
+            try FileManager.default.removeItem(atPath: path)
             return true
         } catch let error as NSError {
             if logError {
@@ -71,30 +71,30 @@ extension FilePath {
         path.addSkipBackupAttribute()
     }
 
-    func writeToFile(str: String) -> Bool {
+    func writeToFile(_ str: String) -> Bool {
 
         do {
-            try str.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+            try str.write(toFile: path, atomically: true, encoding: String.Encoding.utf8)
             return true
         } catch _ {
             return false
         }
     }
 
-    public func writeToFile(dict: NSDictionary) -> Bool {
+    public func writeToFile(_ dict: NSDictionary) -> Bool {
 
-        let result = dict.writeToFile(path, atomically: true)
+        let result = dict.write(toFile: path, atomically: true)
         return result
     }
 
-    public func writeToFile(data: NSData) -> Bool {
+    public func writeToFile(_ data: Data) -> Bool {
 
-        let result = data.writeToFile(path, atomically: true)
+        let result = (try? data.write(to: URL(fileURLWithPath: path), options: [.atomic])) != nil
         return result
     }
 }
 
-public extension NSURL {
+public extension URL {
 
     func filePath() -> FilePath {
 
@@ -102,23 +102,23 @@ public extension NSURL {
             let path: String
         }
 
-        assert(self.fileURL)
+        assert(self.isFileURL)
 
-        return FilePath_(path: self.path!)
+        return FilePath_(path: self.path)
     }
 }
 
 public struct DocumentPath: FilePath {
 
-    static var docDirectory = String.pathWithSearchDirecory(.DocumentDirectory)
+    static var docDirectory = String.pathWithSearchDirecory(.documentDirectory)
 
     public let path: String
 
-    private init(path: String) {
+    fileprivate init(path: String) {
 
         assert(!path.hasPrefix(DocumentPath.docDirectory))
 
-        let docPath = (DocumentPath.docDirectory as NSString).stringByAppendingPathComponent(path)
+        let docPath = (DocumentPath.docDirectory as NSString).appendingPathComponent(path)
 
         self.path = docPath
     }
@@ -126,9 +126,9 @@ public struct DocumentPath: FilePath {
 
 public extension String {
 
-    private static func pathWithSearchDirecory(directory: NSSearchPathDirectory) -> String {
+    fileprivate static func pathWithSearchDirecory(_ directory: FileManager.SearchPathDirectory) -> String {
 
-        let pathes = NSSearchPathForDirectoriesInDomains(directory, .UserDomainMask, true)
+        let pathes = NSSearchPathForDirectoriesInDomains(directory, .userDomainMask, true)
         return pathes[pathes.endIndex - 1]
     }
 
@@ -137,14 +137,14 @@ public extension String {
         return DocumentPath(path: self)
     }
 
-    static func cachesPathByAppendingPathComponent(str: String?) -> String {
+    static func cachesPathByAppendingPathComponent(_ str: String?) -> String {
 
         struct Static {
-            static var instance = String.pathWithSearchDirecory(.CachesDirectory)
+            static var instance = String.pathWithSearchDirecory(.cachesDirectory)
         }
 
         guard let str = str else { return Static.instance }
 
-        return (Static.instance as NSString).stringByAppendingPathComponent(str)
+        return (Static.instance as NSString).appendingPathComponent(str)
     }
 }
