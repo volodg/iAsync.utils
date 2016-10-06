@@ -8,18 +8,28 @@
 
 import Foundation
 
-public extension Data {
+extension Data {
 
-    func toString() -> String? {
-        return NSString(data: self, encoding: String.Encoding.utf8.rawValue) as? String
+    public func toString() -> String? {
+
+        let bytesPointer = self.withUnsafeBytes { bytes in
+            return UnsafePointer<CChar>(bytes)
+        }
+        return String(validatingUTF8: bytesPointer)
     }
 
-    func apnsToString() -> String {
+    func hexString() -> String {
 
-        let result = self.description
-            .replacingOccurrences(of: "<", with: "")
-            .replacingOccurrences(of: ">", with: "")
-            .replacingOccurrences(of: " ", with: "")
+        let bytesPointer = self.withUnsafeBytes { bytes in
+            return UnsafeBufferPointer<UInt8>(start: UnsafePointer(bytes), count: self.count)
+        }
+        let hexBytes = bytesPointer.map { return String(format: "%02hhx", $0) }
+        return hexBytes.joined()
+    }
+
+    public func apnsToString() -> String {
+
+        let result = hexString()
         return result
     }
 }
