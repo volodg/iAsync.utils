@@ -55,7 +55,7 @@ final public class Timer {
         interval     : DispatchTimeInterval,
         dispatchQueue: DispatchQueue = DispatchQueue.main) -> JCancelScheduledBlock {
 
-        var initialTimer = DispatchSource.makeTimerSource(queue: dispatchQueue)
+        let initialTimer = DispatchSource.makeTimerSource(queue: dispatchQueue)
         var timer: DispatchSourceTimer? = initialTimer
 
         var actionBlockHolder: JScheduledBlock? = actionBlock
