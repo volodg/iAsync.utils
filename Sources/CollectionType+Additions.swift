@@ -18,7 +18,7 @@ extension Collection {
 
     public func all(_ predicate: (Self.Iterator.Element) -> Bool) -> Bool {
 
-        return !any { (object: Iterator.Element) -> Bool in
+        return !any { object -> Bool in
             return !predicate(object)
         }
     }
