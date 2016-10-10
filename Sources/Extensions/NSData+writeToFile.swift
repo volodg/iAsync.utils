@@ -12,7 +12,7 @@ public extension Data {
 
     func tmpFilePath(_ fileName: String = UUID().uuidString) -> String {
 
-        let filePath = String.cachesPathByAppendingPathComponent(fileName)
+        let filePath = String.cachesPathByAppending(pathComponent: fileName)
 
         let url = URL(fileURLWithPath: filePath)
         try? write(to: url, options: [])//todo log error

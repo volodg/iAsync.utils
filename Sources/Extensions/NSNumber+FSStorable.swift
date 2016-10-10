@@ -22,12 +22,12 @@ public func writeObject<T>(_ object: T?, toDocumentFile documentFile: String, lo
 
     guard let object = object else {
 
-        return filePath.removeItem(logError)
+        return filePath.removeItem(logError: logError)
     }
 
     let string = String(describing: object)
 
-    let result = filePath.writeToFile(string)
+    let result = filePath.writeToFile(str: string)
 
     if result {
         filePath.addSkipBackupAttribute()

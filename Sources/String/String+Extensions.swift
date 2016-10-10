@@ -18,7 +18,7 @@ extension String {
     ///  - parameter right: The right bookend
     ///
     ///  - returns: The string between the two bookends, or nil if the bookends cannot be found, the bookends are the same or appear contiguously.
-    public func between(_ left: String, _ right: String) -> String? {
+    public func between(left: String, right: String) -> String? {
         guard
             let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards)
             , left != right && leftRange.upperBound != rightRange.lowerBound
@@ -27,13 +27,13 @@ extension String {
         return self[leftRange.upperBound...self.index(before: rightRange.lowerBound)]
     }
 
-    public func substring(_ startIndex: Int, length: Int) -> String {
+    public func substring(startIndex: Int, length: Int) -> String {
         let start = self.characters.index(self.startIndex, offsetBy: startIndex)
         let end = self.characters.index(self.startIndex, offsetBy: startIndex + length)
         return self[start..<end]
     }
 
-    public func toDouble(_ locale: Locale = Locale.current) -> Double? {
+    public func toDouble(locale: Locale = Locale.current) -> Double? {
         let nf = NumberFormatter()
         nf.locale = locale
         if let number = nf.number(from: self) {

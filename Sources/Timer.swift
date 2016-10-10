@@ -49,8 +49,8 @@ final public class Timer {
         return result
     }
 
-    public func addBlock(
-        _ actionBlock: @escaping JScheduledBlock,
+    public func add(
+        actionBlock  : @escaping JScheduledBlock,
         delay        : DispatchTimeInterval,
         interval     : DispatchTimeInterval,
         dispatchQueue: DispatchQueue = DispatchQueue.main) -> JCancelScheduledBlock {
@@ -101,13 +101,10 @@ final public class Timer {
         return cancelTimerBlockHolder.onceSimpleBlock()
     }
 
-    public func addBlock(_ actionBlock: @escaping JScheduledBlock,
+    public func add(actionBlock: @escaping JScheduledBlock,
                          delay : DispatchTimeInterval,
-                         dispatchQueue: DispatchQueue = DispatchQueue.main) -> JCancelScheduledBlock {
+                  dispatchQueue: DispatchQueue = DispatchQueue.main) -> JCancelScheduledBlock {
 
-        return addBlock(actionBlock,
-                        delay   : delay,
-                        interval: delay,
-                        dispatchQueue: dispatchQueue)
+        return add(actionBlock: actionBlock, delay: delay, interval: delay, dispatchQueue: dispatchQueue)
     }
 }

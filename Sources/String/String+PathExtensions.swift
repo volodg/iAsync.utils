@@ -48,7 +48,7 @@ extension FilePath {
         return result
     }
 
-    public func removeItem(_ logError: Bool = true) -> Bool {
+    public func removeItem(logError: Bool = true) -> Bool {
 
         do {
             try FileManager.default.removeItem(atPath: path)
@@ -71,7 +71,7 @@ extension FilePath {
         path.addSkipBackupAttribute()
     }
 
-    func writeToFile(_ str: String) -> Bool {
+    func writeToFile(str: String) -> Bool {
 
         do {
             try str.write(toFile: path, atomically: true, encoding: String.Encoding.utf8)
@@ -81,13 +81,13 @@ extension FilePath {
         }
     }
 
-    public func writeToFile(_ dict: NSDictionary) -> Bool {
+    public func writeToFile(dict: NSDictionary) -> Bool {
 
         let result = dict.write(toFile: path, atomically: true)
         return result
     }
 
-    public func writeToFile(_ data: Data) -> Bool {
+    public func writeToFile(data: Data) -> Bool {
 
         let result = (try? data.write(to: URL(fileURLWithPath: path), options: [.atomic])) != nil
         return result
@@ -110,7 +110,7 @@ public extension URL {
 
 public struct DocumentPath: FilePath {
 
-    static var docDirectory = String.pathWithSearchDirecory(.documentDirectory)
+    static var docDirectory = String.pathWith(searchDirecory: .documentDirectory)
 
     public let path: String
 
@@ -126,9 +126,9 @@ public struct DocumentPath: FilePath {
 
 public extension String {
 
-    fileprivate static func pathWithSearchDirecory(_ directory: FileManager.SearchPathDirectory) -> String {
+    fileprivate static func pathWith(searchDirecory: FileManager.SearchPathDirectory) -> String {
 
-        let pathes = NSSearchPathForDirectoriesInDomains(directory, .userDomainMask, true)
+        let pathes = NSSearchPathForDirectoriesInDomains(searchDirecory, .userDomainMask, true)
         return pathes[pathes.endIndex - 1]
     }
 
@@ -137,13 +137,13 @@ public extension String {
         return DocumentPath(path: self)
     }
 
-    static func cachesPathByAppendingPathComponent(_ str: String?) -> String {
+    static func cachesPathByAppending(pathComponent: String?) -> String {
 
         struct Static {
-            static var instance = String.pathWithSearchDirecory(.cachesDirectory)
+            static var instance = String.pathWith(searchDirecory: .cachesDirectory)
         }
 
-        guard let str = str else { return Static.instance }
+        guard let str = pathComponent else { return Static.instance }
 
         return (Static.instance as NSString).appendingPathComponent(str)
     }
