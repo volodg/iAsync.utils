@@ -39,7 +39,7 @@ extension URL {
         return scheme == "assets-library"
     }
 
-    public func localDataWithCallbacks(_ onData: @escaping (Data) -> Void, onError: @escaping (ErrorWithContext) -> Void) {
+    public func getLocalData(onData: @escaping (Data) -> Void, onError: @escaping (ErrorWithContext) -> Void) {
 
         if isAssetURL() {
 
