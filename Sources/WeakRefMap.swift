@@ -14,7 +14,7 @@ private final class DeallocWatcher<Key: Hashable> {
 
     var notify: ((_ watcher: DeallocWatcher<Key>, _ keys: Set<Key>)->Void)?
     let owner: UnsafeMutableRawPointer
-    fileprivate var keys = Set<Key>()
+    private var keys = Set<Key>()
 
     func insertKey(_ key: Key) {
         keys.insert(key)
