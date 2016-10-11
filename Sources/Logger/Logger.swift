@@ -54,10 +54,12 @@ final public class Logger {
         }
     }
 
+    //todo rename?
     public func logError(_ log: String, context: String? = nil) {
         logWith(level: .logError, log: log, context: context)
     }
 
+    //todo rename?
     public func logInfo(_ log: String, context: String? = nil) {
         logWith(level: .logInfo, log: log, context: context)
     }

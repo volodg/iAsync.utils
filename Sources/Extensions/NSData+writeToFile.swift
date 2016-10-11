@@ -10,6 +10,7 @@ import Foundation
 
 public extension Data {
 
+    //todo rename?
     func tmpFilePath(_ fileName: String = UUID().uuidString) -> String {
 
         let filePath = String.cachesPathByAppending(pathComponent: fileName)

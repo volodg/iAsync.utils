@@ -22,6 +22,7 @@ final private class ActionsHolder {
 private var nsLogErrorsQueue   = ActionsHolder()
 private var jLoggerErrorsQueue = ActionsHolder()
 
+//todo rename?
 private func delayedPerformAction(_ error: ErrorWithContext, action: @escaping (() -> ()), queue: ActionsHolder) {
 
     if queue.queue.index(where: { $0.error.error === error.error && $0.error.context == error.context }) != nil {
@@ -65,6 +66,7 @@ public extension LoggedObject where Self : NSError {
     }
 }
 
+//todo rename?
 public func debugOnlyPrint(_ str: String) {
 
     if _isDebugAssertConfiguration() {

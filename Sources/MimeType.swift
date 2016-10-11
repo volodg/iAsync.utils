@@ -13,12 +13,14 @@ import MobileCoreServices
 
 public final class MimeType {
 
+    //todo rename?
     fileprivate static func fileExtension(_ fileName: String) -> String {
 
         let result = (fileName as NSString).pathExtension.lowercased()
         return result
     }
 
+    //todo rename?
     public static func contentTypeForFile(_ fileName: String) -> String {
 
         let contentTypeFunc = { () -> String? in
@@ -44,6 +46,7 @@ public final class MimeType {
         return result
     }
 
+    //todo rename?
     public static func detectMimeType(_ ext: String) -> String {
 
         let default_ = "application/octet-stream"

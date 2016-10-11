@@ -16,6 +16,7 @@ private func readStringWithScanner<T>(documentFile: String, scanner: (String) ->
     return result
 }
 
+//todo rename?
 public func writeObject<T>(_ object: T?, toDocumentFile documentFile: String, logError: Bool = true) -> Bool {
 
     let filePath = documentFile.documentsPath
@@ -38,6 +39,7 @@ public func writeObject<T>(_ object: T?, toDocumentFile documentFile: String, lo
 
 public extension Int {
 
+    //todo rename?
     public static func readFromFile(_ documentFile: String) -> Int? {
 
         let scanner = { (string: String) -> Int? in
@@ -55,6 +57,7 @@ public extension Int {
 
 public extension Double {
 
+    //todo rename?
     public static func readFromFile(_ documentFile: String) -> Double? {
 
         let scanner = { (string: String) -> Double? in
@@ -72,6 +75,7 @@ public extension Double {
 
 public extension String {
 
+    //todo rename?
     public static func readFromFile(_ documentFile: String) -> String? {
 
         let scanner = { (string: String) -> String? in
@@ -84,6 +88,7 @@ public extension String {
 
 public extension Bool {
 
+    //todo rename?
     public static func readFromFile(_ documentFile: String) -> Bool? {
 
         return Int.readFromFile(documentFile).flatMap { $0 != 0 }
