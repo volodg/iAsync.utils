@@ -10,7 +10,7 @@ import Foundation
 
 public struct HashableDictionary<Key : Hashable, Value: Equatable> : Hashable, CustomStringConvertible {
 
-    public fileprivate(set) var dict = [Key:Value]()
+    public private(set) var dict = [Key:Value]()
 
     public var hashValue: Int {
         return dict.count

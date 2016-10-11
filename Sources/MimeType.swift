@@ -14,7 +14,7 @@ import MobileCoreServices
 public final class MimeType {
 
     //todo rename?
-    fileprivate static func fileExtension(_ fileName: String) -> String {
+    private static func fileExtension(_ fileName: String) -> String {
 
         let result = (fileName as NSString).pathExtension.lowercased()
         return result

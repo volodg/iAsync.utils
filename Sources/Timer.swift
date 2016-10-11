@@ -15,7 +15,7 @@ private let emptyTimerBlock: () -> Void = {}
 
 final public class Timer {
 
-    fileprivate var cancelBlocks = [SimpleBlockHolder]()
+    private var cancelBlocks = [SimpleBlockHolder]()
 
     public init() {}
 
