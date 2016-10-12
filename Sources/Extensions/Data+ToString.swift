@@ -1,5 +1,5 @@
 //
-//  NSData+ToString.swift
+//  Data+ToString.swift
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 06.06.14.
@@ -12,10 +12,13 @@ extension Data {
 
     public func toString() -> String? {
 
-        let bytesPointer = self.withUnsafeBytes { bytes in
-            return UnsafePointer<CChar>(bytes)
+        return withUnsafeBytes { (bytes: UnsafePointer<UInt8>) in
+
+            let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: count)
+            buffer.assign(from: bytes, count: count)
+            let result = String(bytesNoCopy: buffer, length: count, encoding: .utf8, freeWhenDone: true)
+            return result
         }
-        return String(validatingUTF8: bytesPointer)
     }
 
     func hexString() -> String {
