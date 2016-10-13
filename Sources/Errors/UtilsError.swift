@@ -8,8 +8,13 @@
 
 import Foundation
 
+public protocol CanRepeatError {
+
+    var canRepeatError: Bool { get }
+}
+
 //TODO should be protocol?
-open class UtilsError : Error, LoggedObject {
+open class UtilsError : Error, LoggedObject, CanRepeatError {
 
     public let _description: String
 
@@ -39,6 +44,11 @@ open class UtilsError : Error, LoggedObject {
             "Type" : "\(type(of: self))"
         ]
         return result
+    }
+
+    open var canRepeatError: Bool {
+
+        return false
     }
 }
 
