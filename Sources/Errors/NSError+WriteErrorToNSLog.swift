@@ -44,29 +44,6 @@ private func delayedPerformAction(_ error: ErrorWithContext, action: @escaping (
     }
 }
 
-public extension LoggedObject where Self : NSError {
-
-    var logTarget: LogTarget {
-        return LogTarget.logger
-    }
-
-    var errorLogText: String {
-
-        let result = "\(type(of: self)) : \(localizedDescription), domain : \(domain) code : \(code.description)"
-        return result
-    }
-
-    var errorLog: [String:String] {
-        let log = errorLogText
-        let result = [
-            "Text" : log,
-            "Type" : type(of: self).description()
-        ]
-        return result
-    }
-}
-
-//todo rename?
 public func debugOnlyPrint(_ str: String) {
 
     if _isDebugAssertConfiguration() {
@@ -78,28 +55,24 @@ public extension ErrorWithContext {
 
     func postToLog() {
 
-        if let object = self.error as? LoggedObject {
-            switch object.logTarget {
-            case .logger:
-                let action = { () in
-                    var log = object.errorLog
-                    log["Context"] = self.context
-                    iAsync_utils_logger.logWith(level: .logError, log: log)
-                }
-
-                delayedPerformAction(self, action: action, queue: jLoggerErrorsQueue)
-            case .console:
-                let action = { () in
-                    let log = object.errorLog
-                    debugOnlyPrint("only log - \(log) context - \(self.context)")
-                }
-
-                delayedPerformAction(self, action: action, queue: nsLogErrorsQueue)
-            case .nothing:
-                break
+        switch error.logTarget {
+        case .logger:
+            let action = { () in
+                var log = self.error.errorLog
+                log["Context"] = self.context
+                iAsync_utils_logger.logWith(level: .logError, log: log)
             }
-        } else {
-            //swift3 assert(false)
+
+            delayedPerformAction(self, action: action, queue: jLoggerErrorsQueue)
+        case .console:
+            let action = { () in
+                let log = self.error.errorLog
+                debugOnlyPrint("only log - \(log) context - \(self.context)")
+            }
+
+            delayedPerformAction(self, action: action, queue: nsLogErrorsQueue)
+        case .nothing:
+            break
         }
     }
 }

@@ -18,14 +18,7 @@ public final class CanNotSelectPhotoError : UtilsError {
         super.init(description: "")
     }
 
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-public extension LoggedObject where Self : CanNotSelectPhotoError {
-
-    var errorLogText: String {
+    override open var errorLogText: String {
 
         let result = "<CanNotSelectPhotoError url: \(url)>"
         return result
@@ -63,7 +56,7 @@ extension URL {
 
                 if let error = error {
 
-                    let contextError = ErrorWithContext(error: error as NSError, context: #function)
+                    let contextError = ErrorWithContext(error: error, context: #function)
                     onError(contextError)
                 } else {
 

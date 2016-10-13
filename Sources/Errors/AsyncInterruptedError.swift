@@ -13,8 +13,4 @@ public final class AsyncInterruptedError : SilentError {
     public init() {
         super.init(description: "AsyncInterruptedError")
     }
-
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }

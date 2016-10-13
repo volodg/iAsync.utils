@@ -10,12 +10,18 @@ import Foundation
 
 public struct ErrorWithContext : Swift.Error {
 
-    public let error  : NSError
+    public let error  : UtilsError
     public let context: String
 
-    public init(error: NSError, context: String) {
+    public init(error: UtilsError, context: String) {
 
         self.error   = error
+        self.context = context
+    }
+
+    public init(error: Error, context: String) {
+
+        self.error   = WrapperOfNSError(forError: error)
         self.context = context
     }
 }

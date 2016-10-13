@@ -8,20 +8,52 @@
 
 import Foundation
 
-//TODO should be protocol
-open class UtilsError : NSError {
+//TODO should be protocol?
+open class UtilsError : Error, LoggedObject {
 
-    open class func iAsyncErrorsDomain() -> String {
-        return "com.just_for_fun.library"
+    public let _description: String
+
+    public init(description: String) {
+
+        self._description = description//todo localize str here
     }
 
-    public init(description: String, domain: String = UtilsError.iAsyncErrorsDomain(), code: Int = 0) {
-
-        let userInfo = [NSLocalizedDescriptionKey : description]
-        super.init(domain: domain, code: code, userInfo: userInfo)
+    open var localizedDescription: String {
+        return "\(type(of: self)) with description: \(_description)"
     }
 
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    open var logTarget: LogTarget {
+        return LogTarget.logger
+    }
+
+    open var errorLogText: String {
+
+        let result = "\(type(of: self)) : \(localizedDescription)"
+        return result
+    }
+
+    open var errorLog: [String:String] {
+        let log = errorLogText
+        let result = [
+            "Text" : log,
+            "Type" : "\(type(of: self))"
+        ]
+        return result
+    }
+}
+
+public final class WrapperOfNSError : UtilsError {
+
+    public let error: NSError
+
+    public init(forError error: NSError) {
+
+        self.error = error
+        super.init(description: error.localizedDescription)
+    }
+
+    public convenience init(forError error: Error) {
+
+        self.init(forError: error as NSError)
     }
 }
