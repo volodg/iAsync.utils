@@ -59,7 +59,7 @@ public final class WrapperOfNSError : UtilsError {
     public init(forError error: NSError) {
 
         self.error = error
-        super.init(description: error.localizedDescription)
+        super.init(description: error.description)
     }
 
     public convenience init(forError error: Error) {
