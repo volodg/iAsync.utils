@@ -128,6 +128,9 @@ public extension String {
 
     fileprivate static func pathWith(searchDirecory: FileManager.SearchPathDirectory) -> String {
 
+        //todo remove - NSSearchPathForDirectoriesInDomains -
+        //http://stackoverflow.com/questions/13983091/nsfilemanager-urlsfordirectory-or-urlfordirectory
+        //https://developer.apple.com/library/content/technotes/tn2406/_index.html
         let pathes = NSSearchPathForDirectoriesInDomains(searchDirecory, .userDomainMask, true)
         return pathes[pathes.endIndex - 1]
     }
