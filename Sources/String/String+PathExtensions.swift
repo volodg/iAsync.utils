@@ -28,12 +28,9 @@ extension FilePath {
 
     public func stringContent() -> String? {
 
-        do {
-            let result = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue)
-            return result as String
-        } catch _ {
-            return nil
-        }
+        let data   = dataContent()
+        let result = data?.toString()
+        return result
     }
 
     public func dictionaryContent() -> NSDictionary? {
