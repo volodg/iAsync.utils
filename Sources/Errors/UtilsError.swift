@@ -20,7 +20,7 @@ open class UtilsError : Error, LoggedObject, CanRepeatError {
 
     public init(description: String) {
 
-        self._description = description//todo localize str here
+        self._description = description
     }
 
     open var localizedDescription: String {
@@ -65,5 +65,28 @@ public final class WrapperOfNSError : UtilsError {
     public convenience init(forError error: Error) {
 
         self.init(forError: error as NSError)
+    }
+
+    private var _logTarget: LogTarget?
+
+    override open var logTarget: LogTarget {
+
+        get {
+            if let result = _logTarget {
+                return result
+            }
+
+            let result = LogTarget.logger
+            _logTarget = result
+            return result
+        }
+        set {
+            _logTarget = newValue
+        }
+    }
+
+    public var isNoSuchFileError: Bool {
+
+        return error.domain == NSCocoaErrorDomain && error.code == NSFileReadNoSuchFileError
     }
 }

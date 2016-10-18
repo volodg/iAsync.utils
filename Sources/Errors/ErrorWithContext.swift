@@ -13,15 +13,15 @@ public struct ErrorWithContext : Swift.Error {
     public let error  : UtilsError
     public let context: String
 
-    public init(error: UtilsError, context: String) {
+    public init(utilsError: UtilsError, context: String) {
 
-        self.error   = error
+        self.error   = utilsError
         self.context = context
     }
 
-    public init(error: Error, context: String) {
+    public init(genericError: Error, context: String) {
 
-        self.error   = WrapperOfNSError(forError: error)
+        self.error   = WrapperOfNSError(forError: genericError)
         self.context = context
     }
 }

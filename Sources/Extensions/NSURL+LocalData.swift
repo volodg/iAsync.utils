@@ -49,18 +49,18 @@ extension URL {
                     onData(data)
                 } else {
 
-                    let error = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: #function + ":1")
+                    let error = ErrorWithContext(utilsError: CanNotSelectPhotoError(url: self), context: #function + ":1")
                     onError(error)
                 }
             }, failureBlock: { error in
 
                 if let error = error {
 
-                    let contextError = ErrorWithContext(error: error, context: #function)
+                    let contextError = ErrorWithContext(genericError: error, context: #function)
                     onError(contextError)
                 } else {
 
-                    let contextError = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: #function + ":2")
+                    let contextError = ErrorWithContext(utilsError: CanNotSelectPhotoError(url: self), context: #function + ":2")
                     onError(contextError)
                 }
             })
@@ -71,7 +71,7 @@ extension URL {
         if let result = try? Data(contentsOf: self) {
             onData(result)
         } else {
-            let contextError = ErrorWithContext(error: CanNotSelectPhotoError(url: self), context: #function + ":3")
+            let contextError = ErrorWithContext(utilsError: CanNotSelectPhotoError(url: self), context: #function + ":3")
             onError(contextError)
         }
     }
