@@ -1,5 +1,5 @@
 //
-//  NSNumber+FSStorable.swift
+//  Number+FSStorable.swift
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 06.06.14.

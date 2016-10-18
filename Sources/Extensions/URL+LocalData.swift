@@ -1,5 +1,5 @@
 //
-//  NSURL+LocalData.swift
+//  URL+LocalData.swift
 //  iAsync_utils
 //
 //  Created by Gorbenko Vladimir on 25.11.15.

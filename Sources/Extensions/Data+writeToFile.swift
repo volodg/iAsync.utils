@@ -1,5 +1,5 @@
 //
-//  NSData+writeToFile.swift
+//  Data+writeToFile.swift
 //  iAsync_utils
 //
 //  Created by Gorbenko Vladimir on 13.01.16.

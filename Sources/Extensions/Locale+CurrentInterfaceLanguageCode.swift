@@ -1,5 +1,5 @@
 //
-//  NSLocale+CurrentInterfaceLanguageCode.swift
+//  Locale+CurrentInterfaceLanguageCode.swift
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 07.06.14.
