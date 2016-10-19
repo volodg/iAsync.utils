@@ -10,14 +10,12 @@ import Foundation
 
 public extension Data {
 
-    //todo rename?
-    func tmpFilePath(_ fileName: String = UUID().uuidString) -> String {
+    func tmpFilePath(withFileName fileName: String = UUID().uuidString) -> URL {
 
-        let filePath = String.cachesPathByAppending(pathComponent: fileName)
+        let url = URL.cachesPathByAppending(pathComponent: fileName)
 
-        let url = URL(fileURLWithPath: filePath)
         try? write(to: url, options: [])//todo log error
 
-        return filePath
+        return url
     }
 }

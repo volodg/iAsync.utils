@@ -1,5 +1,5 @@
 //
-//  String+FileAttributes.swift
+//  URL+FileAttributes.swift
 //  iAsync_utils
 //
 //  Created by Vladimir Gorbenko on 06.06.14.
@@ -8,15 +8,16 @@
 
 import Foundation
 
-public extension String {
+public extension URL {
 
-    func addSkipBackupAttribute() {
+    mutating func addSkipBackupAttribute() {
 
-        let url = URL(fileURLWithPath: self)
-        assert(FileManager.default.fileExists(atPath: self))
+        assert(FileManager.default.fileExists(atPath: self.path))
 
         do {
-            try (url as NSURL).setResourceValue(true, forKey: URLResourceKey.isExcludedFromBackupKey)
+            var vales = URLResourceValues()
+            vales.isExcludedFromBackup = true
+            try self.setResourceValues(vales)
         } catch let error as NSError {
             iAsync_utils_logger.logError("setResourceValue error: \(error) path: \(self)", context: #function)
         } catch _ {
