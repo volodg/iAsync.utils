@@ -39,8 +39,7 @@ public func writeObject<T>(_ object: T?, toDocumentFile documentFile: String, lo
 
 public extension Int {
 
-    //todo rename?
-    public static func readFromFile(_ documentFile: String) -> Int? {
+    public static func read(from documentFile: String) -> Int? {
 
         let scanner = { (string: String) -> Int? in
             var scannedNumber = 0
@@ -57,8 +56,7 @@ public extension Int {
 
 public extension Double {
 
-    //todo rename?
-    public static func readFromFile(_ documentFile: String) -> Double? {
+    public static func read(from documentFile: String) -> Double? {
 
         let scanner = { (string: String) -> Double? in
             var scannedNumber = 0.0
@@ -75,8 +73,7 @@ public extension Double {
 
 public extension String {
 
-    //todo rename?
-    public static func readFromFile(_ documentFile: String) -> String? {
+    public static func read(from documentFile: String) -> String? {
 
         let scanner = { (string: String) -> String? in
             return string
@@ -88,9 +85,8 @@ public extension String {
 
 public extension Bool {
 
-    //todo rename?
-    public static func readFromFile(_ documentFile: String) -> Bool? {
+    public static func read(from documentFile: String) -> Bool? {
 
-        return Int.readFromFile(documentFile).flatMap { $0 != 0 }
+        return Int.read(from: documentFile).flatMap { $0 != 0 }
     }
 }
