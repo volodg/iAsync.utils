@@ -8,9 +8,9 @@
 
 import Foundation
 
-open class SilentError : UtilsError {}
+open class SilentError : UtilsError {
 
-public extension LoggedObject where Self : SilentError {
-
-    var logTarget: LogTarget { return LogTarget.console }
+    open override var logTarget: LogTarget {
+        return LogTarget.console
+    }
 }
