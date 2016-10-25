@@ -38,7 +38,7 @@ public final class MimeType {
         let fixContentTypeFunc = { () -> String in
 
             let fileExtension_ = fileExtension(fileName)
-            let result = MimeType.detectMimeType(fileExtension_)
+            let result = MimeType.detectMimeType(forExt: fileExtension_)
             return result
         }
 
@@ -46,8 +46,7 @@ public final class MimeType {
         return result
     }
 
-    //todo rename?
-    public static func detectMimeType(_ ext: String) -> String {
+    public static func detectMimeType(forExt ext: String) -> String {
 
         let default_ = "application/octet-stream"
         let result   = table[ext]
@@ -78,7 +77,7 @@ private let table = [
     "c"       : "text/plain",
     "cat"     : "application/vnd.ms-pkiseccat",
     "cdf"     : "application/x-cdf",
-    //    "cdf"     : "application/x-netcdf",
+    //"cdf"     : "application/x-netcdf",
     "cer"     : "application/x-x509-ca-cert",
     "class"   : "application/octet-stream",
     "clp"     : "application/x-msclip",

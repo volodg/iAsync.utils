@@ -52,30 +52,34 @@ extension UIImage {
             break
         }
 
+        guard let cgImage = self.cgImage, let colorSpace = cgImage.colorSpace else { return nil }
+
         // Now we draw the underlying CGImage into a new context, applying the transform
         // calculated above.
-        let ctx = CGContext(
+        let ctx_ = CGContext(
             data: nil,
             width: Int(size.width),
             height: Int(size.height),
-            bitsPerComponent: cgImage!.bitsPerComponent,
+            bitsPerComponent: cgImage.bitsPerComponent,
             bytesPerRow: 0,
-            space: cgImage!.colorSpace!,
-            bitmapInfo: cgImage!.bitmapInfo.rawValue)
+            space: colorSpace,
+            bitmapInfo: cgImage.bitmapInfo.rawValue)
 
-        ctx!.concatenate(transform)
+        guard let ctx = ctx_ else { return nil }
+
+        ctx.concatenate(transform)
 
         switch imageOrientation {
         case .left, .leftMirrored, .right, .rightMirrored:
-            ctx!.draw(cgImage!, in: CGRect(x: 0,y: 0,width: size.height,height: size.width))
+            ctx.draw(cgImage, in: CGRect(x: 0, y: 0,width: size.height, height: size.width))
             break
 
         case .up, .down, .upMirrored, .downMirrored:
-            ctx!.draw(cgImage!, in: CGRect(x: 0,y: 0, width: size.width, height: size.height))
+            ctx.draw(cgImage, in: CGRect(x: 0,y: 0, width: size.width, height: size.height))
             break
         }
 
         // And now we just create a new UIImage from the drawing context
-        return ctx!.makeImage().flatMap { UIImage(cgImage: $0) }
+        return ctx.makeImage().flatMap { UIImage(cgImage: $0) }
     }
 }
