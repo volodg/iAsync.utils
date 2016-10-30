@@ -16,8 +16,7 @@ private func readStringWithScanner<T>(documentFile: String, scanner: (String) ->
     return result
 }
 
-//todo rename?
-public func writeObject<T>(_ object: T?, toDocumentFile documentFile: String, logError: Bool = true) -> Bool {
+public func write<T>(object: T?, toDocumentFile documentFile: String, logError: Bool = true) -> Bool {
 
     let filePath = documentFile.documentsPath
 
