@@ -24,34 +24,34 @@ class JSchedulerTest: XCTestCase {
             timeDifference = difference;
         }
 
-        weak var weakTimer: Timer?
+        weak var weakTimer: iAsync_utils.Timer?
 
         autoreleasepool {
 
             let timer = Timer()
             weakTimer = timer
 
-            _ = timer.addBlock({ (cancel: JCancelScheduledBlock) -> () in
+            _ = timer.add(actionBlock: { cancel in
 
                 cancel()
                 fired = true
-            }, duration:0.01, leeway:0)
+            }, delay: .milliseconds(10))
 
-            let startDate = NSDate()
+            let startDate = Date()
 
-            let expectation = self.expectationWithDescription("")
+            let expectation = self.expectation(description: "")
 
-            _ = sharedTimer.addBlock({ (cancel: JCancelScheduledBlock) -> () in
+            _ = sharedTimer.add(actionBlock: { cancel in
 
-                let finishDate = NSDate()
-                setTimeDifference(finishDate.timeIntervalSinceDate(startDate))
+                let finishDate = Date()
+                setTimeDifference(finishDate.timeIntervalSince(startDate))
 
                 cancel()
                 expectation.fulfill()
-            }, duration:0.02, leeway:0)
+            }, delay: .milliseconds(20))
         }
 
-        self.waitForExpectationsWithTimeout(1, handler: nil)
+        self.waitForExpectations(timeout: 1, handler: nil)
 
         XCTAssertNil(weakTimer)
         XCTAssertFalse(fired)
@@ -60,7 +60,7 @@ class JSchedulerTest: XCTestCase {
 
     func testCancelBlockReturned() {
 
-        weak var weakTimer: Timer?
+        weak var weakTimer: iAsync_utils.Timer?
 
         autoreleasepool {
 
@@ -72,30 +72,30 @@ class JSchedulerTest: XCTestCase {
             let timer = Timer()
             weakTimer = timer
 
-            let mainCancel = timer.addBlock({ (cancel: JCancelScheduledBlock) -> () in
+            let mainCancel = timer.add(actionBlock: { cancel in
                 cancel()
                 fired = true
-            }, duration:0.02)
+            }, delay: .milliseconds(20))
 
-            _ = sharedScheduler.addBlock({ (cancel: JCancelScheduledBlock) -> () in
+            _ = sharedScheduler.add(actionBlock: { cancel in
                 mainCancel()
                 cancel()
-            }, duration:0.01)
+            }, delay: .milliseconds(10))
 
-            let startDate = NSDate()
+            let startDate = Date()
 
-            let expectation = self.expectationWithDescription("")
+            let expectation = self.expectation(description: "")
 
-            _ = sharedScheduler.addBlock({ (cancel: JCancelScheduledBlock) -> () in
+            _ = sharedScheduler.add(actionBlock: { cancel in
 
                 let finishDate = NSDate()
-                timeDifference = finishDate.timeIntervalSinceDate(startDate)
+                timeDifference = finishDate.timeIntervalSince(startDate)
 
                 cancel()
                 expectation.fulfill()
-            }, duration:0.03)
+            }, delay: .milliseconds(30))
 
-            self.waitForExpectationsWithTimeout(1, handler: nil)
+            self.waitForExpectations(timeout: 1, handler: nil)
 
             XCTAssertFalse(fired)
             XCTAssertTrue(timeDifference >= 0.028)
@@ -106,50 +106,50 @@ class JSchedulerTest: XCTestCase {
 
     func testCancelAllScheduledOperations() {
 
-        weak var weakTimer: Timer?
+        weak var weakTimer: iAsync_utils.Timer?
 
         autoreleasepool {
 
             var fired = false
             var timeDifference = 0.0
 
-            let sharedScheduler = Timer.sharedByThreadTimer()
+            let sharedScheduler = iAsync_utils.Timer.sharedByThreadTimer()
 
             let timer = Timer()
             weakTimer = timer
 
-            _ = timer.addBlock({ (cancel: JCancelScheduledBlock) -> () in
+            _ = timer.add(actionBlock: { cancel in
 
                 cancel()
                 fired = true
-            }, duration:0.09, leeway:0.0)
+            }, delay: .milliseconds(90))
 
-            _ = timer.addBlock({ (cancel: JCancelScheduledBlock) -> () in
+            _ = timer.add(actionBlock: { cancel in
 
                 cancel()
                 fired = true
-            }, duration:0.09, leeway:0.0)
+            }, delay: .milliseconds(90))
 
-            _ = sharedScheduler.addBlock({ (cancel: JCancelScheduledBlock) -> () in
+            _ = sharedScheduler.add(actionBlock: { cancel in
 
                 timer.cancelAllScheduledOperations()
                 cancel()
-            }, duration:0.001, leeway:0.0)
+            }, delay: .milliseconds(1))
 
-            let startDate = NSDate()
+            let startDate = Date()
 
-            let expectation = self.expectationWithDescription("")
+            let expectation = self.expectation(description: "")
 
-            _ = sharedScheduler.addBlock({ (cancel: JCancelScheduledBlock) -> () in
+            _ = sharedScheduler.add(actionBlock: { cancel in
 
                 let finishDate = NSDate()
-                timeDifference = finishDate.timeIntervalSinceDate(startDate)
+                timeDifference = finishDate.timeIntervalSince(startDate)
 
                 cancel()
                 expectation.fulfill()
-            }, duration:0.01, leeway:0.0)
+            }, delay: .milliseconds(10))
 
-            self.waitForExpectationsWithTimeout(1, handler: nil)
+            self.waitForExpectations(timeout: 1, handler: nil)
 
             XCTAssertFalse(fired)
             XCTAssertTrue(timeDifference >= 0.01)
@@ -164,26 +164,26 @@ class JSchedulerTest: XCTestCase {
 
         var timeDifference = 0.0
 
-        let startDate = NSDate()
+        let startDate = Date()
 
-        let expectation = self.expectationWithDescription("")
+        let expectation = self.expectation(description: "")
 
         var fired = false
-        _ = sharedScheduler.addBlock({ (cancel: JCancelScheduledBlock) -> () in
+        _ = sharedScheduler.add(actionBlock: { cancel in
 
             if fired {
 
                 let finishDate = NSDate()
-                timeDifference = finishDate.timeIntervalSinceDate(startDate)
+                timeDifference = finishDate.timeIntervalSince(startDate)
 
                 cancel()
                 expectation.fulfill()
             }
 
             fired = true
-        }, duration:0.02)
+        }, delay: .milliseconds(20))
 
-        self.waitForExpectationsWithTimeout(1, handler: nil)
+        self.waitForExpectations(timeout: 1, handler: nil)
 
         XCTAssertTrue(timeDifference >= 0.02)
     }

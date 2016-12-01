@@ -1,5 +1,5 @@
 //
-//  NSDictionary+BlocksAdditionsTest.swift
+//  Array+BlocksAdditionsTest.swift
 //  JUtilsTests
 //
 //  Created by Vladimir Gorbenko on 15.06.14.
@@ -10,36 +10,7 @@ import XCTest
 
 import iAsync_utils
 
-class NSDictionary_BlocksAdditionsTest: XCTestCase {
-
-    func testEachMethod() {
-
-        let dict = [
-            "1" : 1,
-            "2" : 2,
-            "3" : 3,
-        ]
-
-        let keys    = NSMutableArray()
-        let objects = NSMutableArray()
-
-        for (key, value) in dict {
-            keys   .addObject(key  )
-            objects.addObject(value)
-        }
-
-        XCTAssertEqual(3, keys.count)
-
-        for key : AnyObject in (dict as NSDictionary).allKeys {
-            XCTAssertTrue(keys.containsObject(key))
-        }
-
-        XCTAssertEqual(3, objects.count)
-        
-        for value : AnyObject in (dict as NSDictionary).allValues {
-            XCTAssertTrue(objects.containsObject(value))
-        }
-    }
+class Array_BlocksAdditionsTest: XCTestCase {
 
     func testAny() {
 

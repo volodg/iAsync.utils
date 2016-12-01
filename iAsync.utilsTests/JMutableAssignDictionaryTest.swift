@@ -137,44 +137,44 @@ class MutableAssignDictionaryTest: XCTestCase {
         XCTAssertTrue(0 == dict.count, "Empty dict")
     }
 
-    func testEnumerateKeysAndObjectsUsingBlock() {
-
-        let patternDict = [
-            "1" : 1,
-            "2" : 2,
-            "3" : 3,
-        ]
-
-        let dict = WeakRefMap<String, NSObject>()
-
-        for (key, val) in patternDict {
-            dict[key] = val
-        }
-
-        var count = 0
-        let resultDict = NSMutableDictionary()
-
-        for (key, obj) in dict.mapping {
-
-            count += 1
-            resultDict.setObject(obj.raw!, forKey: key)
-            let value: NSNumber! = patternDict[key]
-            XCTAssertEqual(value, obj.raw)
-        }
-
-        XCTAssertEqual(count, 3)
-        XCTAssertEqual(resultDict, patternDict)
-
-        count = 0
-
-        for (_, _) in dict.mapping {
-
-            count += 1
-            if count == 2 {
-                break
-            }
-        }
-
-        XCTAssertEqual(count, 2)
-    }
+//    func testEnumerateKeysAndObjectsUsingBlock() {
+//
+//        let patternDict = [
+//            "1" : 1,
+//            "2" : 2,
+//            "3" : 3,
+//        ]
+//
+//        let dict = WeakRefMap<String, NSObject>()
+//
+//        for (key, val) in patternDict {
+//            dict[key] = val
+//        }
+//
+//        var count = 0
+//        let resultDict = NSMutableDictionary()
+//
+//        for (key, obj) in dict.mapping {
+//
+//            count += 1
+//            resultDict.setObject(obj.raw!, forKey: key)
+//            let value: NSNumber! = patternDict[key]
+//            XCTAssertEqual(value, obj.raw)
+//        }
+//
+//        XCTAssertEqual(count, 3)
+//        XCTAssertEqual(resultDict, patternDict)
+//
+//        count = 0
+//
+//        for (_, _) in dict.mapping {
+//
+//            count += 1
+//            if count == 2 {
+//                break
+//            }
+//        }
+//
+//        XCTAssertEqual(count, 2)
+//    }
 }
